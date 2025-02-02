@@ -2,7 +2,7 @@
 
 Here is an introduction to the ATR's data model.
 
-> The following needs some work, but I wanted to have nomenclature for discussion.
+> The view here is descriptive of a json model, but the implementation will be a combination of filesytem files and subdirs along with an SQLite database schema.
 
 ## Projects
 
@@ -77,6 +77,7 @@ Currrent releases have initial phases to distribute and announce the release.
 1. Storage key
 2. Stage
 3. Phase
+3. Version String
 4. CVEs
 3. Packages - List of triples of file, signature, and checksum that are the downloadable components of a release.
 6. SBOMs - in an acceptable SBOM format and maintained in Phases using standard python libraries.
