@@ -23,7 +23,7 @@ The team's website source will be developed here as well.
 
 - [Requirements](apache-trusted-release/requirements.md)
 - [Platform Services](apache-trusted-release/platform.md)
-- [Release Lifecycle](apache-trusted-release/lifecycle.md)
+- [Release Lifecycle Phases](apache-trusted-release/lifecycle.md)
   - [Test Distributions](apache-trusted-release/test-distributions.md)
   - [Distributions](apache-trusted-release/distributions.md)
 
