@@ -1,5 +1,13 @@
 # Release Lifecycle
 
+A Release will go through a lifecycle of **stages** and **phases**.
+
+Stages include **Build**, **Candidate**, **Current**, and **Revoked**.
+The ATR does not manage build stage releases. It takes over on the transition from the build to the cnadidate stage.
+Stages control where on the **ATR** Website a release can be found.
+
+Phases are states or activities during a Release's life cycle.
+
 ```mermaid
 flowchart TD
     subgraph Apache Trusted Release
@@ -8,7 +16,7 @@ flowchart TD
     C@{ shape: docs, label: "Release Candidate" }
     A -->|automatically triggered| C
     B -->|manually triggered| C
-    subgraph Release Candidate
+    subgraph Release Candidate Stage
     D@{ shape: processes, label: "Evaluate Candidate" }
     C --> D
     DD@{ shape: process, label: "Sign Candidate" }
@@ -24,7 +32,7 @@ flowchart TD
     DD --> GG
     GG --> E
     end
-    subgraph Release
+    subgraph Current Release Stage
     JJ@{ shape: docs, label: "Release" }
     JJJ --> JJ
     G@{ shape: processes, label: "Distribute" }
@@ -49,10 +57,12 @@ flowchart TD
     end
 ```
 
-## Definitions
+## Phases
 
 **Announce CVEs**
-: At some moment after a release happens a project may announce CVEs that either impact or are solved by a release. The security team and PMC manage CVEs including announcements and publishing via cveprocess.apache.org The ATR will update SBOMs with new CVEs.
+: At some moment as or after a release happens a project may announce CVEs that either impact or are solved by a release. The security team and PMC manage CVEs including announcements and publishing via cveprocess.apache.org The ATR will update SBOMs with new CVEs.
+
+> Note where this is an explicit phase or not depends on integration discussions with the security team.
 
 **Announce Release**
 : Send a compliant announcement of the release. This template will include release metadata.
