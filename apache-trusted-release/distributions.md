@@ -1,4 +1,4 @@
-# Third Party Distributions
+# Distributions Phase
 
 Support will be added to the ATR for distribution of release packages to third parties in a priority order.
 
