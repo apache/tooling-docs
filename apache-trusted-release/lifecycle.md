@@ -21,12 +21,13 @@ flowchart TD
     C --> D
     DD@{ shape: process, label: "Sign Candidate" }
     D -->|pass| DD
-    GG@{ shape: processes, label: "Distribute Test" }
+    GG@{ shape: processes, label: "Distribute (Test)" }
     E@{ shape: sl-rect, label: "Release Vote" }
     JJJ@{ shape: dbl-circ, label: "Passes" }
     F@{ shape: dbl-circ, label: "Failed" }
     E -->|pass| JJJ
     E -->|fail| F
+    GG -->|fail| F
     D -->|fail| F
     F -->|new candidate| C
     DD --> GG
@@ -36,20 +37,14 @@ flowchart TD
     JJ@{ shape: docs, label: "Release" }
     JJJ --> JJ
     G@{ shape: processes, label: "Distribute" }
-    H@{ shape: trap-t, label: "Manual Distribution" }
-    G -->|optional| H
     G --> I
-    FF@{ shape: dbl-circ, label: "Distribution\nFailed" }
-    G -->|failure| FF
     I[Announce Release]
-    FF -->|retry| G
-    FF -->|abandon| K
-    H -->|manually triggered| I
     J@{ shape: dbl-circ, label: "Released" }
     JJ --> G
     I --> J
     K@{ shape: dbl-circ, label: "Revoked" }
     L@{ shape: trap-t, label: "Announce CVEs" }
+    G -->|failure| K
     J -->|revoke| K
     J -->|cves| L
     L -->|record cves| J
@@ -74,13 +69,8 @@ flowchart TD
 : This is our current SVN repository process for setting up a release candidate. Trigger the ATR automation by including release metadata.
 
 **[Distribute](./distributions.md)**
-: Release distribution will be automated for many channels.
-
-**[Distribute Test](./test-distributions.md)**
-: Release Candidates may be distributed to Test repositories.
-
-**Distribution Failed**
-: A Release may fail one or more of its Distribution Steps. This may be due to a problem with the destination. The project will need to manually retry. The distribute steps should include reasonable retry logic. The Release Manager will need to decide the next phase.
+: Release and Test distributions will be automated for many channels. An email will be sent about package managers need which need manual distribution.
+Once that is complete the Release Manager will need to move to the next Phase. If all distributions automatically complete then moving to the next phase is automatic,
 
 **[Evaluate Candidate](./evaluate.md)**
 : Report on the Candidate by performing numerous checks for policy compliance. Fails if compliance minimums are unmet.
@@ -91,9 +81,6 @@ flowchart TD
 
 **GHA Secure Release Process**
 : In a GitHub workflow the release candidate is built and validated following the Security Release Policy.
-
-**Manual Distribution**
-: Some channels either require manual steps, or they are yet to be automated. An email will be sent to list which package managers need a manual ditribution. Once that is complete the Release Manager will need to move to the next Phase.
 
 **Passes**
 : The Release Candidate has been accepted. Convert the candidate into a Release and proceed to Distribute and Announce the Release.
