@@ -10,8 +10,10 @@ Phases are states or activities during a Release's life cycle.
 
 ```mermaid
 flowchart TD
-    subgraph Build Stage / Legacy
+    subgraph Build Stage
     A[GHA Secure Build]
+    end
+    subgraph Legacy
     B[Legacy SVN Dist]
     end
     subgraph Apache Trusted Release
@@ -41,17 +43,22 @@ flowchart TD
     G@{ shape: processes, label: "Distribute" }
     G --> I
     I[Announce Release]
-    J@{ shape: dbl-circ, label: "Released" }
-    JJ --> G
-    I --> J
-    K@{ shape: dbl-circ, label: "Revoked" }
+    II[Migration]
     L@{ shape: trap-t, label: "Update SBOMs" }
-    G -->|failure| K
-    J -->|revoke| K
+    J@{ shape: dbl-circ, label: "Released" }
     J -->|cves| L
     L -->|record cves| J
+    JJ --> G
+    I --> J
+    B -->|migration| II
+    II -->|current| J
+    subgraph Revoked Release Stage
+    K@{ shape: dbl-circ, label: "Revoked" }
     end
-    B -->|migration| J
+    G -->|failure| K
+    II -->|revoked| K
+    J -->|revoke| K
+    end
     end
 ```
 
@@ -79,6 +86,9 @@ Once that is complete the Release Manager will need to move to the next Phase. I
 
 **[Legacy SVN Dist](./svn-dist.md)**
 : This is our current SVN repository process for setting up a release candidate. Trigger the ATR automation by including release metadata.
+
+**[Migration](./svn-dist.md)**
+: We need a phase for migration of existing releases from the legacy platform into the ATR data store.
 
 **Passes**
 : The Release Candidate has been accepted. Convert the candidate into a Release and proceed to Distribute and Announce the Release.
