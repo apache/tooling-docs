@@ -32,7 +32,7 @@ One or more product lines with separate releases including the main one. A produ
 10. Release lists:
     - Candidates
     - Current
-    - Revoked
+    - Archived
 
 ### Public Signing Keys
 
