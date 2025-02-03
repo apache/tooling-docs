@@ -19,9 +19,10 @@ See [Data Model](./data-model.md) for a discussion of the objects managed by the
    
 ### Release Stages
 
-1. Current Releases
+1. Build Releases - while not managed by the ATR there are bridges.
 2. Candidate Releases
-3. Revoked / EOL / Attic Releases
+3. Current Releases
+4. Archived / Revoked / EOL / Atticked Releases
 
 > “Nightlies” is for a later phase.
 
@@ -32,6 +33,7 @@ See [Release Lifecycle](./lifecycle.md) for how phases are chained together to p
 ### Release CVEs
 
 1. CVE metadata
+2. SBOM updates
 3. Affected releases
 4. Release that resolves CVE(s)
 
@@ -39,7 +41,7 @@ See [Release Lifecycle](./lifecycle.md) for how phases are chained together to p
 
 The co-ordinates make up the external path to objects. The metadata database provides the map to the local path.
 
-1. Stage (Candidate, Current, Revoked, …)
+1. Stage (Candidate, Current, Archived, …)
 2. Project (Responsible TLP)
 3. Product (Main, Sub-projects)
 4. Version (String, latest)
