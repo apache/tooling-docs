@@ -3,16 +3,18 @@
 A Release will go through a lifecycle of **stages** and **phases**.
 
 Stages include **Build**, **Candidate**, **Current**, and **Revoked**.
-The ATR does not manage build stage releases. It takes over on the transition from the build to the candidate stage.
+The ATR does not manage build stage and legacy releases. It takes over on the transition from the build to the candidate stage.
 Stages control where on the **ATR** Website a release can be found.
 
 Phases are states or activities during a Release's life cycle.
 
 ```mermaid
 flowchart TD
+    subgraph Build Stage / Legacy
+    A[GHA Secure Build]
+    B[Legacy SVN Dist]
+    end
     subgraph Apache Trusted Release
-    A[GHA Secure Release Process]
-    B[Current SVN Build Process]
     C@{ shape: docs, label: "Release Candidate" }
     A -->|automatically triggered| C
     B -->|manually triggered| C
@@ -43,30 +45,23 @@ flowchart TD
     JJ --> G
     I --> J
     K@{ shape: dbl-circ, label: "Revoked" }
-    L@{ shape: trap-t, label: "Announce CVEs" }
+    L@{ shape: trap-t, label: "Update SBOMs" }
     G -->|failure| K
     J -->|revoke| K
     J -->|cves| L
     L -->|record cves| J
     end
+    B -->|migration| J
     end
 ```
 
 ## Phases
-
-**Announce CVEs**
-: At some moment as or after a release happens a project may announce CVEs that either impact or are solved by a release. The security team and PMC manage CVEs including announcements and publishing via cveprocess.apache.org The ATR will update SBOMs with new CVEs.
-
-> Note where this is an explicit phase or not depends on integration discussions with the security team.
 
 **Announce Release**
 : Send a compliant announcement of the release. This template will include release metadata.
 
 **[ATR Platform](./platform.md)**
 : Apache Trusted Release is a service with a web UI and restful API for managing the lifecycle of project releases.
-
-**Current SVN Build Process**
-: This is our current SVN repository process for setting up a release candidate. Trigger the ATR automation by including release metadata.
 
 **[Distribute](./distributions.md)**
 : Release and Test distributions will be automated for many channels. An email will be sent about package managers need which need manual distribution.
@@ -79,8 +74,11 @@ Once that is complete the Release Manager will need to move to the next Phase. I
 : A Release Candidate may end in this state. The project can either abandon it or update and resubmit it.
  The Release Manager will need to decide the next phase.
 
-**GHA Secure Release Process**
+**[GHA Secure Build](./github-build.md)**
 : In a GitHub workflow the release candidate is built and validated following the Security Release Policy.
+
+**[Legacy SVN Dist](./svn-dist.md)**
+: This is our current SVN repository process for setting up a release candidate. Trigger the ATR automation by including release metadata.
 
 **Passes**
 : The Release Candidate has been accepted. Convert the candidate into a Release and proceed to Distribute and Announce the Release.
@@ -102,3 +100,8 @@ Once that is complete the Release Manager will need to move to the next Phase. I
 
 **[Sign Candidate](./digital-signatures.md)**
 : Optionally sign packages using digital certificates through a service.
+
+**[Update SBOMs](./cve-process.md)**
+: At some moment as or after a release happens a project may announce CVEs that either impact or are solved by a release. The security team and PMC manage CVEs including announcements and publishing via cveprocess.apache.org The ATR will update the releases SBOMs with new CVEs.
+
+> Note where this is an explicit phase or not depends on integration discussions with the security team.
