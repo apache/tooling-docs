@@ -96,10 +96,10 @@ Once that is complete the Release Manager will need to move to the next Phase. I
 **Passes**
 : The Release Candidate has been accepted. Convert the candidate into a Release and proceed to Distribute and Announce the Release.
 
-**Release**
+**[Release](./data-model.md)**
 : The release is a folder of files including metadata, SBOMs, public keys, signatures, and checksums.
 
-**Release Candidate**
+**[Release Candidate](./data-model.md)**
 : A release candidate consists of a folder of release files including metadata, SBOMs, public keys, signatures, and checksums.
 
 **[Release Vote](./vote.md)**
