@@ -2,7 +2,7 @@
 
 A Release will go through a lifecycle of **stages** and **phases**.
 
-Stages include **Build**, **Candidate**, **Current**, and **Revoked**.
+Stages include **Build**, **Candidate**, **Current**, and **Archived**.
 The ATR does not manage build stage and legacy releases. It takes over on the transition from the build to the candidate stage.
 Stages control where on the **ATR** Website a release can be found.
 
@@ -52,12 +52,12 @@ flowchart TD
     I --> J
     B -->|migration| II
     II -->|current| J
-    subgraph Revoked Release Stage
-    K@{ shape: dbl-circ, label: "Revoked" }
+    subgraph Archived Release Stage
+    K@{ shape: dbl-circ, label: "Archived" }
     end
     G -->|failure| K
-    II -->|revoked| K
-    J -->|revoke| K
+    II -->|archived| K
+    J -->|archive| K
     end
     end
 ```
@@ -66,6 +66,9 @@ flowchart TD
 
 **Announce Release**
 : Send a compliant announcement of the release. This template will include release metadata.
+
+**Archived**
+: A Release in this stage/phase has been archived, revoked, or abandoned.
 
 **[ATR Platform](./platform.md)**
 : Apache Trusted Release is a service with a web UI and restful API for managing the lifecycle of project releases.
@@ -88,7 +91,7 @@ Once that is complete the Release Manager will need to move to the next Phase. I
 : This is our current SVN repository process for setting up a release candidate. Trigger the ATR automation by including release metadata.
 
 **[Migration](./svn-dist.md)**
-: We need a phase for migration of existing releases from the legacy platform into the ATR data store.
+: We need a phase for migration of existing current and archived releases from the legacy platform into the ATR data store.
 
 **Passes**
 : The Release Candidate has been accepted. Convert the candidate into a Release and proceed to Distribute and Announce the Release.
@@ -104,9 +107,6 @@ Once that is complete the Release Manager will need to move to the next Phase. I
 
 **Released**
 : Once the Release is distributed and announced, this Release should remain in this phase as long as it is available.
-
-**Revoked**
-: A Release in this stage/phase has been archived, revoked, or abandoned.
 
 **[Sign Candidate](./digital-signatures.md)**
 : Optionally sign packages using digital certificates through a service.
