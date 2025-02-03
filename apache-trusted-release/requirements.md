@@ -26,6 +26,7 @@ While reading consider these Notes:
    - Incorporate all Project Releases.
      - Download page. (migrated/mirrored from dist/release)
      - Release Candidate pages. (migrated/mirrored from dist/dev)
+     - Archived download page. (migrated from archives)
    - Every project has a management interface.
      - Current manual release practice is viewable.
      - Automated release status.
