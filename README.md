@@ -29,7 +29,7 @@ The team's website source will be developed here as well.
 
 ## Board Agenda Tool (BAT)
 
-- [Current Requirements](https://github.com/apache/infrastructure-agenda/blob/master/REQUIREMENTS.md)
+- [Current Requirements](https://github.com/apache/tooling-agenda/blob/master/REQUIREMENTS.md)
 - [Whimsy Agenda Tool Analysis](board-agenda-tool/whimsy.md)
 - [Progress Report](board-agenda-tool/progress.md)
 - [Plan](board-agenda-tool/plan.md)
@@ -37,12 +37,12 @@ The team's website source will be developed here as well.
 ## Links to various useful Infrastructure repositories
 
 - https://github.com/apache/infrastructure-asfquart
+- https://github.com/apache/infrastructure-asfpy
+- https://github.com/apache/infrastructure-pypubsub
+- https://github.com/apache/infrastructure-actions
 - https://github.com/apache/infrastructure-gha-workflow-scanner
 - https://github.com/apache/infrastructure-gha-notifier
 - https://github.com/apache/infrastructure-gha-allowlist-manager
-- https://github.com/apache/infrastructure-asfpy
-- https://github.com/apache/infrastructure-actions
 - https://github.com/apache/infrastructure-github-event-notifier
-- https://github.com/apache/infrastructure-pypubsub
 - https://github.com/apache/infrastructure-artifact-platform
 - https://github.com/apache/infrastructure-artifacts-configuration
