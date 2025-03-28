@@ -98,6 +98,70 @@ While some workflows or actions (eg. pressing a button) are fairly obvious, a nu
 - select-actions.rb - Handy display of Action Items with key context and status markers.
 - shepherd.js.rb - *Director* display shepherd queue/listing with all metadata (Report name, chair, status, comments, flags, etc.)
 
+### Larger Workflows
+
+Some workflows are better described by the tasks done rather than existing Whimsy implementations.
+
+#### Create New Agenda - *Chair*
+
+Whimsy implementation starts at: [agenda/routes.rb#L528](https://github.com/apache/whimsy/blob/240a12052abf4e77796707abe9d7e89c015ba274/www/board/agenda/routes.rb#L528) and notifications are at: [agenda/routes.rb#L640](https://github.com/apache/whimsy/blob/240a12052abf4e77796707abe9d7e89c015ba274/www/board/agenda/routes.rb#L640)
+
+**Inputs**
+
+- List of current directors
+- board_agenda.erb
+- committers/board/calendar.txt - next meeting date
+- committers/board/committee-info.txt - officers and PMCs expected to report on normal schedules
+  - Note: this must reflect any Attic retirements or TLPs created at the previous meeting
+- *all unpublished board meeting minutes* - to fillin **3. Minutes from previous meetings** 
+- *last board meeting minutes* 
+  - PMCs that did not report, or where the report provided was not accepted - these PMCs will be added to the new month's agenda automatically
+  - Action Items
+  
+**Tasks**
+
+- Construct new agenda file
+- Assign Shepherds to all officer and PMC reports
+- Ask *Chair* which Action Items should be propagated as-is to the new agenda
+- Commit draft agenda to foundation/board/
+- Send notifications
+  - Send first reminder (views/actions/reminder-text.json.rb) to each officer (directly to officer), PMC expected to report (To: PMC chair; cc: private@pmc)
+  - Send rollup report of any notifications sent (views/actions/send-reminders.json.rb) to board@ (Note: this reminder is currently sent to board-chair@, but should really be sent to board@)
+  - Prepare a coffee, tea, or other preferred beverage for the chair
+
+#### Call Meeting To Order - *Chair*, *Secretary*
+
+When a meeting starts, the Chair and Secretary should be able to determine quorum of directors present in the call, and then mark the meeting start time.  The Secretary should also be able to easily mark all persons attending at the start of the meeting.
+
+#### Adjourn Meeting - *Chair*, *Secretary*
+
+When the Chair calls for adjournment, the Secretary should close the meeting with a timestamp, and be able to easily confirm the list of attendees (even attendees who joined the meeting late).
+
+#### Post-Adjournment Workflow - *Chair*, *Secretary*
+
+Shortly after meetings, *Secretary* runs a workflow:
+
+- Commit final version of agenda (with timestamps, vote records, attendees, etc.)
+- Commit preliminary draft version of minutes (redacted)
+- Run workflows for all Special Orders (typically attic or TLP resolutions, or officer or PMC chair changes)
+  - Update committee-info.*
+  - Update LDAP
+  - Other data sources?
+- Send notifications
+  - Email all newly appointed officers with a welcome (todos.json.rb)
+
+After meetings, *Chair* runs a workflow:
+
+- mailto:committers@ (summary.js.rb, committers_report.text.erb) where the Chair can manually edit the draft email before sending.
+- Question: are there / should there be any other steps here?
+
+#### Publish Minutes Workflow - *Secretary*
+
+When the board approves draft minutes, *Secretary* publishes them to appropriate public storage location; this may also need to run a workflow to ensure any indicies of minutes are updated, like:
+
+- whimsy.apache.org/board/minutes/
+- whimsy.apache.org/board_minutes/
+
 ## Content Templates
 
 A list of data templates, boilerplates, or other similar workflow content docs that are used in key Whimsy workflow features.
