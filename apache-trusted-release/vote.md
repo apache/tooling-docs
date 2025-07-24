@@ -12,7 +12,7 @@ The ATR should take over responsibility from the Release Manager for running a V
 
 ## Vote Policy
 
-The are reasonable adjustments that a PMC can apply to a release vote.
+There are reasonable adjustments that a PMC can apply to a release vote.
 
 1. Normally a vote goes for a minimum of 72 hours. A PMC may choose a longer time period.
    In case of a security emergency a PMC may shorten the time to as soon as there are 3 +1 votes.

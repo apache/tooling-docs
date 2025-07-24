@@ -102,7 +102,7 @@ Note: this section is a flexible outline of what we intend for the UI, and may c
 2. Release Page
    - [Download page requirements](https://infra.apache.org/release-download-pages.html)
    - Release level metadata
-   - PMC Information and webspage links
+   - PMC Information and webpage links
    - Download package from directory of release
    - Maintenance actions
    - History of events

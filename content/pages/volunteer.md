@@ -11,7 +11,7 @@ There are some basic things you could do if you're going to help out with the AS
   - Read #tooling-discuss in the ASF Slack space.
   - Bring your `python` and `asfquart` skills and offer to help with modules.
   - Work on documentation.
-  - Discuss policy clarifications and other difficult issues including moving questions and  proposals to the apprioriate place.
+  - Discuss policy clarifications and other difficult issues including moving questions and proposals to the appropriate place.
   
 **Come talk to us on [Slack](https://the-asf.slack.com/) in the #tooling-discuss channel!**
 

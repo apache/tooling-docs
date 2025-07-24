@@ -50,7 +50,7 @@ These are a set of choices which control how a release vote is conducted by the 
    This will be helpful in getting dependent projects to check releases early.
 3. Manual Vote Process flag - if this is set then the vote will be completely manual and following policy is ignored.
 4. Minimum Number of Hours - the minimum time to run the vote. If set to `0` then wait until 3 +1 votes and more +1 than -1.
-5. Release Checklist - markdown text describing how to test release candidates.
+5. Release Checklist - Markdown text describing how to test release candidates.
 6. Pause for RM check if any -1 votes flag - normally when the vote passes we proceed to the next steps,
    but we should allow the RM a chance to confirm if a -1 vote should stop the release.
 

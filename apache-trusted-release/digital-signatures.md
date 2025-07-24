@@ -2,7 +2,7 @@
 
 For certain artifact types in a release the PMC wishes to add Digital Signatures using approved and current services.
 
-Currently ssl.com, but a google based one may be coming in the summer.
+Currently ssl.com, but a Google based one may be coming in the summer.
 
 ## Policy
 
