@@ -82,7 +82,7 @@ flowchart TD
     ATR -->|rsync| D
     end
 ```
- 
+
 3. **Legacy is Retired** - `svn:dist/release` is retired.
 
 ```mermaid
@@ -95,7 +95,7 @@ flowchart TD
     ATR -->|rsync| D
     end
 ```
- 
+
 4. **Further Integration** - downloads.apache.org is hosted on ATR.
 
 ```mermaid

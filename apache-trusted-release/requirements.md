@@ -22,7 +22,7 @@ While reading consider these Notes:
    - Assure that the **ATR platform** follows industry best practices especially regarding **SBOMs**,
      **Certificate Management**, and **Digital Signatures**.
    - Help lead the industry to better practices.
-   - Work within the **ASF** on **Release Policy** improvements. 
+   - Work within the **ASF** on **Release Policy** improvements.
 
 ## 3. Apache Trusted Release Platform (ATR)
 
@@ -76,7 +76,7 @@ While reading consider these Notes:
    - Integrate with the [Security Advisory Process](advisory-process.md) to make it easy to track applicable advisories on download pages.
    - Expand support for [Evaluating Build Claims](evaluate.md) to additional build tools.
    - Expand automated support for additional [Distribution Channels](distributions.md).
-   - Include a [Signing Candidates](./digital-signatures.md) phase during ATR processing. 
+   - Include a [Signing Candidates](./digital-signatures.md) phase during ATR processing.
 
      > There are policy implications to the automation of digital signatures.
      > For now, creating digital signatures on certain artifact types must be done prior to GPG signing and

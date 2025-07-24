@@ -44,7 +44,7 @@ Public Signing Keys are stored using the User ID of the owner as the key.
 
 ### Vote Policy
 
-These are a set of choices which control how a release vote is conducted by the ATR. 
+These are a set of choices which control how a release vote is conducted by the ATR.
 
 1. Mailto Addresses for Emails - defaults to the project dev list, but the PMC can change these and add contacts.
    This will be helpful in getting dependent projects to check releases early.
@@ -97,8 +97,8 @@ Multiple roles are possible and available actions are composed. Empty cells deno
 
 | Activity   | PMC Member | Release Manager | Committer | Visitor | ASF Member | SysAdmin
 | ---------- | ---------- | --------------- | --------- | ------- | ---------- | -----
-| binding vote | yes |  | | |  | 
-| vote         | yes | yes | yes | yes | yes | 
+| binding vote | yes |  | | |  |
+| vote         | yes | yes | yes | yes | yes |
 | release admin | yes | yes | | | | yes
 | project admin | yes | | | | | yes
 | product admin | yes | | | | | yes

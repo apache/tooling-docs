@@ -20,7 +20,7 @@ The main project is the Apache Trusted Release Platform.
    - Assure that the **ATR platform** follows industry best practices especially regarding **SBOMs**,
      **Certificate Management**, and **Digital Signatures**.
    - Help lead the industry to better practices.
-   - Work within the **ASF** on **Release Policy** improvements. 
+   - Work within the **ASF** on **Release Policy** improvements.
 
 ## 3. Apache Trusted Release Platform (ATR)
 
@@ -74,7 +74,7 @@ The main project is the Apache Trusted Release Platform.
    - Integrate with the [Security Advisory Process](https://github.com/apache/tooling-docs/blob/main/apache-trusted-release/advisory-process.md) to make it easy to track applicable advisories on download pages.
    - Expand support for [Evaluating Build Claims](https://github.com/apache/tooling-docs/blob/main/apache-trusted-release/evaluate.md) to additional build tools.
    - Expand automated support for additional [Distribution Channels](https://github.com/apache/tooling-docs/blob/main/apache-trusted-release/distributions.md).
-   - Include a [Signing Candidates](https://github.com/apache/tooling-docs/blob/main/apache-trusted-release/digital-signatures.md) phase during ATR processing. 
+   - Include a [Signing Candidates](https://github.com/apache/tooling-docs/blob/main/apache-trusted-release/digital-signatures.md) phase during ATR processing.
 
      > There are policy implications to the automation of digital signatures.
      > For now, creating digital signatures on certain artifact types must be done prior to GPG signing and
