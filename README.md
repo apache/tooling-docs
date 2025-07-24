@@ -6,7 +6,7 @@ The team's website source will be developed here as well.
 
 ## How to contribute to the discussion
 
-- Via [GH Issues](../../issues)
+- Via [GH Issues](https://github.com/apache/tooling-docs/issues)
 - Email to dev@tooling.apache.org
 - ASF Slack Channels:
   - [#tooling-discuss](https://the-asf.slack.com/archives/C086X8CKEMB)
