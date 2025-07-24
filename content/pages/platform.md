@@ -30,7 +30,7 @@ See [Data Model](data-model.html) for a discussion of the objects managed by the
    - downloads.apache.org and dlcdn.apache.org
    - dist.apache.org
 2. See [Legacy Releases from SVN Dist](https://github.com/apache/tooling-docs/blob/main/apache-trusted-release/svn-dist.md). In this development phase we prefer to be at _transition 2_.
-   
+
 ### Release Stages
 
 1. Build Releases
@@ -69,7 +69,7 @@ The co-ordinates make up the external path to objects. The metadata database pro
    - Package files including SBOMs
    - Signing keys
 
-2. CRUD on 
+2. CRUD on
    - Releases - Delete is not removal. It is a stage.
    - Artifacts - Managed with a Release. Infra can do targeted full CRUD on artifacts if required.
    - Public Signing Keys - Delete only if unused.
@@ -119,7 +119,7 @@ Note: this section is a flexible outline of what we intend for the UI, and may c
    - Enable GHA Builds
    - Manage PMC Transitions
    - Watch Operations
-     
+
 5. Audit Page
    - ASF event history
    - PMC event history
