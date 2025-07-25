@@ -1,7 +1,6 @@
 Title: Apache Trusted Release Data Model
 license: https://www.apache.org/licenses/LICENSE-2.0
 
-
 _This is a discussion and the actual implementation will diverge._
 
 Here is an introduction to the ATR's data model.

@@ -4,6 +4,7 @@ license: https://www.apache.org/licenses/LICENSE-2.0
 The main project is the Apache Trusted Release Platform.
 
 Repositories:
+
 - https://github.com/apache/tooling-trusted-release
 - https://github.com/apache/tooling-releases-client
 

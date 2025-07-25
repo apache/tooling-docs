@@ -1,7 +1,6 @@
 Title: Apache Trusted Release Platform Services
 license: https://www.apache.org/licenses/LICENSE-2.0
 
-
 _This is a discussion and the actual implementation will diverge._
 
 https://releases.apache.org

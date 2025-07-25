@@ -1,7 +1,6 @@
 Title: Volunteering for ASF Tooling
 license: https://www.apache.org/licenses/LICENSE-2.0
 
-
 There are opportunities to volunteer to help develop new tooling for the ASF.
 
 There are some basic things you could do if you're going to help out with the ASF Tooling team.

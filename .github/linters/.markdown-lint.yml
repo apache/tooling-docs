@@ -1,0 +1,26 @@
+# MD013/line-length Line length
+MD013: false
+
+# MD007/ul-indent Unordered list indentation
+MD007: false
+
+# MD025/single-title/single-h1 Multiple top-level headings in the same document
+MD025: false
+
+# MD028/no-blanks-blockquote Blank line inside blockquote
+MD028: false
+
+# MD029/ol-prefix Ordered list item prefix
+MD029: false
+
+# MD034/no-bare-urls Bare URL used
+MD034: false
+
+# MD041/first-line-heading/first-line-h1 First line in a file should be a top-level heading
+MD041: false
+
+# MD055/table-pipe-style Table pipe style
+MD055: false
+
+# MD056/table-column-count Table column count
+MD056: false
