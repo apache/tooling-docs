@@ -1,0 +1,328 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apache Trusted Release Data Model - ASF Tooling Website</title>
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/fontawesome.all.min.css" rel="stylesheet">
+<link href="/css/headerlink.css" rel="stylesheet">
+<script src="/highlight/highlight.min.js"></script>
+<!-- pagefind search -->
+<link href="/_pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/_pagefind/pagefind-ui.js" type="text/javascript"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: "#pagefind-search" });
+  });
+  var pageTitle = '';
+  if(pageTitle === '404'){
+      window.addEventListener('DOMContentLoaded', (event) => {
+          new PagefindUI({ element: "#page-404-search" });
+      });
+  }
+</script>
+<!-- pagefind search box styling -->
+<style type="text/css">
+  .search-form {
+      right: 0;
+      left: initial !important;
+      min-width: 25vw;
+      max-width: 90vw;
+      max-height: calc(95vh - 100px);
+      overflow: auto;
+      margin-top: 5px;
+  }
+</style>  </head>
+  <body class="d-flex flex-column h-100">
+    <main class="flex-shrink-0">
+      <div>
+<!-- nav bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Fifth navbar example">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"><img src="/images/feather.png" style="height: 32px;"/> ASF Tooling</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarADP" aria-controls="navbarADP" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarADP">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">About</a>
+          <ul class="dropdown-menu">
+            <!--<li><a class="dropdown-item" href="/blog/">Tooling Blog</a></li>-->
+            <li><a class="dropdown-item" href="/team.html">About the team</a></li>
+            <li><a class="dropdown-item" href="/trusted-release.html">Trusted Release</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Repositories</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://github.com/apache/tooling-docs/">Website and Docs</a></li>
+            <li><a class="dropdown-item" href="https://github.com/apache/tooling-trusted-release">Trusted Release</a></li>
+            <li><a class="dropdown-item" href="https://github.com/apache/tooling-agenda">Agenda Tool</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Contribute</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/volunteer.html">Volunteer with Tooling</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle hidden-xs" data-bs-toggle="dropdown"><span class="fa-solid fa-magnifying-glass" aria-hidden="true"></span> Search</a>
+          <ul class="search-form dropdown-menu">
+            <li>
+              <div id="pagefind-search" class="input-group" style="width: 100%; padding: 0 5px;"></div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav><!-- page contents -->
+<div id="contents">
+    <div class="bg-white p-5 rounded">
+        <div class="col-sm-8 mx-auto">
+          <h1>
+            Apache Trusted Release Data Model
+          </h1>
+          <p><em>This is a discussion and the actual implementation will diverge.</em></p>
+<p>Here is an introduction to the ATR's data model.</p>
+<blockquote>
+<p>The view here is descriptive of a JSON model, but the implementation will be a combination of filesystem files and subdirs along with a database schema.</p>
+</blockquote>
+<h2>PMCs</h2>
+<p>Projects are run by a PMC with members and committers, have metadata, vote policy settings, and product lines.</p>
+<ol>
+<li>Key</li>
+<li>Project Name</li>
+<li>Product Lines</li>
+<li>User role lists:
+<ul>
+<li>PMC Members</li>
+<li>Committers</li>
+<li>Release Managers</li>
+</ul>
+</li>
+<li>Public Signing Keys</li>
+<li>Vote Policy</li>
+</ol>
+<h3>Product Lines</h3>
+<p>One or more product lines with separate releases including the main one. A product line may override PMC vote policy.</p>
+<ol>
+<li>Key</li>
+<li>PMC</li>
+<li>Product Name</li>
+<li>Latest Version</li>
+<li>Distribution Channels</li>
+<li>Vote Policy</li>
+<li>Release lists:
+<ul>
+<li>Candidates</li>
+<li>Current</li>
+<li>Archived</li>
+</ul>
+</li>
+</ol>
+<h3>Public Signing Keys</h3>
+<p>Public Signing Keys are stored using the User ID of the owner as the key.</p>
+<ol>
+<li>User</li>
+<li>Public Signing Key</li>
+<li>Type</li>
+<li>Expiration</li>
+</ol>
+<h3>Vote Policy</h3>
+<p>These are a set of choices which control how a release vote is conducted by the ATR.</p>
+<ol>
+<li>Mailto Addresses for Emails - defaults to the project dev list, but the PMC can change these and add contacts.
+This will be helpful in getting dependent projects to check releases early.</li>
+<li>Manual Vote Process flag - if this is set then the vote will be completely manual and following policy is ignored.</li>
+<li>Minimum Number of Hours - the minimum time to run the vote. If set to <code>0</code> then wait until 3 +1 votes and more +1 than -1.</li>
+<li>Release Checklist - Markdown text describing how to test release candidates.</li>
+<li>Pause for RM check if any -1 votes flag - normally when the vote passes we proceed to the next steps,
+but we should allow the RM a chance to confirm if a -1 vote should stop the release.</li>
+</ol>
+<h2>Releases</h2>
+<p>Releases are related groups of packages. Candidate releases go through stages and these have phases.
+When approved to be released the stage is moved to current.
+Current releases have initial phases to distribute and announce the release.</p>
+<ol>
+<li>Storage key</li>
+<li>Stage</li>
+<li>Phase</li>
+<li>PMC</li>
+<li>Product Line</li>
+<li>Package Managers</li>
+<li>Version</li>
+<li>Packages - List of triples of file, signature, and checksum that are the downloadable components of a release.
+<blockquote>
+<p>Should we use Artifacts instead of Packages?</p>
+</blockquote>
+</li>
+<li>SBOMs - in an acceptable SBOM format and maintained in Phases using standard Python libraries.</li>
+<li>Vote Policy</li>
+<li>Votes
+<ul>
+<li>Pass or Fail</li>
+<li>Summary</li>
+<li>Binding votes</li>
+<li>Community votes</li>
+<li>Start</li>
+<li>End</li>
+</ul>
+</li>
+</ol>
+<h2>Distribution Channels</h2>
+<p>Distribution channels are where PMCs distribute release packages. These need to be defined in the ATR.
+Distribution channels may be for test packages. Package Managers will be automated over time.</p>
+<ol>
+<li>Name</li>
+<li>Key</li>
+<li>URL</li>
+<li>Credentials</li>
+<li>Is Test?</li>
+<li>Automation endpoint</li>
+</ol>
+<h2>User Roles</h2>
+<p>Multiple roles are possible and available actions are composed. Empty cells denote "no".</p>
+<table>
+<thead>
+<tr>
+<th>Activity</th>
+<th>PMC Member</th>
+<th>Release Manager</th>
+<th>Committer</th>
+<th>Visitor</th>
+<th>ASF Member</th>
+<th>SysAdmin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>binding vote</td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>vote</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td></td>
+</tr>
+<tr>
+<td>release admin</td>
+<td>yes</td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td>yes</td>
+</tr>
+<tr>
+<td>project admin</td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>yes</td>
+</tr>
+<tr>
+<td>product admin</td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>yes</td>
+</tr>
+<tr>
+<td>manage key</td>
+<td>yes</td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>run phase</td>
+<td>yes</td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td></td>
+<td>yes</td>
+</tr>
+<tr>
+<td>channel admin</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>yes</td>
+</tr>
+<tr>
+<td>view release events</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>view project events</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>search all events</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>yes</td>
+<td>yes</td>
+</tr></tbody></table>
+<blockquote>
+<p>To vote <em>visitors</em> must provide PII and we need to explain how we are protecting their privacy.</p>
+</blockquote>
+<blockquote>
+<p>The authorization and authentication for <code>GitHub PATs</code> will be specific and fine-grained, but should be similar to a "release manager"</p>
+</blockquote>
+
+        </div>
+    </div>
+</div>    <!-- footer -->
+    <div class="row">
+      <div class="large-12 medium-12 columns">
+        <p style="font-style: italic; font-size: 0.8rem; text-align: center;">
+          Copyright 2025, <a href="https://www.apache.org/">The Apache Software Foundation</a>, Licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.<br/>
+          Apache&reg; and the Apache feather logo are trademarks of The Apache Software Foundation.
+        </p>
+      </div>
+    </div>
+    <script type="application/ecmascript" src="/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"></script>      </div>
+    </main>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>

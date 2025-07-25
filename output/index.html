@@ -1,0 +1,133 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASF Tooling Website</title>
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/fontawesome.all.min.css" rel="stylesheet">
+<link href="/css/headerlink.css" rel="stylesheet">
+<script src="/highlight/highlight.min.js"></script>
+<!-- pagefind search -->
+<link href="/_pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/_pagefind/pagefind-ui.js" type="text/javascript"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: "#pagefind-search" });
+  });
+  var pageTitle = '';
+  if(pageTitle === '404'){
+      window.addEventListener('DOMContentLoaded', (event) => {
+          new PagefindUI({ element: "#page-404-search" });
+      });
+  }
+</script>
+<!-- pagefind search box styling -->
+<style type="text/css">
+  .search-form {
+      right: 0;
+      left: initial !important;
+      min-width: 25vw;
+      max-width: 90vw;
+      max-height: calc(95vh - 100px);
+      overflow: auto;
+      margin-top: 5px;
+  }
+</style>  </head>
+  <body class="d-flex flex-column h-100">
+    <main class="flex-shrink-0">
+      <div>
+<!-- nav bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Fifth navbar example">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"><img src="/images/feather.png" style="height: 32px;"/> ASF Tooling</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarADP" aria-controls="navbarADP" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarADP">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">About</a>
+          <ul class="dropdown-menu">
+            <!--<li><a class="dropdown-item" href="/blog/">Tooling Blog</a></li>-->
+            <li><a class="dropdown-item" href="/team.html">About the team</a></li>
+            <li><a class="dropdown-item" href="/trusted-release.html">Trusted Release</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Repositories</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://github.com/apache/tooling-docs/">Website and Docs</a></li>
+            <li><a class="dropdown-item" href="https://github.com/apache/tooling-trusted-release">Trusted Release</a></li>
+            <li><a class="dropdown-item" href="https://github.com/apache/tooling-agenda">Agenda Tool</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Contribute</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/volunteer.html">Volunteer with Tooling</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle hidden-xs" data-bs-toggle="dropdown"><span class="fa-solid fa-magnifying-glass" aria-hidden="true"></span> Search</a>
+          <ul class="search-form dropdown-menu">
+            <li>
+              <div id="pagefind-search" class="input-group" style="width: 100%; padding: 0 5px;"></div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav><!-- page contents -->
+<div id="contents">
+  <div class="bg-white p-5 rounded">
+    <div class="col-sm-8 mx-auto">
+      <h2>What is ASF Tooling?</h2>
+<p>ASF Tooling is an ASF Initiative launched in March 2025 to meet the growing global demand
+for ASF software by hardening ubiquitous Apache projects that benefit the greater
+open source ecosystem.</p>
+<p>We are developing new tooling that will help ASF&rsquo;s open source project communities
+streamline development, automate repetitive tasks, reduce technical debt, and better
+collaborate. Additional Initiatives are in the planning stages including security
+capabilities that meet the EU's Cyber Resilience Act (CRA) and US&rsquo;s CISA recommendations.
+New products being developed under the Tooling Initiative are separate from the tools
+developed by ASF Infrastructure.</p>
+<h3>Tooling Goals</h3>
+<ol>
+<li>Automate the Release Process around compliance guiding ASF open source projects to
+providing the SBOMs and other attestations needed in a secure software supply chain.</li>
+<li>Automate the Release Process for the benefit of PMCs while also reducing infrastructure
+costs and management complexity.</li>
+</ol>
+<h3>Contribute to the Discussion</h3>
+<ul>
+<li>Repository:&nbsp;<a href="https://github.com/apache/tooling-docs">https://github.com/apache/tooling-docs</a></li>
+<li>ASF Slack Channels:&nbsp;<a href="https://the-asf.slack.com/archives/C086X8CKEMB">#tooling-discuss</a> &ndash; <a href="https://the-asf.slack.com/archives/C049WADAAQG">#apache-trusted-releases</a></li>
+<li>Mailing List:&nbsp;<a href="mailto:dev@tooling.apache.org">dev@tooling.apache.org</a> &ndash; <a href="https://lists.apache.org/list.html?dev@tooling.apache.org">archives</a></li>
+<li>Subscribe to Mailing List:&nbsp;<a href="mailto:dev-subscribe@tooling.apache.org">dev-subscribe@tooling.apache.org</a></li>
+</ul>
+<h3>Security Issues</h3>
+<p>To report a new vulnerability you have discovered please follow the <a href="https://apache.org/security/#reporting-a-vulnerability">ASF vulnerability reporting process</a>.</p>
+
+    </div>
+  </div>
+</div>    <!-- footer -->
+    <div class="row">
+      <div class="large-12 medium-12 columns">
+        <p style="font-style: italic; font-size: 0.8rem; text-align: center;">
+          Copyright 2025, <a href="https://www.apache.org/">The Apache Software Foundation</a>, Licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.<br/>
+          Apache&reg; and the Apache feather logo are trademarks of The Apache Software Foundation.
+        </p>
+      </div>
+    </div>
+    <script type="application/ecmascript" src="/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"></script>      </div>
+    </main>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
