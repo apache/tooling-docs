@@ -44,3 +44,9 @@ repos:
         args: [--strict, -c=.github/linters/.yaml-lint.yml]
         types: [yaml]
         files: \.ya?ml$
+  - repo: https://github.com/crate-ci/typos
+    rev: v1.34.0
+    hooks:
+      - id: typos
+        files: \.(html|md|py|sh|ya?ml)$
+        args: [--config=.github/linters/.typos.toml]
