@@ -9,9 +9,9 @@ The team's website source will be developed here as well.
 - Via [GH Issues](https://github.com/apache/tooling-docs/issues)
 - Email to dev@tooling.apache.org
 - ASF Slack Channels:
-  - [#tooling-discuss](https://the-asf.slack.com/archives/C086X8CKEMB)
-  - [#apache-trusted-releases](https://the-asf.slack.com/archives/C049WADAAQG)
   - [#agenda-tool](https://the-asf.slack.com/archives/C0209DTD3ST)
+  - [#apache-trusted-releases](https://the-asf.slack.com/archives/C049WADAAQG)
+  - [#tooling-discuss](https://the-asf.slack.com/archives/C086X8CKEMB)
 
 ## How to contribute changes
 
