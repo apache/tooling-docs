@@ -124,5 +124,3 @@ Note: this section is a flexible outline of what we intend for the UI, and may c
 6. Page Template
    - Responsive with Header(Hamburger)/Content/Footer.
    - Include Search in Header(Hamburger)
-
-

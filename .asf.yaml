@@ -29,4 +29,3 @@ notifications:
   commits:      commits@tooling.apache.org
   issues:       dev@tooling.apache.org
   pullrequests: dev@tooling.apache.org
-

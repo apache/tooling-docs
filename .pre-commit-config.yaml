@@ -1,0 +1,37 @@
+---
+# https://pre-commit.com/
+default_stages: [pre-commit, pre-push]
+default_language_version:
+  # force all unspecified Python hooks to run python3
+  python: python3
+minimum_pre_commit_version: "3.2.0"
+repos:
+  - repo: meta
+    hooks:
+      - id: identity
+        name: run identity
+        description: check your identity
+      - id: check-hooks-apply
+        name: run check-hooks-apply
+        description: check hooks apply to the repository
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-ast
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      - id: check-illegal-windows-names
+      - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
+      - id: check-vcs-permalinks
+      - id: check-yaml
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: fix-byte-order-marker
+      - id: forbid-submodules
+      - id: mixed-line-ending
+      - id: requirements-txt-fixer
+        files: ^requirements\.txt$
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+        exclude: \.svg$

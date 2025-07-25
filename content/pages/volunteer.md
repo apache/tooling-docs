@@ -14,4 +14,3 @@ There are some basic things you could do if you're going to help out with the AS
   - Discuss policy clarifications and other difficult issues including moving questions and  proposals to the apprioriate place.
 
 **Come talk to us on [Slack](https://the-asf.slack.com/) in the #tooling-discuss channel!**
-

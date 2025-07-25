@@ -81,4 +81,3 @@ While reading consider these Notes:
      > There are policy implications to the automation of digital signatures.
      > For now, creating digital signatures on certain artifact types must be done prior to GPG signing and
      > prior to submission of the release candidate.
-
