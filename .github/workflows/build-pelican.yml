@@ -9,7 +9,7 @@ on:
       - 'content/**'
       - 'pelicanconf.py'
       - '.asf.yaml'
-      - 'requirements.txt'
+      - 'requirements-docs.txt'
   workflow_dispatch:
 jobs:
   build-pelican:
