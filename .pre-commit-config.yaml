@@ -35,3 +35,12 @@ repos:
       - id: trailing-whitespace
         args: [--markdown-linebreak-ext=md]
         exclude: \.svg$
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.37.1
+    hooks:
+      - id: yamllint
+        name: run yamllint
+        description: check YAML files with yamllint
+        args: [--strict, -c=.github/linters/.yaml-lint.yml]
+        types: [yaml]
+        files: \.ya?ml$
