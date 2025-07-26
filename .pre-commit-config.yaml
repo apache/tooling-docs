@@ -48,6 +48,8 @@ repos:
     rev: v0.10.0.1
     hooks:
       - id: shellcheck
+        name: run shellcheck
+        description: finds bugs in your shell scripts
   - repo: https://github.com/adrienverge/yamllint
     rev: v1.37.1
     hooks:
@@ -61,5 +63,7 @@ repos:
     rev: v1.34.0
     hooks:
       - id: typos
+        name: run typos
+        description: check spelling with the typos crate
         files: \.(html|md|py|sh|ya?ml)$
         args: [--config=.github/linters/.typos.toml]

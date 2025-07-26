@@ -1,5 +1,6 @@
 PYTHON ?= python3
 PIP := $(PYTHON) -m pip
+PRECOMMIT ?= pre-commit
 
 .PHONY: install i check c checkinstall ci checkupdate cu help
 .DEFAULT_GOAL := help
@@ -8,13 +9,13 @@ install i: ## Install Python dependencies from requirements.txt
 	$(PIP) install -r requirements.txt
 
 check c: ## Run pre-commit checks on all files
-	pre-commit run --all-files
+	$(PRECOMMIT) run --all-files
 
 checkinstall ci: ## Install pre-commit hooks
-	pre-commit install
+	$(PRECOMMIT) install
 
 checkupdate cu: ## Update pre-commit hooks to the latest version
-	pre-commit autoupdate
+	$(PRECOMMIT) autoupdate
 
 help: ## Display this help message
 	@echo "Usage: make <target>"
