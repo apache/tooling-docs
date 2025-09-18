@@ -41,7 +41,6 @@ GH Issues are enabled in the source code repositories.
 - https://github.com/apache/tooling-actions
 - https://github.com/apache/tooling-asf-example
 
-
 ## Board Agenda Tool (BAT)
 
 - [Current Requirements](https://github.com/apache/tooling-agenda/blob/master/REQUIREMENTS.md)

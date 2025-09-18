@@ -87,7 +87,7 @@ Development Plan
 		Integrate into svn dist / rsync / downloads / archive
 
 Committees / Projects / Products
-	Commitees formed by board resolution
+	Committees formed by board resolution
 	Podlings accepted by IPMC vote
 	Projects explicitly declared via DOAP
 	Products implicitly declared
