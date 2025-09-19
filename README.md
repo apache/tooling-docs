@@ -1,4 +1,7 @@
-# ASF Tooling
+<div align="center">
+  <h1>ASF Tooling</h1>
+  <img src="https://github.com/apache/tooling-docs/actions/workflows/build-pelican.yml/badge.svg" alt="Build a Pelican Website Workflow Status">
+</div>
 
 The Tooling team manages development of key tooling efforts for The ASF, and documents and discusses them as outlined on this page.
 
