@@ -88,7 +88,6 @@ flowchart TD
 
    - (b) ATR coexists on rsync.apache.org and detects legacy release addition and deletion.
 
-
 ```mermaid
 flowchart TD
     subgraph Transition 2B
@@ -105,7 +104,6 @@ flowchart TD
     B -->|rsync| D
     end
 ```
-
 
 3. **Legacy is Retired** - `svn:dist/release` is retired.
 
