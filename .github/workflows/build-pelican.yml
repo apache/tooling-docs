@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          persist-credentials: false
+          persist-credentials: true
           # This must equal the push/branches list above, and be appropriate for the destination below
           ref: 'main'
       - uses: apache/infrastructure-actions/pelican@ed044141796eb8ad67581cf5f4210656ffa77daa
