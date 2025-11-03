@@ -67,3 +67,7 @@ repos:
         description: check spelling with the typos crate
         files: \.(html|md|py|sh|ya?ml)$
         args: [--config=.github/linters/.typos.toml]
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.7.7
+    hooks:
+      - id: actionlint
