@@ -106,13 +106,13 @@ Note: this section is a flexible outline of what we intend for the UI, and may c
    - Maintenance actions
    - History of events
 
-4. PMC Management Page
+3. PMC Management Page
    - PMC level metadata and releases
    - Product level metadata and releases
    - Manage releases
    - PMC lifecycle transitions - podling, TLP, attic.
 
-5. System Admin Page
+4. System Admin Page
    - Manage Distribution Channels
    - Perform Migration Tasks
    - Enable GHA Builds
