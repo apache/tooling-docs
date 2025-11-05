@@ -46,7 +46,7 @@ Incubating projects are welcome to join.
 
 Here are the source code repositories. Please view the README.md files for instructions.
 
-1. Website: https://github.com/apache/tooling-trusted-release
+1. Website: https://github.com/apache/tooling-trusted-releases
 2. Python Client: https://github.com/apache/tooling-releases-client
 3. GitHub Actions: https://github.com/apache/tooling-actions
 4. Example Workflows: https://github.com/apache/tooling-asf-example/
