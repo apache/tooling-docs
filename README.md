@@ -41,7 +41,7 @@ View the [website](https://tooling.apache.org/).
 
 GH Issues are enabled in the source code repositories.
 
-- https://github.com/apache/tooling-trusted-release
+- https://github.com/apache/tooling-trusted-releases
 - https://github.com/apache/tooling-releases-client
 - https://github.com/apache/tooling-actions
 - https://github.com/apache/tooling-asf-example
