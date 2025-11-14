@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About the Apache Tooling Team - ASF Tooling Website</title>
+    <title>Apache Trusted Releases platform - ASF Tooling Website</title>
 <link rel="shortcut icon" href="https://apache.org/favicons/favicon.ico">
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 <link href="/css/fontawesome.all.min.css" rel="stylesheet">
@@ -104,14 +104,112 @@
     <div class="bg-white p-5 rounded">
         <div class="col-sm-8 mx-auto">
           <h1>
-            About the Apache Tooling Team
+            Apache Trusted Releases platform
           </h1>
-          <h1>ASF Tooling</h1>
-<p>The ASF Tooling team, known as <strong>Tooling</strong>, provides tooling development for select ASF Initiatives.</p>
-<h2>About us</h2>
-<p>Tooling has a core team made up of a number of paid contractors, whom are senior software engineers; and volunteers. The core team collaborates to develop specific software, work with and contribute to Infra. The volunteers bring their skills to bear on their areas of interest, reducing the load on the core team.</p>
-<h2>How you can help</h2>
-<p>Volunteers are the driving force of the ASF. The Tooling team is looking for people willing to help out at whatever effort level suits. If you're interested, visit our <a href="volunteer.html">volunteer information</a> page.</p>
+          <p>The main project is the Apache Trusted Releases platform.</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/apache/tooling-trusted-releases">https://github.com/apache/tooling-trusted-releases</a></li>
+<li><a href="https://github.com/apache/tooling-releases-client">https://github.com/apache/tooling-releases-client</a></li>
+</ul>
+<h2>1. Automate the Release Process</h2>
+<ul>
+<li>Minimize human interaction.</li>
+<li>Community participation on <strong>Release Votes</strong> remains via email.</li>
+<li>Record all of the key events and metrics for tracking operations and performance.</li>
+<li>PMCs can quickly benefit.</li>
+<li>Infra costs and management complexity are decreased.</li>
+</ul>
+<h2>2. Community</h2>
+<ul>
+<li>Work with a selection of <strong>Apache</strong> PMCs, <strong>Incubator PPMCs(podlings)</strong>, and <strong>Infra</strong> for <strong>User Acceptance Testing (UAT)</strong>.</li>
+<li>Co-ordinate with <strong>Infra</strong> on migration and operation.</li>
+<li>Contribute to Infra's <strong>asfquart</strong> and <strong>asfpy</strong> frameworks.</li>
+<li>Provide openings for volunteers to help so long as the contributions are adequate and timely.</li>
+<li>Assure that the <strong>ATR platform</strong> follows industry best practices especially regarding <strong>SBOMs</strong>,
+<strong>Certificate Management</strong>, and <strong>Digital Signatures</strong>.</li>
+<li>Help lead the industry to better practices.</li>
+<li>Work within the <strong>ASF</strong> on <strong>Release Policy</strong> improvements.</li>
+</ul>
+<h2>3. Apache Trusted Release Platform (ATR)</h2>
+<ul>
+<li>Incorporate all PMC Releases.
+<ul>
+<li>Download page.</li>
+<li>Release Candidate page.</li>
+<li>Archived download page.</li>
+</ul>
+</li>
+<li>Every PMC has a management interface.
+<ul>
+<li>Current manual release practice is viewable.</li>
+<li>Automated release status.</li>
+<li><strong>KEYS</strong> file management including revoking keys.</li>
+<li>Trigger release phases.</li>
+<li>Tracking performance.</li>
+</ul>
+</li>
+<li>Platform includes a RESTful API.</li>
+<li>Serve release artifacts efficiently.</li>
+<li>Make switching from current manual release process to a minimal ATR process very simple.</li>
+<li>System Admins (Infra) have a management interface.</li>
+<li>Provide operational status to help Infra monitor ATR operations through the Infra Reporting Dashboard (IRD).</li>
+<li>Develop the platform with consideration about reusability outside of the ASF ecosystem, where feasible with regards to development costs.</li>
+</ul>
+<p>See <a href="platform.html">Platform Services</a> for detailed requirements for the <strong>ATR</strong>.</p>
+<h2>4. Automate Release Process around Compliance</h2>
+<ul>
+<li>Meet Release Policy
+<ul>
+<li>Legal Policy</li>
+<li>Infra Policy</li>
+<li>Security Policy</li>
+</ul>
+</li>
+<li>SBOMs and Attestations
+<ul>
+<li>Include dependency and license compliance.</li>
+<li>Provide clear attribution and information about Release Votes.</li>
+</ul>
+</li>
+<li>Certificate and Credential Management
+<ul>
+<li>Manage the signing keys needed for automation.</li>
+</ul>
+</li>
+<li>Download Page including available SBOM and verification instructions.</li>
+<li>Announcement Email.</li>
+</ul>
+<h2>5. Release Lifecycle Phases</h2>
+<p>Here is a flow chart showing the <a href="https://github.com/apache/tooling-docs/blob/main/apache-trusted-releases/lifecycle.md">Release Lifecycle Phases</a>.</p>
+<h2>6. Infrastructure Requirements</h2>
+<ul>
+<li>Run book for releases.apache.org</li>
+<li>Progress on the retirement path for <code>svn:dist</code>. See <a href="https://github.com/apache/tooling-docs/blob/main/apache-trusted-releases/svn-dist.md">Legacy Releases from SVN Dist</a>
+for possible transitional states. For this first iteration <em>transition 2</em> is preferred.</li>
+<li>Legacy urls for dist.apache.org, downloads.apache.org, dlcdn.apache.org, and archive.apache.org remain supported.</li>
+<li>Path schemes for downloads.apache.org, dlcdn.apache.org, and archive.apache.org remain.</li>
+</ul>
+<h2>7. Future Requirements</h2>
+<ul>
+<li>
+<p>Integrate with the <a href="https://github.com/apache/tooling-docs/blob/main/apache-trusted-releases/advisory-process.md">Security Advisory Process</a> to make it easy to track applicable advisories on download pages.</p>
+</li>
+<li>
+<p>Expand support for <a href="https://github.com/apache/tooling-docs/blob/main/apache-trusted-releases/evaluate.md">Evaluating Build Claims</a> to additional build tools.</p>
+</li>
+<li>
+<p>Expand automated support for additional <a href="https://github.com/apache/tooling-docs/blob/main/apache-trusted-releases/distributions.md">Distribution Channels</a>.</p>
+</li>
+<li>
+<p>Include a <a href="https://github.com/apache/tooling-docs/blob/main/apache-trusted-releases/digital-signatures.md">Signing Candidates</a> phase during ATR processing.</p>
+<blockquote>
+<p>There are policy implications to the automation of digital signatures.
+For now, creating digital signatures on certain artifact types must be done prior to GPG signing and
+prior to submission of the release candidate.</p>
+</blockquote>
+</li>
+</ul>
 
         </div>
     </div>
