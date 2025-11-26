@@ -125,4 +125,3 @@ Send your application via [email](mailto:vp-tooling@apache.org?subject=Applicati
 
 Our interview process is humane and traditional. It will be conducted by ASF
 staff and members using common video meeting software.
-

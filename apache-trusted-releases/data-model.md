@@ -95,19 +95,19 @@ Distribution channels may be for test packages. Package Managers will be automat
 
 Multiple roles are possible and available actions are composed. Empty cells denote "no".
 
-| Activity   | PMC Member | Release Manager | Committer | Visitor | ASF Member | SysAdmin
-| ---------- | ---------- | --------------- | --------- | ------- | ---------- | -----
-| binding vote | yes |  | | |  |
-| vote         | yes | yes | yes | yes | yes |
-| release admin | yes | yes | | | | yes
-| project admin | yes | | | | | yes
-| product admin | yes | | | | | yes
-| manage key | yes | yes | | | |
-| run phase | yes | yes | | | | yes
-| channel admin | | | | | | yes
-| view release events | yes | yes | yes | yes | yes | yes
-| view project events | yes | yes | yes | yes | yes | yes
-| search all events | | | | | yes | yes
+| Activity            | PMC Member | Release Manager | Committer | Visitor | ASF Member | SysAdmin |
+|---------------------|------------|-----------------|-----------|---------|------------|----------|
+| binding vote        | yes        |                 |           |         |            |          |
+| vote                | yes        | yes             | yes       | yes     | yes        |          |
+| release admin       | yes        | yes             |           |         |            | yes      |
+| project admin       | yes        |                 |           |         |            | yes      |
+| product admin       | yes        |                 |           |         |            | yes      |
+| manage key          | yes        | yes             |           |         |            |          |
+| run phase           | yes        | yes             |           |         |            | yes      |
+| channel admin       |            |                 |           |         |            | yes      |
+| view release events | yes        | yes             | yes       | yes     | yes        | yes      |
+| view project events | yes        | yes             | yes       | yes     | yes        | yes      |
+| search all events   |            |                 |           |         | yes        | yes      |
 
 > To vote _visitors_ must provide PII and we need to explain how we are protecting their privacy.
 

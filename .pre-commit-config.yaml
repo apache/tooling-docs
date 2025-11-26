@@ -37,7 +37,7 @@ repos:
         args: [--markdown-linebreak-ext=md]
         exclude: \.svg$
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.45.0
+    rev: v0.46.0
     hooks:
       - id: markdownlint
         name: run markdownlint
@@ -61,7 +61,7 @@ repos:
         types: [yaml]
         files: \.ya?ml$
   - repo: https://github.com/crate-ci/typos
-    rev: v1.39.0
+    rev: v1.39.2
     hooks:
       - id: typos
         name: run typos
@@ -69,14 +69,20 @@ repos:
         files: \.(html|md|py|sh|ya?ml)$
         args: [--config=.github/linters/.typos.toml]
   - repo: https://github.com/rhysd/actionlint
-    rev: v1.7.8
+    rev: v1.7.9
     hooks:
       - id: actionlint
+        name: run actionlint
+        description: static checker for GitHub Actions workflow files
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.34.1
+    rev: 0.35.0
     hooks:
       - id: check-github-workflows
+        name: run check-github-workflows
+        description: pre-commit hooks for jsonschema validation with support for GitHub Workflows
   - repo: https://github.com/zizmorcore/zizmor-pre-commit
-    rev: v1.16.2
+    rev: v1.17.0
     hooks:
       - id: zizmor
+        name: run zizmor
+        description: static analysis for GitHub Actions
