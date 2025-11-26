@@ -155,22 +155,22 @@ True
 </code></pre>
 <p>Because the maximum value of a CRC-32, <code>0xFFFFFFFF</code>, is encoded by this specification as <code>4gfFC3</code>, no base62 encoded checksums beyond that value can be generated. One consequence is that the leading base62 digit must be in the range <code>0-4</code>, and this is reflected in the regular expression. Further constraints to the regular expression would be possible, but the chosen constraint level balances accuracy with concision.</p>
 <h2>Sample generator code</h2>
-<pre><code class="language-python">    def asf_secret_token(component: str) -&gt; str:
-        import secrets
-        import zlib
-        lower = "abcdefghijklmnopqrstuvwxyz"
-        if len(component) not in (3, 4, 5, 6):
-            raise ValueError("Component must be between 3 and 6 letters")
-        if not (set(component) &lt;= set(lower)):
-            raise ValueError("Component must use lowercase letters only")
-        alphabet = "0123456789" + lower.upper() + lower
-        entropy = "".join(secrets.choice(alphabet) for _ in range(27))
-        n = zlib.crc32(entropy.encode("ascii"))
-        checksum = ""
-        for _ in range(6):
-            n, rem = divmod(n, 62)
-            checksum = alphabet[rem] + checksum
-        return f"asf_{component}_{entropy}{checksum}"
+<pre><code>def asf_secret_token(component: str) -&gt; str:
+    import secrets
+    import zlib
+    lower = "abcdefghijklmnopqrstuvwxyz"
+    if len(component) not in (3, 4, 5, 6):
+        raise ValueError("Component must be between 3 and 6 letters")
+    if not (set(component) &lt;= set(lower)):
+        raise ValueError("Component must use lowercase letters only")
+    alphabet = "0123456789" + lower.upper() + lower
+    entropy = "".join(secrets.choice(alphabet) for _ in range(27))
+    n = zlib.crc32(entropy.encode("ascii"))
+    checksum = ""
+    for _ in range(6):
+        n, rem = divmod(n, 62)
+        checksum = alphabet[rem] + checksum
+    return f"asf_{component}_{entropy}{checksum}"
 </code></pre>
 <h2>Sample generated tokens</h2>
 <p>These values must not be used in any application. The <code>sample</code> component will be registered by Security as the first known component, and can be used for documentation examples where an arbitrary component is suitable.</p>
