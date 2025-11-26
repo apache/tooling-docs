@@ -1,0 +1,210 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASF standard for scannable secret tokens - ASF Tooling Website</title>
+<link rel="shortcut icon" href="https://apache.org/favicons/favicon.ico">
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/fontawesome.all.min.css" rel="stylesheet">
+<link href="/css/headerlink.css" rel="stylesheet">
+<script src="/highlight/highlight.min.js"></script>
+<!-- pagefind search -->
+<link href="/_pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/_pagefind/pagefind-ui.js" type="text/javascript"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: "#pagefind-search" });
+  });
+  var pageTitle = '';
+  if(pageTitle === '404'){
+      window.addEventListener('DOMContentLoaded', (event) => {
+          new PagefindUI({ element: "#page-404-search" });
+      });
+  }
+</script>
+<!-- pagefind search box styling -->
+<style type="text/css">
+  .search-form {
+      right: 0;
+      left: initial !important;
+      min-width: 25vw;
+      max-width: 90vw;
+      max-height: calc(95vh - 100px);
+      overflow: auto;
+      margin-top: 5px;
+  }
+</style>  </head>
+  <body class="d-flex flex-column h-100">
+    <main class="flex-shrink-0">
+      <div>
+<!-- nav bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-info" aria-label="Fifth navbar example">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"><img src="https://apache.org/img/asf_logo.png" style="height: 42px;"/>
+      <span style="position: relative; top: 2px; margin-left: 16px;">Tooling Initiative</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarADP" aria-controls="navbarADP" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarADP">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">About</a>
+          <ul class="dropdown-menu">
+            <!--<li><a class="dropdown-item" href="/blog/">Tooling Blog</a></li>-->
+            <li><a class="dropdown-item" href="/team.html">About the team</a></li>
+            <li><a class="dropdown-item" href="/trusted-releases.html">Trusted Releases</a></li>
+            <li><a class="dropdown-item" href="/supply-chain.html">Supply Chain Attacks FAQ</a></li>
+            <li><a class="dropdown-item" href="/policies.html">Policies</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Tools</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://release-test.apache.org/">Trusted Releases Alpha</a></li>
+            <li><a class="dropdown-item" href="https://agenda.apache.org">Board Agenda Tool</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Repositories</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://github.com/apache/tooling-docs/">Documentation Website</a></li>
+            <li><a class="dropdown-item" href="https://github.com/apache/tooling-secretary">Secretary's Workbench</a></li>
+            <li><a class="dropdown-item" href="https://github.com/apache/tooling-trusted-releases">Trusted Releases</a></li>
+            <li><a class="dropdown-item" href="https://github.com/apache/tooling-releases-client">Trusted Releases Client</a></li>
+            <li><a class="dropdown-item" href="https://github.com/apache/tooling-actions">Trusted Releases Actions</a></li>
+            <li><a class="dropdown-item" href="https://github.com/apache/tooling-agenda">Agenda Tool</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Contribute</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/volunteer.html">Volunteer with Tooling</a></li>
+            <li><a class="dropdown-item" href="/job-posting.html">Job Posting</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle hidden-xs" data-bs-toggle="dropdown"><span class="fa-solid fa-magnifying-glass" aria-hidden="true"></span> Search</a>
+          <ul class="search-form dropdown-menu">
+            <li>
+              <div id="pagefind-search" class="input-group" style="width: 100%; padding: 0 5px;"></div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav><!-- page contents -->
+<div id="contents">
+    <div class="bg-white p-5 rounded">
+        <div class="col-sm-8 mx-auto">
+          <h1>
+            ASF standard for scannable secret tokens
+          </h1>
+          <p>[DRAFT STANDARD]</p>
+<p><strong>NOTE: This is an ASF Tooling proposal only. This is not ASF policy.</strong></p>
+<h2>Scope and definitions</h2>
+<p>This standard defines a common syntax for secret tokens used within applications developed by the ASF for the ASF. In other words, it is relevant for applications developed by teams including but not limited to Marketing and Publicity, Infrastructure, Security, and Tooling. It does not apply to top level projects (TLPs). This token syntax is mandatory for all new tokens in applications covered by this scope after the date of publication, [DATE OF PUBLICATION].</p>
+<p>The regular expression syntax used throughout this standard is POSIX Extended Regular Expressions as defined in IEEE Std 1003.1-2017 Section 9.4. EREs are case sensitive. The base62 alphabet used throughout this standard contains, in order, the 62 characters <code>0-9</code>, <code>A-Z</code>, and <code>a-z</code>.</p>
+<h2>Purpose</h2>
+<p>Secret tokens are used by bearers to prove their right to access resources or services. They are akin to passwords, but must be transmitted over the network, and therefore run the risk of being leaked e.g. by inclusion in configuration files or application logs.</p>
+<p>In addition to standard procedures to mitigate leaks, one defence in depth approach is to structure secret tokens in a standardised way which is amenable to automated scanning. Several tools exist for the purpose of such scanning and are widely used. This document standardises one universal format for use at the ASF within the scope defined in the previous section.</p>
+<h2>Requirements</h2>
+<p>There is no existing universally accepted standard for the syntax of secret tokens, but existing secret scanning tools make recommendations with documented rationales. These rationales are often relevant to the ASF, and can therefore be treated as requirements. There are also some extra ASF specific requirements.</p>
+<p>Scannable secret tokens at the ASF must:</p>
+<ul>
+<li>Start with a prefix which acts as an issuer namespace, to allow a direct link with a remediation policy.</li>
+<li>Use <code>_</code> rather than <code>-</code> as a separator so that double clicking selects the whole token in common interfaces.</li>
+<li>Include a checksum of a significant portion of the rest of the token to reduce false positives during scanning.</li>
+<li>Use a subset of token68 characters (from RFC 9110), i.e. a subset of the regular expression <code>^[A-Za-z0-9._~+/-]+=*$</code>, to ensure compatibility with DPoP (RFC 9449).</li>
+<li>Include enough secure entropy, measured in bits from a secure random or pseudorandom source, to avoid collisions or guessing of issued values.</li>
+<li>Not exceed common application length bounds, e.g. on the length of header field values or storage columns in databases.</li>
+</ul>
+<h2>Syntax</h2>
+<p>ASF scannable secret tokens must match the following regular expression:</p>
+<pre><code>^asf_([a-z]{3,6})_([0-9A-Za-z]{27})([0-4][0-9A-Za-z]{5})$
+</code></pre>
+<p>With the following constraints:</p>
+<ul>
+<li>The first match group, called the <strong>component</strong>, forms part of the namespace, and must not already be allocated. Allocations are tracked and approved by the Security team. The allocation process and currently allocated values are documented by Security at &lt;[URL]&gt;.</li>
+<li>Each character in the second match group, the <strong>entropy</strong>, must be generated from a secure random or pseudorandom number generator with a uniform distribution across all base62 characters permitted in the regular expression.</li>
+<li>The third match group, the <strong>checksum</strong>, must be the base62 encoded IEEE 802.3 CRC-32 of the second group, with the most significant digit in base62 first, using <code>0</code> for left padding to six characters. The CRC-32 result <code>0xFFFFFFFF</code>, for example, is encoded as <code>4gfFC3</code>. The CRC-32 is of the actual base62 characters, not, for example, a decoded version of the base62 characters in binary. It is an invariant that every byte used as input to the CRC-32 algorithm in this construction is within the base62 alphabet.</li>
+</ul>
+<p>One consequence of these constraints is that the first and second match groups allow every possible value permitted by their regular expressions, but the third match group does not.</p>
+<p>The IEEE 802.3 CRC-32 algorithm uses the reflected polynomial <code>0xEDB88320</code>, initial value <code>0xFFFFFFFF</code>, and final XOR with <code>0xFFFFFFFF</code>.</p>
+<p>The complete token length can vary between 41 and 44 characters depending on the chosen component length.</p>
+<h2>Rationale</h2>
+<p>We use 27 characters from the base62 alphabet because that is the minimum equivalent to at least 160 bits, and because this follows a convention set by GitHub.</p>
+<pre><code>&gt;&gt;&gt; import math
+&gt;&gt;&gt; math.log2(62 ** 27)
+160.76330038044563
+</code></pre>
+<p>ASVS v5.0.0 criteria 7.2.3 and 11.5.1 require at least 128 bits of entropy for tokens and unguessable values respectively. One motivation for using slightly over 160 bits, in addition to following the convention set by GitHub, is that it prevents implementers from using 128 bit UUIDs as a source of "randomness" for the syntax defined in this specification; no existing UUID version contains 128 bits of entropy, and some contain far less. Using just over 160 bits instead of just over 128 bits requires five extra base62 encoded characters.</p>
+<p>We use base62 to follow a convention set by GitHub.</p>
+<p>We use IEEE 802.3 CRC-32 because that algorithm is recommended by GitHub in their recipe for "high quality, identifiable secrets".</p>
+<p>The regular expression for our syntax is a subset of the token68 production, and therefore compatible with DPoP.</p>
+<p>Six digits in base62 are enough to express the entire range of CRC-32 values, because <code>(2 ** 32) &lt; (62 ** 6)</code>.</p>
+<pre><code>&gt;&gt;&gt; (2 ** 32) &lt; (62 ** 6)
+True
+</code></pre>
+<p>Because the maximum value of a CRC-32, <code>0xFFFFFFFF</code>, is encoded by this specification as <code>4gfFC3</code>, no base62 encoded checksums beyond that value can be generated. One consequence is that the leading base62 digit must be in the range <code>0-4</code>, and this is reflected in the regular expression. Further constraints to the regular expression would be possible, but the chosen constraint level balances accuracy with concision.</p>
+<h2>Sample generator code</h2>
+<pre><code>def asf_secret_token(component: str) -&gt; str:
+    import secrets
+    import zlib
+    lower = "abcdefghijklmnopqrstuvwxyz"
+    if len(component) not in (3, 4, 5, 6):
+        raise ValueError("Component must be between 3 and 6 letters")
+    if not (set(component) &lt;= set(lower)):
+        raise ValueError("Component must use lowercase letters only")
+    alphabet = "0123456789" + lower.upper() + lower
+    entropy = "".join(secrets.choice(alphabet) for _ in range(27))
+    n = zlib.crc32(entropy.encode("ascii"))
+    checksum = ""
+    for _ in range(6):
+        n, rem = divmod(n, 62)
+        checksum = alphabet[rem] + checksum
+    return f"asf_{component}_{entropy}{checksum}"
+</code></pre>
+<h2>Sample generated tokens</h2>
+<p>These values must not be used in any application. The <code>sample</code> component will be registered by Security as the first known component, and can be used for documentation examples where an arbitrary component is suitable.</p>
+<pre><code>asf_sample_mXBgIOwUcV44oJElFX4LCMhWkEs2gaLe2
+asf_sample_63Uo76APFVkmVyTpHpi3W7zlmxJ1dGuWP
+asf_sample_PfCdJHSP5C8vM4hkQRMImIzAFm90LW1gM
+</code></pre>
+<h2>Test vectors</h2>
+<pre><code>Entropy:  000000000000000000000000000
+CRC-32:   0x816710BC
+Checksum: 2MvMGi
+Token:    asf_sample_0000000000000000000000000002MvMGi
+
+Entropy:  zzzzzzzzzzzzzzzzzzzzzzzzzzz
+CRC-32:   0x39DF34DC
+Checksum: 13hv5A
+Token:    asf_sample_zzzzzzzzzzzzzzzzzzzzzzzzzzz13hv5A
+</code></pre>
+<h2>Detection guidance</h2>
+<p>To detect tokens, the regular expression presented in the Syntax section above can be used alone, without anchoring, as a heuristic with a high probability of matches. For better prevention of false positives in detection, the suffix matching the CRC-32 can be validated. Components can also be validated against the list maintained by Security.</p>
+
+        </div>
+    </div>
+</div>    <!-- footer -->
+    <div class="row">
+      <div class="large-12 medium-12 columns">
+        <p style="font-style: italic; font-size: 0.8rem; text-align: center;">
+          Copyright 2025, <a href="https://www.apache.org/">The Apache Software Foundation</a>, Licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.<br/>
+          Apache&reg; and the Apache feather logo are trademarks of The Apache Software Foundation.
+        </p>
+      </div>
+    </div>
+    <script type="application/ecmascript" src="/js/bootstrap.bundle.min.js" integrity="sha384-TYMA+uAx4f43rilxPIhmlqA+Vi+xbyMe+YVR3BcL15NyHLqd+7WYNtyBPdayiOPx"></script>      </div>
+    </main>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
