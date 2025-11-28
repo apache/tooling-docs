@@ -1,0 +1,234 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draft ASF token standard FAQ - ASF Tooling Website</title>
+<link rel="shortcut icon" href="https://apache.org/favicons/favicon.ico">
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/fontawesome.all.min.css" rel="stylesheet">
+<link href="/css/headerlink.css" rel="stylesheet">
+<link href="/highlight/github.min.css" rel="stylesheet">
+<script src="/highlight/highlight.min.js"></script>
+<!-- pagefind search -->
+<link href="/_pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/_pagefind/pagefind-ui.js" type="text/javascript"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: "#pagefind-search" });
+  });
+  var pageTitle = '';
+  if(pageTitle === '404'){
+      window.addEventListener('DOMContentLoaded', (event) => {
+          new PagefindUI({ element: "#page-404-search" });
+      });
+  }
+</script>
+<!-- pagefind search box styling -->
+<style type="text/css">
+  .search-form {
+      right: 0;
+      left: initial !important;
+      min-width: 25vw;
+      max-width: 90vw;
+      max-height: calc(95vh - 100px);
+      overflow: auto;
+      margin-top: 5px;
+  }
+</style>  </head>
+  <body class="d-flex flex-column h-100">
+    <main class="flex-shrink-0">
+      <div>
+<!-- nav bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-info" aria-label="Fifth navbar example">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"><img src="https://apache.org/img/asf_logo.png" style="height: 42px;"/>
+      <span style="position: relative; top: 5px; margin-left: 16px;">Tooling Initiative</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarADP" aria-controls="navbarADP" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarADP" style="position: relative; top: 4px; margin-left: 16px;">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">About</a>
+          <ul class="dropdown-menu">
+            <!--<li><a class="dropdown-item" href="/blog/">Tooling Blog</a></li>-->
+            <li><a class="dropdown-item" href="/team.html">About the team</a></li>
+            <li><a class="dropdown-item" href="/trusted-releases.html">Trusted Releases</a></li>
+            <li><a class="dropdown-item" href="/supply-chain.html">Supply Chain Attacks FAQ</a></li>
+            <li><a class="dropdown-item" href="/policies.html">Policies</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Tools</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://release-test.apache.org/">Trusted Releases Alpha</a></li>
+            <li><a class="dropdown-item" href="https://agenda.apache.org">Board Agenda Tool</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Repositories</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://github.com/apache/tooling-docs/">Documentation Website</a></li>
+            <li><a class="dropdown-item" href="https://github.com/apache/tooling-secretary">Secretary's Workbench</a></li>
+            <li><a class="dropdown-item" href="https://github.com/apache/tooling-trusted-releases">Trusted Releases</a></li>
+            <li><a class="dropdown-item" href="https://github.com/apache/tooling-releases-client">Trusted Releases Client</a></li>
+            <li><a class="dropdown-item" href="https://github.com/apache/tooling-actions">Trusted Releases Actions</a></li>
+            <li><a class="dropdown-item" href="https://github.com/apache/tooling-agenda">Agenda Tool</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Contribute</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/volunteer.html">Volunteer with Tooling</a></li>
+            <li><a class="dropdown-item" href="/job-posting.html">Job Posting</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle hidden-xs" data-bs-toggle="dropdown"><span class="fa-solid fa-magnifying-glass" aria-hidden="true"></span> Search</a>
+          <ul class="search-form dropdown-menu">
+            <li>
+              <div id="pagefind-search" class="input-group" style="width: 100%; padding: 0 5px;"></div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav><!-- page contents -->
+<div id="contents">
+    <div class="bg-white p-5 rounded">
+        <div class="col-sm-8 mx-auto">
+          <h1>
+            Draft ASF token standard FAQ
+          </h1>
+          <p>[DRAFT STANDARD FAQ]</p>
+<p><strong>NOTE: This is an ASF Tooling proposal only. This is not ASF policy.</strong></p>
+<p>This FAQ covers some feedback, largely <a href="https://the-asf.slack.com/archives/C086X8CKEMB/p1764212457655769">that of Greg Stein on Slack</a>, about the <a href="draft-asf-token-standard.md">Draft ASF token standard</a> being proposed by ASF Tooling.</p>
+<p>Questions here are not copied verbatim from the original thread, so not everything may be covered. The intention here is to try to address the design in general, and to inform continued discussion.</p>
+<p><strong>Q. Why did we choose a design that is compatible with GitHub tokens?</strong></p>
+<p>A. We wanted to be compatible with existing scanners because those are what we are likely to be using to detect leaked tokens, which is the only reason for having a scannable token standard in the first place.</p>
+<p>Even if we were to, for example, write our own ASF secrets scanner, we would still probably use it in tandem with e.g. the GitHub secrets scanning scheme, because much of our code is shared on GitHub and they already have the infrastructure to scan the data that they host in bulk. Therefore, since we are already going to be relying on third parties (especially GitHub itself), it seems prudent to try to be compatible with their existing implementations.</p>
+<p>A good conceptual case here is that of the checksum, covered in the next question.</p>
+<p><strong>Q. Why not use CRC-16, which produces fewer characters and is in the Python standard library, instead of CRC-32?</strong></p>
+<p>A. GitHub use, and recommend the use, of CRC-32 in scannable tokens. They don't explicitly document which CRC-32 algorithm is used, but they do give an example and the example uses IEEE 802.3 CRC-32.</p>
+<p>Their documented reason for using CRC-32 is to lower the number of false positive matches. Since they <a href="https://github.blog/changelog/2021-03-31-authentication-token-format-updates-are-generally-available/">actually started using CRC-32 in their own tokens in 2021</a>, we can assume that their scanning includes code to check the CRC-32. If we used CRC-16 instead, presumably GitHub would not use it to reduce false positives.</p>
+<p>There are, however, two very important caveats to this. One is that although GitHub started using CRC-32 in the tokens introduced in 2021, they may not be using it in the <a href="https://github.blog/security/application-security/introducing-fine-grained-personal-access-tokens-for-github/">fine-grained tokens that they introduced later, in 2022</a>. The format of the fine-grained tokens is undocumented, but the fact that they do not mention CRC-32 when they mentioned it just one year earlier is indicative that they no longer use it. They could be using CRC-32 with a secret prefix to the input, however, in which case they may be keeping the existence of the CRC-32 itself secret; it would not be possible to reverse engineer the format without knowing the prefix.</p>
+<p>The second caveat is that although GitHub probably at least use CRC-32 to eliminate false positives of their 2021 tokens, unless the lack of it in the later tokens implies that they removed this functionality, there is no evidence that they use CRC-32 when scanning submitted tokens from other organisations. To submit a token you have to do so manually, to an email address, which somebody presumably reads and then gets an engineer to implement. This is an extremely manual process, so it may accommodate custom false positive elimination techniques, potentially even including CRC-16. In other words, we could just ask them when we make the submission.</p>
+<p>Overall, how to be compatible with GitHub's secret scanner is not well documented. Their own internal practices are not well documented. They did not even appear to stay consistent with their own security best practices from a year prior to a new token release; yet they still promote the prior practices in their existing documentation. Whether we should aim to be compatible is, therefore, difficult to determine.</p>
+<p><strong>Q. What design choices are opened up if we choose not to be compatible with GitHub, or other, secret scanners?</strong></p>
+<p>A. All elements are open to alternative designs. We can use a different namespace. We can use a different alphabet for encoding the entropy. We can use a different amount of entropy. We can use a different checksum, or no checksum at all. We can order the elements in a different way. We can add other elements, e.g. for administrative reasons.</p>
+<p>There are reasons to do so, if compatibility is not an issue. Reverse domain names such as <code>org_apache</code> would be a better fit for prefixes to avoid collisions. They would also make leak reports self documenting, to a degree. One can even imagine a standard URL for finding out where to report leaked tokens based on RFC 8615, so for example if somebody found an <code>org_apache</code> token in the wild they could go to <code>https://www.apache.org/.well-known/secret-key-leak</code> to find instructions on where to report the leak. This would scale to all organisations without requiring a central registry.</p>
+<p>Similarly, the choice of CRC-32 is unusual. As pointed out by Greg Stein, CRC-16 already eliminates the vast majority of false positives. Checksums are also widely used for purposes other than denoting a scannable secret, but the combination of the prefix and the existence of the checksum may be enough for domain separation. The question is what problem or attack we are trying to mitigate. If we are trying to avoid accidental collisions, a prefix and CRC-16 are probably enough. If we are trying to avoid deliberate false positives, we would need to use an HMAC, public key cryptography, or some similar solution, each of which has significant drawbacks.</p>
+<p>There is no existing standard for scannable secret tokens except, arguably, for RFC 8959, the <code>secret-token</code> URL scheme, which is incompatible with <code>token68</code> due to its use of <code>:</code> which the latter forbids, and hence ruled out for use at the ASF. Moreover it is only scannable due to its scheme, and lacks basic features such as a minimum entropy level.</p>
+<p><strong>Q. Is it possible to design a truly universal scannable secret standard?</strong></p>
+<p>A. The idea behind universality is that any organisation could define a scannable token whose leakage could be autonomously reported without the requirement of central repositories. Presumably this requires some kind of API end point, or perhaps an email address similar to DMARC reports. The difficulty is deterring DoS attacks. The well known URL proposed in the previous section could include a machine readable link to an API, or itself be an API. There would then be two obvious sources of DoS attacks: either the API could be deluged with deliberate false positives from arbitrary sources, or trusted partners who host user content could be deluged with deliberate false positives.</p>
+<p>The former attack can be mitigated by only accepting submissions from trusted partners, or by using standard filtering techniques that are already used to protect public APIs. The latter attack would have to be mitigated by partners themselves; for example, they could ban users found to be submitting deliberate false positive leaked tokens. So far this hasn't been an attack vector as far as the author is aware, but once APIs become involved the chance of attacks also rises.</p>
+<p>What about in the standard itself? Is it possible to authenticate a token? Well, obviously it is possible to authenticate a token because that is the very purpose of a token! But to do so requires making a call to an API, so there is nothing gained by having the token be authenticated by the issuer.</p>
+<p>Can we make it possible to authenticate a token without an API? Using an HMAC and shared secret, as mentioned in the previous section, falls short in requiring a shared secret. Using public key cryptography is just about feasible in terms of token size if we use ECC, but that requires the maintenance of a long term secret and the entire design would need to be changed when post quantum cryptography becomes necessary. ECC keys could be stored in a DNS record and then cached, by scanners as well as in DNS resolvers, but then there are questions about using secure DNS.</p>
+<p><strong>Q. What is the scope of the ASF token standard?</strong></p>
+<p>A. As the previous section attempts to make clear, once you release the constraint of compatibility, the design space that opens up is large enough that it probably requires a standards committee with domain experts to solve. Somebody should probably take up this work! But the ASF require a solution in the short term for our products.</p>
+<p>Compatibility with the GitHub recommendations not only increases the chance that their secret scanning programme can detect our submissions with fewer false positives, but also closes the design space to a small enough area that we get it done quickly without having to consider what makes a design good. Trying to make even a <em>better</em> design is a slippery slope, because as sketched above there is no clear delimiting line of when <em>better</em> becomes <em>good enough</em> even for the ASF. In essence, the work on designing a universal scannable token format should be done, but as we cannot do it at the ASF we should draw a line somewhere, and the only line we have identified so far is compatibility with the GitHub recommendations.</p>
+<p>(We could certainly start the work and hand it off to a standards organisation, or collaborate with others who would like to do the work.)</p>
+<p><strong>Q. Why did we pick an alphabet containing confusable characters?</strong></p>
+<p>A. This was for GitHub compatibility, but only shifts the question to why GitHub chose base62. The choice of base62 over base64 is conspicuous, and we have not found documentation to suggest their rationale.</p>
+<p>A quick experiment, however, suggests that they chose base62 for the same reason that they suggest using underscores instead of hyphens in the namespace prefix: double click compatibility. The standard extra characters in base64 are <code>+</code> and <code>/</code>, and both of these cause selection segmentation upon double clicking a string. Try it:</p>
+<pre><code>abc_pqr (entirely selected)
+abc-pqr (PARTIALLY selected)
+abc+pqr (PARTIALLY selected)
+abc/pqr (PARTIALLY selected)
+</code></pre>
+<p>In other words, they likely started with the baseline of base64, and then eliminated the characters that caused a problem with double click compatibility. Of course, the question here is not why they eliminated <code>+</code> and <code>/</code> from base64, but why they did not go further and eliminate all confusables.</p>
+<p>Confusables need to be eliminated in at least a couple of contexts. One is where a string needs to be copied by a human, visually and manually, from one medium to another. For example, writing down a token on paper to input it into another (potentially airgapped) computer. Or perhaps writing down a URL that appears on the side of a bus, which brings us to the second obvious context: anywhere that phishing may occur. You do not want one authority to be able to impersonate another by using confusable characters.</p>
+<p>The second case does not apply to tokens. The first case may do, but there is a technology that allows us to at least detect when an error has been made in transcription: the checksum. As part of the usage guidelines for tokens, therefore, we could require that clients verify the checksum when e.g. added to configuration. We should do this even if we used a smaller alphabet without confusables, because confusables are not the only reason why a token can be mistranscribed: it can also be mistranscribed due to transposition errors, omissions, etc.</p>
+<p>If we were to use a different alphabet, the Bitcoin Core team already studied the problem of errors in address strings and designed a format called Bech32 (in <a href="https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki">BIP 0173</a>) which has a custom base32 alphabet with as little visual similarity as possible based on quantitative data, and a BCH, instead of CRC, based checksum that "guarantees detection of any error affecting at most 4 characters". The authors wrote an <a href="https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki#user-content-Checksum_design">entire section explaining the design of their checksum</a>. The parameters that they chose are suitable for Bitcoin addresses, and could be modified for tokens.</p>
+<p>Again, this emphasizes the fact that the design space is a continuous slope. Compatibility with the GitHub format is the only reasonable stopping point identified so far.</p>
+<p><strong>Q. Why not use <code>secrets.token_bytes(20)</code> in the reference implementation?</strong></p>
+<p>A. Because the 2021 GitHub format generates base62 strings by selecting characters at random from the base62 alphabet directly. If we securely generate 160 random bits, and then encode them in a 160.76330038044563 bit encoding (the space of 27 base62 digits), what happens to the leftover 0.76330038044563 encoding space? It goes unused. In the GitHub design, there is no extra encoding space left over.</p>
+<p>Of course, this design is inconsistent because the CRC-32 checksum is a 32 bit space but is being encoded into a 35.72517786232125 bit space, i.e. <code>log2(62 ** 6)</code>, so there's actually far more space left over for the CRC-32 checksum than there would have been for the 160 random bits. We would not have chosen this inconsistent design, not least because it makes the regular expression match values which are impossible to generate. The likelihood of false positives is negligible, but it is sloppy design.</p>
+<p>The extra characters allowed in token68 are <code>"-" / "." / "_" / "~" / "+" / "/"</code>. Unfortunately, as you can test below, only underscore amongst these results in a fully selectable string from double clicking:</p>
+<pre><code>abc-pqr
+abc.pqr
+abc_pqr
+abc~pqr
+abc+pqr
+abc/pqr
+</code></pre>
+<p>So it is not possible to fix base64, and hence retain a binary compatible encoding space, by substituting <code>+</code> and <code>/</code> with other characters. In any case, we argue that the Bech32 design of BIP 0173 is superior, and is fully compatible with token68. When using any base32 encoding, any multiple of 5 bits of entropy fits into the encoding without padding. The smallest value meeting the common requirement to use at least 128 bits is 130 bits, which is encoded as 26 base32 characters, and 160 bits is encoded as 32 characters. A CRC-32 checksum does not fit neatly into base32 encoding, but the Bech32 checksum, which is 30 bits, does: it fits into 6 base32 characters.</p>
+<p><strong>Q. Why use 160 bits of entropy instead of the minimum recommended limit of 128 bits?</strong></p>
+<p>A. GitHub use 30 characters of base62 data, which is 178.62588931160624 bits, i.e. log2(62 ** 30). Interestingly, GitHub say that they want to continue increasing the amount of entropy in their tokens beyond this to make them even more secure. We would like to know their threat model, because there are only two that we know in this space: bad random number generation, and collision attacks. Whether requiring more entropy mitigates a broken RNG depends on the failure mode of the RNG, but obviously this <em>must be fixed at the RNG level</em>. Mitigating a collision attack depends on calculating the probability of a collision, which we can do with simple well known formulae.</p>
+<p>The probability of a collision from <em>k</em> tokens securely generated with <em>n</em> random bits is <code>1 - (2**n)! / (2**(k*n) * (2**n - k)!)</code>. Due to the factorials involved, this is usually approximated as <code>1 - e**(-(k**2)/2**(n+1))</code>, which we can program in Python:</p>
+<pre><code>def probability(k, n):
+    import math
+    exponent = -(k ** 2) / (2 ** (n + 1))
+    return -math.expm1(exponent)
+</code></pre>
+<p>Which, for 65536 tokens of 128 bits gives us the approximated value:</p>
+<pre><code>&gt;&gt;&gt; probability(2 ** 16, 128)
+6.310887241768095e-30
+</code></pre>
+<p>Which is <a href="https://www.wolframalpha.com/input?i=1+-+exp%28-%282%5E16%29%5E2+%2F+%282+*+2%5E128%29%29">also confirmed by Wolfram|Alpha</a>. If you tried to use a hash collision calculator online such as <a href="https://kevingal.com/apps/collision.html">this one</a> or <a href="https://hash-collisions.progs.dev/">this other one</a>, you would get the nonsense answer 0, and a similar thing happens if you use <code>math.exp</code> in Python instead of <code>math.expm1</code>. Anyway the smallness of 6.310887241768095e-30 is why the standards organisations recommend 128 bits minimum for token length. The question is just how many tokens GitHub are expecting to issue that 178.62588931160624 bits of entropy do not give a low enough probability of collision to suit their needs; or, alternatively, what other threat model they have in mind.</p>
+<p>In summary, it is hard to believe that 130 bits of Bech32 encoded entropy is insufficient for all known threat model requirements assuming a secure RNG.</p>
+<p><strong>Q. Why use zlib to provide CRC-32 instead of binascii?</strong></p>
+<p>A. Indeed <code>binascii</code> is a mandatory module in Python and <code>zlib</code> is not, so <code>binascii</code> is the better choice.</p>
+<p><strong>Q. Why not use <code>component.lower() != component</code> in the reference code?</strong></p>
+<p>A. Because the reference code is testing that the component is in the range <code>a-z</code>, not that the component is lowercase where letters are used. If <code>component</code> is <code>"123"</code>, for example, then <code>component.lower() != component</code> evaluates <code>False</code>, so the <code>ValueError</code> would not be raised, but the component is not a subset of <code>a-z</code> and so this expression actually lets slip through an error that we wanted to detect.</p>
+<p><strong>Q. Why don't we use an underscore before the CRC value too?</strong></p>
+<p>A. For compatibility with the 2021 GitHub format.</p>
+<p><strong>Q. Why not allow TLPs to opt in to this format?</strong></p>
+<p>A. There is no existing policy to stop TLPs from opting in to this format, so by default they can already do so, and the same is true for external organisations, but the consideration is how to organise the namespace in this case. If using a reversed domain name, then the delegation of namespaces is already clear within the ASF, and is probably easier for external organisations to resolve too. ATR, for example, would likely use <code>org_apache_releases</code> as its reversed domain name in this setting. On the one hand this is quite long, at 19 characters. But assuming a Bech32 entropy component of 26 characters, a checksum component of 6 characters, and two underscores as separators, that gives us 53 characters, which is not unreasonable.</p>
+<p>This, combining elements suggested so far in this FAQ, would result in a superior format to the one recommended by GitHub, but can still be improved further. The Bech32 checksum, for example, could use domain separation. It should also probably include the namespace prefix in some way, potentially using the HRP mechanism of Bech32.</p>
+<p><strong>Q. Has Security agreed to act as the registrar?</strong></p>
+<p>A. No. We only propose that they do so, but not only would this be contingent on their acceptance, it would also be contingent on whether anybody had a better suggestion, not only for the registrar, but for the namespace prefix format itself. If, for example, a reversed domain name were used, then that may obviate the need for a registrar.</p>
+<p><strong>Q. Why is the reference implementation not in <code>asfpy.crypto</code>?</strong></p>
+<p>A. The specification itself should include a reference implementation, but that reference implementation can be copied not only to <code>asfpy.crypto</code> but also to any other code, under the terms of the Apache 2.0 license.</p>
+<p><strong>Q. Why does the draft not have sections on secure token storage practices?</strong></p>
+<p>A. One argument for separating such practices from the specification of scannable tokens is that the practices apply to more than just scannable tokens. They apply, for example, to session tokens and to passwords. There are already ample external recommendations in these areas, but if the ASF codifies its own practices, the scannable token specification should link to them. We could add a <em>Security considerations</em> section which, in part, could describe the challenges of storage.</p>
+<p><strong>Q. Should we mandate that tokens must be stored on the server side salted and hashed?</strong></p>
+<p>A. Secrets only need to be salted to guard against rainbow table precomputation attacks. It is not possible to precompute values with a high probability of matching in a space of 128 bits of entropy. This is why passwords are salted before hashing, because they do not necessarily contain sufficient entropy to deter precomputation attacks. Therefore the secure tokens in our original design, with 160 bits of entropy, or suggested in this FAQ if breaking compatibility with the GitHub recommendations, with 130 bits of entropy, do not need salting.</p>
+<p>Hashing is compatible even with DPoP, because the user sends the token in the request along with the proof, but it would prevent being able to reissue the token to the user, which may be acceptable. If the user has accidentally deleted their token, they should probably just be issued with a new one.</p>
+<p><strong>Q. Can a DPoP token be considered public?</strong></p>
+<p>A. It is reasonable to contend that a DPoP token is actually a public token, because bearing the token alone, without a proof of possession of the key (the PoP part in "DPoP"), provides no access. Previously, we <a href="https://github.com/apache/tooling-trusted-releases/issues/233#issuecomment-3577574617">suggested that making DPoP tokens scannable has advantages anyway</a>:</p>
+<blockquote>
+<p>We need to consider whether we still want to use scannable prefixes if we use DPoP tokens instead of bearer tokens (#335). RFC 9449 &sect; 2 says that "DPoP renders exfiltrated tokens alone unusable", which is true (and not true of an exfiltrated DPoP proof, within tight constraints), but we would still like to know when tokens, which should remain secret, are accidentally shared in public. In other words, a prefix helps not to identify exposure of a DPoP token, which cannot be used without its corresponding private key, but to identify broken workflows or practices that allowed that token to be shared in the first place. Such workflows may also be exposing other secret data.</p>
+</blockquote>
+<p>There is an additional advantage not only to making a DPoP token scannable, but keeping it secret. When a server verifies a DPoP token, it has to do two things: look up the token in the database to ensure it exists and to figure out who it's owned by and what its permissions are, and verify the actual proof. Depending on which is considered more expensive (the former is mostly disk I/O, and the latter is computation and RAM use, so they are hard to compare directly), we might want to do one before doing the other to prevent having to do both if one or the other fails. If we do the database look up first, to avoid having to do the cryptography if the token does not exist, then non disclosure of the token helps to avoid a DoS vector.</p>
+<p><strong>Q. How should fine-grained scopes be associated with tokens?</strong></p>
+<p>A. By associating the scopes in the database where the token, or hash of the token if using a token scheme where hashes are suitable, is stored.</p>
+<p><strong>Q. What design should we choose?</strong></p>
+<p>A. The main design choice that we need to resolve is whether to be compatible with the GitHub recommendations and 2021 token format or not. If we do, then the existing draft proposal may already be suitable. If not, then we have to choose an alternative. By working through various design issues in this FAQ, we have made numerous suggestions that could be used as the basis of such an alternative. We would like to add some further suggestions to make the alternative proposal even more concrete.</p>
+<p>Although starting the token with a reversed domain name helps to delegate ownership and avoids collisions, to make the prefix even more unambiguous and self documenting a label such as <code>secret_scannable_</code> could be prepended. We would also like to distinguish the elements somehow, because the reversed domain name uses underscore to encode a full stop, but underscore is also used to separate the elements. The elements with fixed length could come at the start, and the reversed domain name at the end. The reversed domain name could include digits, and hyphens in domain names could be encoded with double underscore since they can never appear in domain names next to a full stop. We could use the HRP mechanism of Bech32 to allow the whole prefix to be checksummed too.</p>
+<p>Here is an example incorporating these extra suggestions. Note that we only use the Bech32 alphabet and checksum, and do not follow the full encoding rules:</p>
+<pre><code>secret_scannable_et70m7m4a8zqhrl6kndwljqnvr_mxyamx_org_example
+</code></pre>
+<p>Which is 62 characters long. The HRP in this case is:</p>
+<pre><code>secret_scannable_org_example
+</code></pre>
+<p>The <code>secret_scannable_</code> prefix is 17 characters long, and the Bech32 specification allows a maximum of 83 characters in the HRP, but the limitation here is because the checksum is designed to detect errors in a string up to 89 characters, which for us includes the 26 characters of the entropy. This means that we have space for 89 (total allowed by the checksum) minus 26 (for the entropy) minus 17 (for the <code>secret_scannable_</code> prefix) characters in the reversed domain name, which is 46 characters. Since the encoded prefix is 51 characters long before the reversed domain name, that means that the maximum permitted length of such tokens is 97 characters.</p>
+<p>Another potentially useful feature of this design is that the reversed domain name suffix could be omitted entirely by organisations that are either private or do not want to indicate their origin in leaked tokens. In this case the HRP could be fixed to <code>secret_scannable</code> and the length of the token would always be 50 characters.</p>
+<pre><code>secret_scannable_736pxr4jy89nlpelpzjum8lzha_ekyr23
+</code></pre>
+<p>Whether or not to use the GitHub compatible design depends largely on whether they implement CRC-32 checking for external submissions.</p>
+
+        </div>
+    </div>
+</div>    <!-- footer -->
+    <div class="row">
+      <div class="large-12 medium-12 columns">
+        <p style="font-style: italic; font-size: 0.8rem; text-align: center;">
+          Copyright 2025, <a href="https://www.apache.org/">The Apache Software Foundation</a>, Licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.<br/>
+          Apache&reg; and the Apache feather logo are trademarks of The Apache Software Foundation.
+        </p>
+      </div>
+    </div>
+    <script type="application/ecmascript" src="/js/bootstrap.bundle.min.js" integrity="sha384-TYMA+uAx4f43rilxPIhmlqA+Vi+xbyMe+YVR3BcL15NyHLqd+7WYNtyBPdayiOPx"></script>      </div>
+    </main>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>
