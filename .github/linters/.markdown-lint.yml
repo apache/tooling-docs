@@ -7,8 +7,6 @@ MD004:
 MD005:
   indent: 2
 
-MD007: 2
-
 MD013:
   code_blocks: false
   line_length: 915
@@ -17,13 +15,13 @@ MD013:
 # MD025/single-title/single-h1 Multiple top-level headings in the same document
 MD025: false
 
-MD029: one
-
 MD033: false
 
 MD034: false
 
 MD035: consistent
+
+MD040: false
 
 # MD041/first-line-heading/first-line-h1 First line in a file should be a top-level heading
 MD041: false
