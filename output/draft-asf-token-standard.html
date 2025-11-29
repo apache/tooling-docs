@@ -222,13 +222,18 @@ Token:    asf_sample_zzzzzzzzzzzzzzzzzzzzzzzzzzz13hv5A
     </main>
     <script>hljs.highlightAll();</script>
     <script>
+      function decodeHtmlEntities(str) {
+        const txt = document.createElement("textarea");
+        txt.innerHTML = str;
+        return txt.value;
+      }
       document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll("pre > code.language-mermaid").forEach(code => {
           const div = document.createElement("div");
           div.className = "mermaid";
           div.textContent = decodeHtmlEntities(code.innerHTML);
           // Replace <pre><code>…</code></pre> with <div class="mermaid">…</div>
-         code.parentElement.replaceWith(div);
+          code.parentElement.replaceWith(div);
         });
         // Now render them
         mermaid.init();
