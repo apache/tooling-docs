@@ -41,7 +41,7 @@ flowchart TD
     A[svn:dist/release]
     B[rsync.apache.org]
     A -->|svn| B
-    C@{ shape: processes, label: "downloads.apache.org"}
+    C{ shape: processes, label: "downloads.apache.org"}
     D[archive.apache.org]
     B -->|rsync| C
     B -->|rsync| D
@@ -58,7 +58,7 @@ flowchart TD
     ATR -->|svn| A
     B[rsync.apache.org]
     A -->|svn| B
-    C@{ shape: processes, label: "downloads.apache.org"}
+    C{ shape: processes, label: "downloads.apache.org"}
     D[archive.apache.org]
     B -->|rsync| C
     B -->|rsync| D
@@ -78,7 +78,7 @@ flowchart TD
     A -->|svn| B
     ATR[releases.apache.org]
     B -->|rsync| ATR
-    C@{ shape: processes, label: "downloads.apache.org"}
+    C{ shape: processes, label: "downloads.apache.org"}
     D[archive.apache.org]
     ATR -->|rsync| C
     ATR -->|rsync| D
@@ -99,7 +99,7 @@ flowchart TD
     ATR <--> B
     end
     A -->|svn| ATR
-    C@{ shape: processes, label: "downloads.apache.org"}
+    C{ shape: processes, label: "downloads.apache.org"}
     D[archive.apache.org]
     B -->|rsync| C
     B -->|rsync| D
@@ -112,7 +112,7 @@ flowchart TD
 flowchart TD
     subgraph Transition 3
     ATR[releases.apache.org]
-    C@{ shape: processes, label: "downloads.apache.org"}
+    C{ shape: processes, label: "downloads.apache.org"}
     D[archive.apache.org]
     ATR -->|rsync| C
     ATR -->|rsync| D
@@ -124,7 +124,7 @@ flowchart TD
 ```mermaid
 flowchart TD
     subgraph Transition 4
-    ATR@{ shape: processes, label: "releases.apache.org"}
+    ATR{ shape: processes, label: "releases.apache.org"}
     D[archive.apache.org]
     ATR -->|rsync| D
     end
