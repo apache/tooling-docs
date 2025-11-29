@@ -11,6 +11,7 @@
 <link href="/css/headerlink.css" rel="stylesheet">
 <link href="/highlight/github.min.css" rel="stylesheet">
 <script src="/highlight/highlight.min.js"></script>
+<script src="/js/mermaid.min.js"></script>
 <!-- pagefind search -->
 <link href="/_pagefind/pagefind-ui.css" rel="stylesheet">
 <script src="/_pagefind/pagefind-ui.js" type="text/javascript"></script>
@@ -25,6 +26,12 @@
       });
   }
 </script>
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "default"
+  });
+</script>
 <!-- pagefind search box styling -->
 <style type="text/css">
   .search-form {
@@ -35,6 +42,13 @@
       max-height: calc(95vh - 100px);
       overflow: auto;
       margin-top: 5px;
+  }
+  .mermaid {
+      margin: 1.2em 0;
+      padding: 1em;
+      background: #fff;
+      border: 1px solid #d0d7de;
+      broder-radius: 6px;
   }
 </style>  </head>
   <body class="d-flex flex-column h-100">
@@ -227,5 +241,18 @@ prior to submission of the release candidate.</p>
     <script type="application/ecmascript" src="/js/bootstrap.bundle.min.js" integrity="sha384-TYMA+uAx4f43rilxPIhmlqA+Vi+xbyMe+YVR3BcL15NyHLqd+7WYNtyBPdayiOPx"></script>      </div>
     </main>
     <script>hljs.highlightAll();</script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll("pre > code.language-mermaid").forEach(code => {
+          const div = document.createElement("div");
+          div.className = "mermaid";
+          div.textContent = code.textContent;  // preserve raw mermaid markup
+          // Replace <pre><code>…</code></pre> with <div class="mermaid">…</div>
+         code.parentElement.replaceWith(div);
+        });
+        // Now render them
+        mermaid.init();
+     });
+  </script>
   </body>
 </html>

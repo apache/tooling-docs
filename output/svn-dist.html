@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apache Trusted Releases platform services - ASF Tooling Website</title>
+    <title>Legacy Releases from SVN Dist - ASF Tooling Website</title>
 <link rel="shortcut icon" href="https://apache.org/favicons/favicon.ico">
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 <link href="/css/fontawesome.all.min.css" rel="stylesheet">
@@ -120,166 +120,141 @@
     <div class="bg-white p-5 rounded">
         <div class="col-sm-8 mx-auto">
           <h1>
-            Apache Trusted Releases platform services
+            Legacy Releases from SVN Dist
           </h1>
-          <p><em>This is a discussion and the actual implementation will diverge.</em></p>
-<p><a href="https://releases.apache.org">https://releases.apache.org</a></p>
-<h2>Datastore</h2>
-<blockquote>
-<p>We will iterate on these during implementation.</p>
-</blockquote>
-<ol>
-<li>Release Storage. A large filesystem with folders for each release's files.</li>
-<li>Metadata Database. A database on the server with the metadata schema.</li>
-</ol>
-<p>See <a href="data-model.html">Data Model</a> for a discussion of the objects managed by the ATR.</p>
-<h2>Web Service</h2>
-<ol>
-<li><code>asfquart</code> based asynchronous python web service.</li>
-<li>Fronted by <code>httpd</code>.</li>
-<li>Static content may be served without going through <code>asfquart</code>.</li>
-<li>Monolithic.</li>
-<li>Fronted by a CDN. The caching policies need to be properly defined.</li>
-</ol>
-<h2>Legacy</h2>
-<ol>
-<li>These domains continue to work in the same way:
-<ul>
-<li>archive.apache.org</li>
-<li>downloads.apache.org and dlcdn.apache.org</li>
-<li>dist.apache.org</li>
-</ul>
-</li>
-<li>See <a href="https://github.com/apache/tooling-docs/blob/main/apache-trusted-release/svn-dist.md">Legacy Releases from SVN Dist</a>. In this development phase we prefer to be at <em>transition 2</em>.</li>
-</ol>
-<h3>Release Stages</h3>
-<ol>
-<li>Build Releases</li>
-<li>Candidate Releases</li>
-<li>Current Releases</li>
-<li>Archived / Revoked / EOL / Atticked Releases</li>
-</ol>
-<blockquote>
-<p>&ldquo;Nightlies&rdquo; a particular build type is for a later phase.</p>
-</blockquote>
-<h3>Release Phases</h3>
-<p>See <a href="https://github.com/apache/tooling-docs/blob/main/apache-trusted-release/lifecycle.md">Release Lifecycle</a> for how phases are chained together to perform a Release.</p>
-<h3>Release co-ordinates</h3>
-<p>The co-ordinates make up the external path to objects. The metadata database provides the map to the local path.</p>
-<ol>
-<li>Stage (Candidate, Current, Archived, &hellip;)</li>
-<li>PMC (Responsible TLP or Incubator PPMC)</li>
-<li>Product Line (Main, Sub-projects)</li>
-<li>Version (String, latest)</li>
-<li>Files, Metadata (A release is a folder of one or more files or sub-folders)</li>
-</ol>
-<blockquote>
-<p>The following are examples. We will iterate during implementation.</p>
-</blockquote>
-<ul>
-<li>Latest main product release: <code>/&lt;stage&gt;/&lt;pmc&gt;/latest/&lt;file&gt;</code></li>
-<li>Main product by version: <code>/&lt;stage&gt;/&lt;pmc&gt;/&lt;version&gt;/&lt;file&gt;</code></li>
-<li>Latest product release: <code>/&lt;stage&gt;/&lt;pmc&gt;/&lt;product&gt;/latest/&lt;file&gt;</code></li>
-<li>Product release by version: <code>/&lt;stage&gt;/&lt;pmc&gt;/&lt;product&gt;/&lt;version&gt;/&lt;file&gt;</code></li>
-</ul>
-<h3>Restful API</h3>
+          <p>We have three types of Releases to create using a "Pull from 'Dist'" process.</p>
 <ol>
 <li>
-<p>GET</p>
-<ul>
-<li>Metadata</li>
-<li>Release</li>
-<li>Package files including SBOMs</li>
-<li>Signing keys</li>
-</ul>
+<p>Release Candidates from <code>dist/dev</code> as the Release Manager requests from within the ATR Web UI.</p>
 </li>
 <li>
-<p>CRUD on</p>
-<ul>
-<li>Releases - Delete is not removal. It is a stage.</li>
-<li>Artifacts - Managed with a Release. Infra can do targeted full CRUD on artifacts if required.</li>
-<li>Public Signing Keys - Delete only if unused.</li>
-<li>Votes - Store each vote in metadata.</li>
-<li>SBOMs - Special files stored in the release folder.</li>
-</ul>
+<p>Current Releases from <code>dist/release</code> this will be used for the initial migration and may be used from time to time as PMCs use the old methods.</p>
 </li>
 <li>
-<p>POST Phases - Transitions, Activities, and Communication</p>
-<ul>
-<li>Transition into Phase.</li>
-<li>Perform Phase activity.</li>
-<li>Optionally email phase status.</li>
-</ul>
-<p>See <a href="https://github.com/apache/tooling-docs/blob/main/apache-trusted-release/lifecycle.md">Release Lifecycle</a> for how phases are chained together to perform a Release.</p>
+<p>Archived Releases which are migrated from the archive if not present in the Current Releases.</p>
+</li>
+</ol>
+<h2>ATR Web UX</h2>
+<p>We will need pages to perform tasks related to the use of our legacy setup.</p>
+<h3>PMC Management Page</h3>
+<ol>
+<li>
+<p><strong>Create Release Candidate</strong> - upload the packages for a release candidate from <code>svn:dist/dev</code>. This page can also handle direct uploads.</p>
 </li>
 <li>
-<p>POST Templated Emails</p>
+<p><strong>Legacy Release</strong> - upload an approved release from <code>svn:dist/release</code>.</p>
+</li>
+</ol>
+<h3>System Admin Page</h3>
+<ol>
+<li>
+<p><strong>Synchronise Current Releases</strong> - scan <code>svn:dist/release</code> and migrate any not in the ATR.</p>
+</li>
+<li>
+<p><strong>Synchronize Release Archive</strong> - scan <code>archive</code> repository and migrate any archived not in the ATR as a Current or Archived Release.</p>
+</li>
+</ol>
+<h2>Backends Hosting Release Artifacts</h2>
+<p>The legacy domains are currently connected to <code>svn:dist/release</code> as follows:</p>
+<ol>
+<li>rsync.apache.org has a directory that updates a checkout of <code>svn:dist/release</code></li>
+<li>downloads.apache.org periodically rsyncs with rsync.apache.org</li>
+<li>archive.apache.org periodically rsyncs with rsync.apache.org without removing artifacts from the destination.</li>
+</ol>
+<h3>Transitional Steps</h3>
+<pre><code class="language-mermaid">flowchart TD
+    subgraph Legacy
+    A[svn:dist/release]
+    B[rsync.apache.org]
+    A --&gt;|svn| B
+    C@{ shape: processes, label: "downloads.apache.org"}
+    D[archive.apache.org]
+    B --&gt;|rsync| C
+    B --&gt;|rsync| D
+    end
+</code></pre>
+<ol>
+<li><strong>ATR writes to SVN</strong> - ATR Releases write to <code>svn:dist/release</code> as an interim step.</li>
+</ol>
+<pre><code class="language-mermaid">flowchart TD
+    subgraph Transition 1
+    ATR[releases.apache.org]
+    A[svn:dist/release]
+    ATR --&gt;|svn| A
+    B[rsync.apache.org]
+    A --&gt;|svn| B
+    C@{ shape: processes, label: "downloads.apache.org"}
+    D[archive.apache.org]
+    B --&gt;|rsync| C
+    B --&gt;|rsync| D
+    end
+</code></pre>
+<ol start="2">
+<li><strong>ATR and Legacy are Integrated</strong> - Insert ATR into the rsync chain.
 <ul>
-<li>Announcements</li>
-<li>Votes</li>
-<li>Status</li>
-<li>Transitions</li>
+<li>
+<p>ATR has a directory with the same organization as <code>svn:dist/release</code> using symbolic links to the Releases in the ATR Datastore.</p>
+</li>
+<li>
+<p>(a) ATR's rsync from rsync.apache.org should detect legacy release addition and deletion.</p>
+</li>
 </ul>
 </li>
 </ol>
-<h3>Web UI</h3>
-<p>Note: this section is a flexible outline of what we intend for the UI, and may change during implementation.</p>
-<ol>
-<li>
-<p>Directory Pages</p>
+<pre><code class="language-mermaid">flowchart TD
+    subgraph Transition 2A
+    A[svn:dist/release]
+    B[rsync.apache.org]
+    A --&gt;|svn| B
+    ATR[releases.apache.org]
+    B --&gt;|rsync| ATR
+    C@{ shape: processes, label: "downloads.apache.org"}
+    D[archive.apache.org]
+    ATR --&gt;|rsync| C
+    ATR --&gt;|rsync| D
+    end
+</code></pre>
+<p>Or</p>
 <ul>
-<li>PMC directory (<em>main page</em>) - excludes podlings and atticked PMCs</li>
-<li>PMC release directory (also PPMC)</li>
-<li>Incubator podling directory</li>
-<li>Atticked PMC directory</li>
+<li>(b) ATR coexists on rsync.apache.org and detects legacy release addition and deletion.</li>
 </ul>
-</li>
-<li>
-<p>Release Page</p>
-<ul>
-<li><a href="https://infra.apache.org/release-download-pages.html">Download page requirements</a></li>
-<li>Release level metadata</li>
-<li>PMC Information and webpage links</li>
-<li>Download package from directory of release</li>
-<li>Maintenance actions</li>
-<li>History of events</li>
-</ul>
-</li>
-<li>
-<p>PMC Management Page</p>
-<ul>
-<li>PMC level metadata and releases</li>
-<li>Product level metadata and releases</li>
-<li>Manage releases</li>
-<li>PMC lifecycle transitions - podling, TLP, attic.</li>
-</ul>
-</li>
-<li>
-<p>System Admin Page</p>
-<ul>
-<li>Manage Distribution Channels</li>
-<li>Perform Migration Tasks</li>
-<li>Enable GHA Builds</li>
-<li>Manage PMC Transitions</li>
-<li>Watch Operations</li>
-</ul>
-</li>
-<li>
-<p>Audit Page</p>
-<ul>
-<li>ASF event history</li>
-<li>PMC event history</li>
-<li>Product event history</li>
-</ul>
-</li>
-<li>
-<p>Page Template</p>
-<ul>
-<li>Responsive with Header(Hamburger)/Content/Footer.</li>
-<li>Include Search in Header(Hamburger)</li>
-</ul>
-</li>
+<pre><code class="language-mermaid">flowchart TD
+    subgraph Transition 2B
+    A[svn:dist/release]
+    subgraph ATR on Rsync
+    ATR[releases.apache.org]
+    B[rsync.apache.org]
+    ATR &lt;--&gt; B
+    end
+    A --&gt;|svn| ATR
+    C@{ shape: processes, label: "downloads.apache.org"}
+    D[archive.apache.org]
+    B --&gt;|rsync| C
+    B --&gt;|rsync| D
+    end
+</code></pre>
+<ol start="3">
+<li><strong>Legacy is Retired</strong> - <code>svn:dist/release</code> is retired.</li>
 </ol>
+<pre><code class="language-mermaid">flowchart TD
+    subgraph Transition 3
+    ATR[releases.apache.org]
+    C@{ shape: processes, label: "downloads.apache.org"}
+    D[archive.apache.org]
+    ATR --&gt;|rsync| C
+    ATR --&gt;|rsync| D
+    end
+</code></pre>
+<ol start="4">
+<li><strong>Further Integration</strong> - downloads.apache.org is hosted on ATR. Downloads.apache.org is multiple servers. ATR would need to work on multiple servers</li>
+</ol>
+<pre><code class="language-mermaid">flowchart TD
+    subgraph Transition 4
+    ATR@{ shape: processes, label: "releases.apache.org"}
+    D[archive.apache.org]
+    ATR --&gt;|rsync| D
+    end
+</code></pre>
 
         </div>
     </div>
