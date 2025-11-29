@@ -15,7 +15,7 @@ THEME = 'content/theme'
 # Specify location of plugins, and which to use
 PLUGIN_PATHS = [ 'plugins',  ]
 # If the website uses any *.ezmd files, include the 'gfm' and 'asfreader' plugins (in that order)
-PLUGINS = [ 'toc', 'spu', 'gfm', 'asfgenid', 'asfrun', 'pelican_mermaid' ]
+PLUGINS = [ 'toc', 'spu', 'gfm', 'asfgenid', 'asfrun', ]
 # All content is located at '.' (aka content/ )
 PAGE_PATHS = [ 'pages' ]
 STATIC_PATHS = [ '.',  ]
