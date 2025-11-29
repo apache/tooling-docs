@@ -26,3 +26,4 @@ jobs:
           # This must be appropriate for the branch being built
           destination: 'asf-site'
           gfm: 'true'
+          requirements: 'requirements-build.txt'
