@@ -146,9 +146,14 @@
       }
       document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll("pre > code.language-mermaid").forEach(code => {
+          const rawHtml = code.innerHTML;
+          const decoded = decodeHtmlEntities(rawHtml);
+          console.log("=== Mermaid block", i, "raw HTML ===");
+          console.log(rawHtml);
+          console.log("=== Mermaid block", i, "decoded text ===");
+          console.log(decoded);
           const div = document.createElement("div");
           div.className = "mermaid";
-          div.textContent = decodeHtmlEntities(code.innerHTML);
           // Replace <pre><code>…</code></pre> with <div class="mermaid">…</div>
           code.parentElement.replaceWith(div);
         });
