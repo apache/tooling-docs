@@ -17,7 +17,7 @@ We will need pages to perform tasks related to the use of our legacy setup.
 
 1. **Create Release Candidate** - upload the packages for a release candidate from `svn:dist/dev`. This page can also handle direct uploads.
 
-3. **Legacy Release** - upload an approved release from `svn:dist/release`.
+2. **Legacy Release** - upload an approved release from `svn:dist/release`.
 
 ### System Admin Page
 
