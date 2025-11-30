@@ -31,8 +31,6 @@ repos:
       - id: fix-byte-order-marker
       - id: forbid-submodules
       - id: mixed-line-ending
-      - id: requirements-txt-fixer
-        files: ^requirements\.txt$
       - id: trailing-whitespace
         args: [--markdown-linebreak-ext=md]
         exclude: (\.svg$)

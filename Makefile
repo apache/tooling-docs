@@ -1,24 +1,21 @@
-PYTHON ?= python3
-PIP := $(PYTHON) -m pip
-PRECOMMIT ?= pre-commit
-
-.PHONY: install i check c checkinstall ci checkupdate cu help
+.PHONY: check check-light sync sync-all update-deps
 .DEFAULT_GOAL := help
 
-install i: ## Install Python dependencies from requirements.txt
-	$(PIP) install -r requirements.txt
+check: ## Run all pre-commit checks.
+	git add -A
+	uv run pre-commit run --all-files
 
-check c: ## Run pre-commit checks on all files
-	$(PRECOMMIT) run --all-files
+check-light: ## Run the light set of pre-commit checks.
+	git add -A
+	uv run pre-commit run --all-files --config .pre-commit-light.yaml
 
-checkinstall ci: ## Install pre-commit hooks
-	$(PRECOMMIT) install
+sync: ## Sync non-development dependencies using uv.
+	uv sync --no-dev
 
-checkupdate cu: ## Update pre-commit hooks to the latest version
-	$(PRECOMMIT) autoupdate
+sync-all: ## Sync all dependencies (including development) using uv.
+	uv sync --all-groups
 
-help: ## Display this help message
-	@echo "Usage: make <target>"
-	@echo
-	@echo "Available targets:"
-	@grep -E '^[a-z]+ [a-z]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2}'
+update-deps: ## Update pre-commit hooks and dependency locks.
+	pre-commit autoupdate || :
+	uv lock --upgrade
+	uv sync --all-groups

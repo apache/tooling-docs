@@ -5,3 +5,4 @@ site-generated/
 output/
 pelican.auto.py
 .DS_Store
+.venv
