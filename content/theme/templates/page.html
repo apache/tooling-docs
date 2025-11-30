@@ -16,33 +16,7 @@
         {% include "footer.html" %}
       </div>
     </main>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-      function decodeHtmlEntities(str) {
-        const txt = document.createElement("textarea");
-        txt.innerHTML = str;
-        return txt.value;
-      }
-      document.querySelectorAll("pre > code.language-mermaid").forEach((code, i) => {
-        let decoded = decodeHtmlEntities(code.innerHTML);
-        // Normalize whitespace
-        decoded = decoded.replace(/\t/g, "    ");
-        decoded = decoded.replace(/^\s*\n/, "").replace(/\n\s*$/, "");
-        const div = document.createElement("div");
-        div.className = "mermaid";
-        div.textContent = decoded;
-        code.parentElement.replaceWith(div);
-        console.log(`=== Mermaid block ${i} ===`);
-        console.log(decoded);
-      });
-      // Mermaid v10+ runs asynchronously
-      mermaid.run({ querySelector: ".mermaid" })
-        .catch(err => {
-          console.error("Mermaid rendering failed:", err);
-        });
-      });
-    </script>
-    <script>hljs.highlightAll();</script>
+    {% include "post.html" $}
   </body>
 </html>
 {% endblock %}
