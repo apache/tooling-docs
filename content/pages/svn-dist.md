@@ -41,7 +41,7 @@ flowchart TD
     A[svn:dist/release]
     B[rsync.apache.org]
     A -->|svn| B
-    C{"downloads.apache.org"]
+    C["downloads.apache.org"]
     D[archive.apache.org]
     B -->|rsync| C
     B -->|rsync| D

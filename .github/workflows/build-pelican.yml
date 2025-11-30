@@ -25,7 +25,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
-          ref: ${{ github.event_name == 'workflow_dispatch' && github.event.input.ref != '' && github.event.input.ref || github.ref }}
+          ref: ${{ github.ref || 'main' }}
       - uses: apache/infrastructure-actions/pelican@ed044141796eb8ad67581cf5f4210656ffa77daa
         with:
           # This must be appropriate for the branch being built
