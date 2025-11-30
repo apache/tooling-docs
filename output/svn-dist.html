@@ -167,7 +167,7 @@
     A[svn:dist/release]
     B[rsync.apache.org]
     A --&gt;|svn| B
-    C{"downloads.apache.org"}
+    C{"downloads.apache.org"]
     D[archive.apache.org]
     B --&gt;|rsync| C
     B --&gt;|rsync| D
@@ -183,7 +183,7 @@
     ATR --&gt;|svn| A
     B[rsync.apache.org]
     A --&gt;|svn| B
-    C{"downloads.apache.org"}
+    C["downloads.apache.org"]
     D[archive.apache.org]
     B --&gt;|rsync| C
     B --&gt;|rsync| D
@@ -208,7 +208,7 @@
     A --&gt;|svn| B
     ATR[releases.apache.org]
     B --&gt;|rsync| ATR
-    C{"downloads.apache.org"}
+    C["downloads.apache.org"]
     D[archive.apache.org]
     ATR --&gt;|rsync| C
     ATR --&gt;|rsync| D
@@ -227,7 +227,7 @@
       ATR &lt;--&gt; B
     end
     A --&gt;|svn| ATR
-    C{"downloads.apache.org"}
+    C["downloads.apache.org"]
     D[archive.apache.org]
     B --&gt;|rsync| C
     B --&gt;|rsync| D
@@ -239,7 +239,7 @@
 <pre><code class="language-mermaid">flowchart TD
   subgraph Transition 3
     ATR[releases.apache.org]
-    C{"downloads.apache.org"}
+    C["downloads.apache.org"]
     D[archive.apache.org]
     ATR --&gt;|rsync| C
     ATR --&gt;|rsync| D
@@ -250,7 +250,7 @@
 </ol>
 <pre><code class="language-mermaid">flowchart TD
   subgraph Transition 4
-    ATR{"releases.apache.org"}
+    ATR["releases.apache.org"]
     D[archive.apache.org]
     ATR --&gt;|rsync| D
   end
