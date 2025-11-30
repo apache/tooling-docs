@@ -11,16 +11,13 @@
     <body class="d-flex flex-column h-100">
     <main class="flex-shrink-0">
         <div>
-
             {% include "menu.html" %}
             {% include "breadcrumbs.html" %}
-
             {% include "blogindex.html" %}
-
             {% include "footer.html" %}
         </div>
     </main>
-    <script>hljs.initHighlightingOnLoad();</script>
+    {% include "post.html" %}
     </body>
     </html>
 {% endblock %}
