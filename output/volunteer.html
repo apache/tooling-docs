@@ -157,17 +157,15 @@
         document.querySelectorAll("pre > code.language-mermaid").forEach(code => {
           const rawHtml = code.innerHTML;
           const decoded = decodeHtmlEntities(rawHtml);
-          console.log("=== Mermaid block raw HTML ===");
-          console.log(rawHtml);
           console.log("=== Mermaid block decoded text ===");
-          console.log(decoded);
+          console.log(Array.from(decoded).map(c => c.charCodeAt(0)));
           const div = document.createElement("div");
           div.className = "mermaid";
           // Replace <pre><code>…</code></pre> with <div class="mermaid">…</div>
           code.parentElement.replaceWith(div);
         });
         // Now render them
-        mermaid.run({ querySelector: ".mermiad" });
+        mermaid.run({ querySelector: ".mermaid" });
       });
     </script>
     <script>hljs.highlightAll();</script>

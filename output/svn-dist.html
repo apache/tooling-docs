@@ -163,7 +163,7 @@
 </ol>
 <h3>Transitional Steps</h3>
 <pre><code class="language-mermaid">flowchart TD
-    subgraph Legacy
+  subgraph Legacy
     A[svn:dist/release]
     B[rsync.apache.org]
     A --&gt;|svn| B
@@ -171,13 +171,13 @@
     D[archive.apache.org]
     B --&gt;|rsync| C
     B --&gt;|rsync| D
-    end
+  end
 </code></pre>
 <ol>
 <li><strong>ATR writes to SVN</strong> - ATR Releases write to <code>svn:dist/release</code> as an interim step.</li>
 </ol>
 <pre><code class="language-mermaid">flowchart TD
-    subgraph Transition 1
+  subgraph Transition 1
     ATR[releases.apache.org]
     A[svn:dist/release]
     ATR --&gt;|svn| A
@@ -187,7 +187,7 @@
     D[archive.apache.org]
     B --&gt;|rsync| C
     B --&gt;|rsync| D
-    end
+  end
 </code></pre>
 <ol start="2">
 <li><strong>ATR and Legacy are Integrated</strong> - Insert ATR into the rsync chain.
@@ -202,7 +202,7 @@
 </li>
 </ol>
 <pre><code class="language-mermaid">flowchart TD
-    subgraph Transition 2A
+  subgraph Transition 2A
     A[svn:dist/release]
     B[rsync.apache.org]
     A --&gt;|svn| B
@@ -212,48 +212,48 @@
     D[archive.apache.org]
     ATR --&gt;|rsync| C
     ATR --&gt;|rsync| D
-    end
+  end
 </code></pre>
 <p>Or</p>
 <ul>
 <li>(b) ATR coexists on rsync.apache.org and detects legacy release addition and deletion.</li>
 </ul>
 <pre><code class="language-mermaid">flowchart TD
-    subgraph Transition 2B
+  subgraph Transition 2B
     A[svn:dist/release]
     subgraph ATR on Rsync
-    ATR[releases.apache.org]
-    B[rsync.apache.org]
-    ATR &lt;--&gt; B
+      ATR[releases.apache.org]
+      B[rsync.apache.org]
+      ATR &lt;--&gt; B
     end
     A --&gt;|svn| ATR
     C{"downloads.apache.org"}
     D[archive.apache.org]
     B --&gt;|rsync| C
     B --&gt;|rsync| D
-    end
+  end
 </code></pre>
 <ol start="3">
 <li><strong>Legacy is Retired</strong> - <code>svn:dist/release</code> is retired.</li>
 </ol>
 <pre><code class="language-mermaid">flowchart TD
-    subgraph Transition 3
+  subgraph Transition 3
     ATR[releases.apache.org]
     C{"downloads.apache.org"}
     D[archive.apache.org]
     ATR --&gt;|rsync| C
     ATR --&gt;|rsync| D
-    end
+  end
 </code></pre>
 <ol start="4">
 <li><strong>Further Integration</strong> - downloads.apache.org is hosted on ATR. Downloads.apache.org is multiple servers. ATR would need to work on multiple servers</li>
 </ol>
 <pre><code class="language-mermaid">flowchart TD
-    subgraph Transition 4
+  subgraph Transition 4
     ATR{"releases.apache.org"}
     D[archive.apache.org]
     ATR --&gt;|rsync| D
-    end
+  end
 </code></pre>
 
         </div>
@@ -279,17 +279,15 @@
         document.querySelectorAll("pre > code.language-mermaid").forEach(code => {
           const rawHtml = code.innerHTML;
           const decoded = decodeHtmlEntities(rawHtml);
-          console.log("=== Mermaid block raw HTML ===");
-          console.log(rawHtml);
           console.log("=== Mermaid block decoded text ===");
-          console.log(decoded);
+          console.log(Array.from(decoded).map(c => c.charCodeAt(0)));
           const div = document.createElement("div");
           div.className = "mermaid";
           // Replace <pre><code>…</code></pre> with <div class="mermaid">…</div>
           code.parentElement.replaceWith(div);
         });
         // Now render them
-        mermaid.run({ querySelector: ".mermiad" });
+        mermaid.run({ querySelector: ".mermaid" });
       });
     </script>
     <script>hljs.highlightAll();</script>
