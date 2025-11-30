@@ -37,7 +37,7 @@ The legacy domains are currently connected to `svn:dist/release` as follows:
 
 ```mermaid
 flowchart TD
-    subgraph Legacy
+  subgraph Legacy
     A[svn:dist/release]
     B[rsync.apache.org]
     A -->|svn| B
@@ -45,14 +45,14 @@ flowchart TD
     D[archive.apache.org]
     B -->|rsync| C
     B -->|rsync| D
-    end
+  end
 ```
 
 1. **ATR writes to SVN** - ATR Releases write to `svn:dist/release` as an interim step.
 
 ```mermaid
 flowchart TD
-    subgraph Transition 1
+  subgraph Transition 1
     ATR[releases.apache.org]
     A[svn:dist/release]
     ATR -->|svn| A
@@ -62,7 +62,7 @@ flowchart TD
     D[archive.apache.org]
     B -->|rsync| C
     B -->|rsync| D
-    end
+  end
 ```
 
 2. **ATR and Legacy are Integrated** - Insert ATR into the rsync chain.
@@ -72,7 +72,7 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    subgraph Transition 2A
+  subgraph Transition 2A
     A[svn:dist/release]
     B[rsync.apache.org]
     A -->|svn| B
@@ -82,7 +82,7 @@ flowchart TD
     D[archive.apache.org]
     ATR -->|rsync| C
     ATR -->|rsync| D
-    end
+  end
 ```
 
    Or
@@ -91,41 +91,41 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    subgraph Transition 2B
+  subgraph Transition 2B
     A[svn:dist/release]
     subgraph ATR on Rsync
-    ATR[releases.apache.org]
-    B[rsync.apache.org]
-    ATR <--> B
+      ATR[releases.apache.org]
+      B[rsync.apache.org]
+      ATR <--> B
     end
     A -->|svn| ATR
     C{"downloads.apache.org"}
     D[archive.apache.org]
     B -->|rsync| C
     B -->|rsync| D
-    end
+  end
 ```
 
 3. **Legacy is Retired** - `svn:dist/release` is retired.
 
 ```mermaid
 flowchart TD
-    subgraph Transition 3
+  subgraph Transition 3
     ATR[releases.apache.org]
     C{"downloads.apache.org"}
     D[archive.apache.org]
     ATR -->|rsync| C
     ATR -->|rsync| D
-    end
+  end
 ```
 
 4. **Further Integration** - downloads.apache.org is hosted on ATR. Downloads.apache.org is multiple servers. ATR would need to work on multiple servers
 
 ```mermaid
 flowchart TD
-    subgraph Transition 4
+  subgraph Transition 4
     ATR{"releases.apache.org"}
     D[archive.apache.org]
     ATR -->|rsync| D
-    end
+  end
 ```
