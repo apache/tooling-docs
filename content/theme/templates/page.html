@@ -16,7 +16,6 @@
         {% include "footer.html" %}
       </div>
     </main>
-    <script>hljs.highlightAll();</script>
     <script>
       function decodeHtmlEntities(str) {
         const txt = document.createElement("textarea");
@@ -38,8 +37,9 @@
         });
         // Now render them
         mermaid.init();
-     });
-  </script>
+      });
+    </script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>
 {% endblock %}
