@@ -178,7 +178,7 @@
 <li>archive.apache.org periodically rsyncs with rsync.apache.org without removing artifacts from the destination.</li>
 </ol>
 <h3>Transitional Steps</h3>
-<pre><code class="language-mermaid">flowchart TD
+<pre><code class="language-mermaid">flowchart LR
   subgraph Legacy
     A[svn:dist/release]
     B[rsync.apache.org]
@@ -192,7 +192,7 @@
 <ol>
 <li><strong>ATR writes to SVN</strong> - ATR Releases write to <code>svn:dist/release</code> as an interim step.</li>
 </ol>
-<pre><code class="language-mermaid">flowchart TD
+<pre><code class="language-mermaid">flowchart LR
   subgraph Transition 1
     ATR[releases.apache.org]
     A[svn:dist/release]
@@ -217,7 +217,7 @@
 </ul>
 </li>
 </ol>
-<pre><code class="language-mermaid">flowchart TD
+<pre><code class="language-mermaid">flowchart LR
   subgraph Transition 2A
     A[svn:dist/release]
     B[rsync.apache.org]
@@ -234,7 +234,7 @@
 <ul>
 <li>(b) ATR coexists on rsync.apache.org and detects legacy release addition and deletion.</li>
 </ul>
-<pre><code class="language-mermaid">flowchart TD
+<pre><code class="language-mermaid">flowchart LR
   subgraph Transition 2B
     A[svn:dist/release]
     subgraph ATR on Rsync
@@ -252,7 +252,7 @@
 <ol start="3">
 <li><strong>Legacy is Retired</strong> - <code>svn:dist/release</code> is retired.</li>
 </ol>
-<pre><code class="language-mermaid">flowchart TD
+<pre><code class="language-mermaid">flowchart LR
   subgraph Transition 3
     ATR[releases.apache.org]
     C["downloads.apache.org"]
@@ -264,7 +264,7 @@
 <ol start="4">
 <li><strong>Further Integration</strong> - downloads.apache.org is hosted on ATR. Downloads.apache.org is multiple servers. ATR would need to work on multiple servers</li>
 </ol>
-<pre><code class="language-mermaid">flowchart TD
+<pre><code class="language-mermaid">flowchart LR
   subgraph Transition 4
     ATR["releases.apache.org"]
     D[archive.apache.org]
