@@ -69,8 +69,8 @@ Repositories:
 ## 6. Infrastructure Requirements
 
    - Run book for releases.apache.org
-   - Progress on the retirement path for `svn:dist`. See [Legacy Releases from SVN Dist](https://github.com/apache/tooling-docs/blob/main/apache-trusted-releases/svn-dist.md)
-     for possible transitional states. For this first iteration _transition 2_ is preferred.
+   - Progress on the retirement path for `svn:dist`. See [Legacy Releases from SVN Dist](svn-dist.html)
+     for possible transitional states. For the beta test _transition 1B_ is preferred.
    - Legacy urls for dist.apache.org, downloads.apache.org, dlcdn.apache.org, and archive.apache.org remain supported.
    - Path schemes for downloads.apache.org, dlcdn.apache.org, and archive.apache.org remain.
 
