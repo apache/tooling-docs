@@ -50,10 +50,31 @@ flowchart
 
 1. **ATR writes to SVN** - ATR Releases write to `svn:dist/release` as an interim step.
 
+   - (a) ATR commits new changes to SVN dist release.
+
 ```mermaid
 flowchart
-  subgraph Transition 1
+  subgraph Transition 1A
     ATR[releases.apache.org]
+    A[svn:dist/release]
+    ATR -->|svn| A
+    B[rsync.apache.org]
+    A -->|svn| B
+    C["downloads.apache.org"]
+    D[archive.apache.org]
+    B -->|rsync| C
+    B -->|rsync| D
+  end
+```
+
+   - (b) ATR both watches changes to and commits new changes to SVN dist release.
+
+```mermaid
+flowchart
+  subgraph Transition 1B
+    AA[svn:dist/release]
+    ATR[releases.apache.org]
+    AA -->|svn| ATR
     A[svn:dist/release]
     ATR -->|svn| A
     B[rsync.apache.org]
