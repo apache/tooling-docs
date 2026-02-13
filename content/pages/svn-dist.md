@@ -1,37 +1,37 @@
-Title: Legacy Releases from SVN Dist
+Title: Legacy ASF Releases from SVN Dist
 license: https://www.apache.org/licenses/LICENSE-2.0
 
-We have three types of Releases to create using a "Pull from 'Dist'" process.
+We have three types of ASF Releases to import in ATR using a "Pull from '[SVN Dist](https://dist.apache.org/repos/dist/)'" process:
 
-1. Release Candidates from `dist/dev` as the Release Manager requests from within the ATR Web UI.
+1. Current Release Candidates from [`dist/dev`](https://dist.apache.org/repos/dist/dev/), as the Release Manager requests from within the ATR Web UI.
 
-2. Current Releases from `dist/release` this will be used for the initial migration and may be used from time to time as PMCs use the old methods.
+2. Current/last Releases from [`dist/release`](https://dist.apache.org/repos/dist/release/): this will be used for the initial migration and may be used from time to time as PMCs use the old methods.
 
-3. Archived Releases which are migrated from the archive if not present in the Current Releases.
+3. Archived Releases in [Archive Distribution Directory](https://archive.apache.org/dist/) which are migrated from the archive if not present in the Current Releases.
 
 ## ATR Web UX
 
-We will need pages to perform tasks related to the use of our legacy setup.
+We will need pages to perform tasks related to the use of our legacy [SVN dist](https://dist.apache.org/repos/dist/) setup.
 
 ### PMC Management Page
 
-1. **Create Release Candidate** - upload the packages for a release candidate from `svn:dist/dev`. This page can also handle direct uploads.
+1. **Create Release Candidate** - upload the packages to ATR from a release candidate from [`svn:dist/dev`](https://dist.apache.org/repos/dist/dev/). This upload page can also handle direct uploads, without the `svn:dist/dev` step.
 
-2. **Legacy Release** - upload an approved release from `svn:dist/release`.
+2. **Previous Release** - upload an approved release from `svn:dist/release`.
 
 ### System Admin Page
 
-1. **Synchronise Current Releases** - scan `svn:dist/release` and migrate any not in the ATR.
+1. **Synchronise Current Releases** - scan [`svn:dist/release`](https://dist.apache.org/repos/dist/release/) and migrate any not in the ATR.
 
-2. **Synchronize Release Archive** - scan `archive` repository and migrate any archived not in the ATR as a Current or Archived Release.
+2. **Synchronize Release Archive Distribution Directory** - scan [`archive`](https://archive.apache.org/dist/) repository and migrate any archived not in the ATR as a Current or Archived Release.
 
-## Backends Hosting Release Artifacts
+## Backends Hosting Release Distribution
 
 The legacy domains are currently connected to `svn:dist/release` as follows:
 
-1. rsync.apache.org has a directory that updates a checkout of `svn:dist/release`
-2. downloads.apache.org periodically rsyncs with rsync.apache.org
-3. archive.apache.org periodically rsyncs with rsync.apache.org without removing artifacts from the destination.
+1. rsync.apache.org has a directory that updates a checkout of [`svn:dist/release`](https://dist.apache.org/repos/dist/release/)
+2. [downloads.apache.org](https://downloads.apache.org/) periodically rsyncs with rsync.apache.org
+3. [archive.apache.org](https://archive.apache.org/dist/) periodically rsyncs with rsync.apache.org without removing artifacts from the destination.
 
 ### Transitional Steps
 
@@ -48,14 +48,14 @@ flowchart
   end
 ```
 
-1. **ATR writes to SVN** - ATR Releases write to `svn:dist/release` as an interim step.
+1. **ATR writes to SVN Dist** - ATR Releases write to `svn:dist/release` as an interim step.
 
-   - (a) ATR commits new changes to SVN dist release.
+   - (a) ATR commits new releases distributions to SVN dist/release.
 
 ```mermaid
 flowchart
   subgraph Transition 1A
-    ATR[releases.apache.org]
+    ATR[ATR releases.apache.org]
     A[svn:dist/release]
     ATR -->|svn| A
     B[rsync.apache.org]
@@ -67,7 +67,7 @@ flowchart
   end
 ```
 
-   - (b) ATR both watches changes to and commits new changes to SVN dist release.
+   - (b) ATR both watches changes to SVN dist release and commits new ATR-first changes to SVN dist release.
 
 ```mermaid
 flowchart
@@ -127,12 +127,12 @@ flowchart
   end
 ```
 
-3. **Legacy is Retired** - `svn:dist/release` is retired.
+3. **Legacy SVN Dist is Retired** - `svn:dist/release` is retired.
 
 ```mermaid
 flowchart
   subgraph Transition 3
-    ATR[releases.apache.org]
+    ATR[ATR releases.apache.org]
     C["downloads.apache.org"]
     D[archive.apache.org]
     ATR -->|rsync| C
