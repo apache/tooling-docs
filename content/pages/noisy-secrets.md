@@ -1,0 +1,626 @@
+Title: Noisy Secrets
+license: https://www.apache.org/licenses/LICENSE-2.0
+
+# Noisy Secrets
+
+Draft Specification, 2026-04-03.
+
+Not intended for review outside of the Apache Software Foundation.
+
+## 1. Abstract
+
+Noisy Secrets are bearer credentials which are designed to be easy to detect when leaked. They contain checksums for validation, and may optionally contain a namespace to provide a hint to identify the issuing party for leak reports.
+
+## 2. Conventions
+
+RFC 2119 and RFC 8174 keywords are used throughout. All indices in this specification are zero-based, and all ranges are inclusive. All strings are case-sensitive ASCII octets. The words "byte" and "character" are used interchangeably. The notation |x| indicates the length of x, for any x. References to grammar productions of fixed strings sometimes refer to an instance of the fixed string itself.
+
+## 3. Alphabets
+
+### 3.1. Noisy Base37
+
+All characters in a Noisy Secret are taken from the following Noisy Base37 alphabet:
+
+    BASE37 = %x30-39 / %x5F / %x61-7A
+
+These are the 37 characters `0-9`, `_`, and `a-z` respectively, giving the full alphabet:
+
+    0123456789_abcdefghijklmnopqrstuvwxyz
+
+### 3.2. Noisy Base36
+
+The first and last character in a Namespace are taken from the following Noisy Base36 alphabet:
+
+    BASE36 = %x30-39 / %x61-7A
+
+These are the 36 characters `0-9` and `a-z` respectively, giving the full alphabet:
+
+    0123456789abcdefghijklmnopqrstuvwxyz
+
+This is a strict subset of Noisy Base37, omitting the character `_`.
+
+### 3.3. Noisy Base32
+
+All characters in the Payload are taken from the following Noisy Base32 alphabet:
+
+    BASE32 = %x32-39 / %x61-6B / %x6D-6E / %x70-7A
+
+These are the 32 characters `2-9`, `a-k`, `m-n`, and `p-z` respectively, giving the full alphabet:
+
+    23456789abcdefghijkmnpqrstuvwxyz
+
+This is a strict subset of Noisy Base37, omitting the 5 characters `0`, `1`, `_`, `l`, and `o`.
+
+### 3.4. Domain Component
+
+All characters in components of domain names used to produce Namespaces are taken from the following Domain Component alphabet:
+
+    COMPONENT = %x2D / %x30-39 / %x61-7A
+
+These are the 37 characters `-`, `0-9`, and `a-z` respectively, giving the full alphabet:
+
+    -0123456789abcdefghijklmnopqrstuvwxyz
+
+This alphabet is not used within Noisy Secret values, only during construction as part of the algorithm.
+
+## 4. Strings
+
+### 4.1. Prefix
+
+    Prefix = %s"secret"
+
+A Prefix is a fixed string, 6 bytes long.
+
+### 4.2. Pad
+
+    Pad = %s"_"
+
+A Pad is a fixed string, 1 byte long.
+
+### 4.3. Namespace String
+
+    NamespaceString = %x32
+    NamespaceString /= %x34 Pad BASE36
+    NamespaceString /= %x35 Pad BASE36 BASE36
+    NamespaceString /= %x36 Pad BASE36 BASE37 BASE36
+    NamespaceString /= %x37 Pad BASE36 2(BASE37) BASE36
+    NamespaceString /= %x38 Pad BASE36 3(BASE37) BASE36
+    NamespaceString /= %x39 Pad BASE36 4(BASE37) BASE36
+    NamespaceString /= %x61 Pad BASE36 5(BASE37) BASE36
+    NamespaceString /= %x62 Pad BASE36 6(BASE37) BASE36
+    NamespaceString /= %x63 Pad BASE36 7(BASE37) BASE36
+    NamespaceString /= %x64 Pad BASE36 8(BASE37) BASE36
+    NamespaceString /= %x65 Pad BASE36 9(BASE37) BASE36
+    NamespaceString /= %x66 Pad BASE36 10(BASE37) BASE36
+    NamespaceString /= %x67 Pad BASE36 11(BASE37) BASE36
+    NamespaceString /= %x68 Pad BASE36 12(BASE37) BASE36
+    NamespaceString /= %x69 Pad BASE36 13(BASE37) BASE36
+    NamespaceString /= %x6A Pad BASE36 14(BASE37) BASE36
+    NamespaceString /= %x6B Pad BASE36 15(BASE37) BASE36
+    NamespaceString /= %x6D Pad BASE36 16(BASE37) BASE36
+    NamespaceString /= %x6E Pad BASE36 17(BASE37) BASE36
+    NamespaceString /= %x70 Pad BASE36 18(BASE37) BASE36
+    NamespaceString /= %x71 Pad BASE36 19(BASE37) BASE36
+    NamespaceString /= %x72 Pad BASE36 20(BASE37) BASE36
+    NamespaceString /= %x73 Pad BASE36 21(BASE37) BASE36
+    NamespaceString /= %x74 Pad BASE36 22(BASE37) BASE36
+    NamespaceString /= %x75 Pad BASE36 23(BASE37) BASE36
+    NamespaceString /= %x76 Pad BASE36 24(BASE37) BASE36
+    NamespaceString /= %x77 Pad BASE36 25(BASE37) BASE36
+    NamespaceString /= %x78 Pad BASE36 26(BASE37) BASE36
+    NamespaceString /= %x79 Pad BASE36 27(BASE37) BASE36
+    NamespaceString /= %x7A Pad BASE36 28(BASE37) BASE36
+
+A Namespace String is either 1 or from 3 to 32 bytes long. The first character of a Namespace String indicates the total length, but not in a way that is compatible with standard decimal Arabic numerals. The value three (`3`, %x33), which would have indicated a total length of 2, is deliberately not part of the grammar and cannot be used.
+
+### 4.4. Payload String
+
+    PayloadString = 32(BASE32)
+
+A Payload String is 32 bytes long.
+
+### 4.5. Interleaved Checksum String
+
+    InterleavedChecksumString = 8(BASE37)
+
+An Interleaved Checksum String is 8 bytes long.
+
+### 4.6. Noisy Secret String
+
+    Left = Prefix Pad NamespaceString
+    Right = PayloadString InterleavedChecksumString
+    NoisySecretString = Left Pad Right
+
+A Noisy Secret String is either 49 or from 51 to 80 bytes long.
+
+## 5. Constructions
+
+### 5.1. Namespace
+
+Construction of a Namespace is a function over an optional lowercase fully qualified domain name (FQDN) without trailing dot. The FQDN MAY be an IDN that has already been encoded to ASCII as specified by IDNA2008, and MUST NOT be the empty string. Namespace is a subset of Namespace String.
+
+1. If there is no FQDN, the Namespace is the digit 2 (`2`).
+2. If there is a FQDN, the Namespace is constructed as follows, where each step from b to i is applied to the result from the prior step:
+  a. Split the FQDN into components at each full stop character (`.`).
+  b. If any component contains characters not in the `COMPONENT` alphabet, this FQDN cannot be used to obtain a Namespace.
+  c. If any component starts with or ends with a hyphen (`-`), then this FQDN cannot be used to obtain a Namespace.
+  d. If any component is empty, then this FQDN cannot be used to obtain a Namespace.
+  e. Reverse the order of the components.
+  f. Convert each hyphen (`-`) in each component to two underscores.
+  g. Join the components with a single underscore character (`_`). This resulting value is called Joined.
+  h. If |Joined| is greater than 30, this FQDN cannot be used to obtain a Namespace.
+  i. The Namespace is the concatenation of the character at index |Joined| + 1 in the `BASE32` alphabet, a Pad, and Joined.
+
+### 5.2. Namespace Domain
+
+Construction of a Namespace Domain is a function over a Namespace. The Namespace Domain is an optional lowercase FQDN without trailing dot, and MAY be an IDN that has already been encoded to ASCII as specified by IDNA2008.
+
+1. If the Namespace is the digit 2 (`2`), there is no FQDN.
+2. Otherwise the Namespace Domain is constructed as follows, where each step from b to e is applied to the result from the prior step:
+  a. Remove the first two characters from the Namespace.
+  b. Convert each two consecutive underscore characters (`__`) to a single hyphen character (`-`).
+  c. Split into components at each Pad character (`_`).
+  d. Reverse the order of the components.
+  e. Join the components with a single full stop character (`.`).
+
+### 5.3. Padded Namespace Tag
+
+A Padded Namespace Tag is constructed as a function over a Namespace String, and consists of the Namespace String followed by 32 - |Namespace String| Pad characters.
+
+### 5.4. Padded Namespace
+
+A Padded Namespace is the subset of a Padded Namespace Tag that is constructed over a Namespace. Padded Namespace is a subset of Padded Namespace Tag.
+
+### 5.5. Payload
+
+A Payload is constructed as a function over no arguments. It consists of 32 characters where each character is selected independently and uniformly at random from the `BASE32` alphabet. The selection process MUST be based on a cryptographically secure random source. Payload is a subset of Payload String.
+
+### 5.6. Even Message Tag and Odd Message Tag
+
+Construction of Even and Odd Message Tags is a function over a Namespace String and a Payload String. Obtain a Padded Namespace Tag from the Namespace String using the algorithm in Section 5.3. The Even Message Tag is the concatenation of each even index from 0 to 30 of the Padded Namespace Tag with each even index from 0 to 30 of the Payload String. The Odd Message Tag is the concatenation of each odd index from 1 to 31 of the Padded Namespace Tag with each odd index from 1 to 31 of the Payload String. The Even Message Tag and the Odd Message Tag are each a kind of Message Tag, which is used in Section 5.8.
+
+### 5.7. Even Message and Odd Message
+
+Even and Odd Messages are the subset of Even and Odd Message Tags that are constructed over a Namespace and Payload. The Even Message and the Odd Message are each a kind of Message, which is used in Section 5.9.
+
+### 5.8. Checksum Tag
+
+Construction of a Checksum Tag is a function over a Message Tag. The Checksum Tag is the parity string of the Message Tag using a Reed-Solomon code over GF(37) with block length 36, generator polynomial (x - 2)(x - 4)(x - 8)(x - 16), and message characters interpreted as lowest degree first coefficients, all as specified in Section 6.
+
+### 5.9. Checksum
+
+Checksum is the subset of Checksum Tag that is constructed over a Message.
+
+### 5.10. Interleaved Checksum Tag
+
+An Interleaved Checksum Tag is constructed as a function over Even and Odd Checksum Tags. The character at index 2i of the Interleaved Checksum Tag is the character at index i of the Even Checksum Tag, and the character at index 2i + 1 of the Interleaved Checksum Tag is the character at index i of the Odd Checksum Tag, for i from 0 to 3. An Interleaved Checksum Tag is a subset of Interleaved Checksum String.
+
+### 5.11. Interleaved Checksum
+
+An Interleaved Checksum is the subset of Interleaved Checksum Tag that is constructed over Even and Odd Checksums.
+
+### 5.12. Noisy Secret Tag
+
+A Noisy Secret Tag is constructed as a function over a Namespace String and a Payload String. Obtain Even and Odd Message Tags using the construction in Section 5.6. Obtain Even and Odd Checksum Tags using the construction in Section 5.8. Obtain an Interleaved Checksum Tag from the Even and Odd Checksum Tags using the construction in Section 5.10. The Noisy Secret Tag is the concatenation of a Prefix, a Pad, the Namespace String, a Pad, the Payload String, and the Interleaved Checksum Tag. A Noisy Secret Tag is a subset of Noisy Secret String.
+
+### 5.13. Noisy Secret
+
+A Noisy Secret is the subset of Noisy Secret Tag that is constructed over an optional lowercase FQDN without trailing dot. If specified, the FQDN used to obtain the Namespace MUST be controlled by the issuing party. Obtain a Namespace using the construction in Section 5.1, and a Payload using the construction in Section 5.5. The Noisy Secret is the Noisy Secret Tag obtained from the Namespace and Payload using the construction in Section 5.12. A Noisy Secret is a subset of both Noisy Secret Tag and Noisy Secret String.
+
+## 6. Checksum Tag Algorithm
+
+### 6.1. Construction
+
+Checksum Tags are computed over a Message Tag as defined by Section 5.6, which is a sequence of 32 characters from `BASE37`. Each character in the Message Tag is interpreted as a field element of GF(37), i.e. the integers modulo 37 where all arithmetic is performed modulo 37, using a mapping from `BASE37` in ASCII order, i.e. from "0" mapping to GF(37) element 0 to "z" mapping to element 36.
+
+The GF(37) interpretation of the Message Tag is used as a Reed-Solomon message in an RS(36, 32) code called Noisy RS(36, 32). The message field elements are interpreted as the lowest to highest coefficients of a polynomial M(x):
+
+    M(x) = m0 + m1*x + ... + m31*x^31
+
+The polynomial C(x) is then the unique polynomial of degree less than 4 where M(x) + x^32*C(x) is divisible by the generator polynomial g(x) = (x - 2)(x - 4)(x - 8)(x - 16) over GF(37).
+
+The coefficient vector of C(x) for a given message in the foregoing construction, from lowest to highest coefficients, is encoded by mapping each of the field elements, including any trailing zeroes, by interpreting it as an index in `BASE37` in ASCII order to form the 4 character Checksum Tag. The Checksum Tag is also known as a parity string.
+
+### 6.2. Parameters and Equivalent Constructions
+
+The RS(36, 32) code parameters are:
+
+    q = 37  field size (alphabet size)
+    n = 36  block length (q - 1)
+    k = 32  message length (n - t)
+    t = 4   parity length (n - k)
+
+The field size, q, of any Reed-Solomon code is a prime power, in this case 37^1 = 37, and the chosen block length n = q - 1 = 36 is the order of the multiplicative group of GF(37). In the cyclic construction, the generator polynomial must have consecutive roots over a primitive element of the chosen field. The primitive element of a field, traditionally called alpha, is one that generates all non-zero elements of that field, in any order, for powers from 0 to the field size minus 2. In the case of GF(37), that is alpha^0 to alpha^35. The smallest primitive element that satisfies that for GF(37) is alpha = 2.
+
+The roots of a cyclic Reed-Solomon construction are any N consecutive powers of the primitive element, alpha, where N is the parity length. For RS(36, 32) over GF(37), the parity length is 4, and Noisy RS(36, 32) uses alpha^1, alpha^2, alpha^3, alpha^4 = 2^1, 2^2, 2^3, 2^4 = 2, 4, 8, 16, giving the generator polynomial (x - 2)(x - 4)(x - 8)(x - 16). This is equivalent to the polynomial g(x) with coefficient vector [25, 2, 21, 7, 1], presented from lowest to highest degree to match the encodings, or equivalently:
+
+    g(x) = 25 + 2*x + 21*x^2 + 7*x^3 + x^4 over GF(37)
+
+The checksum polynomial, C(x), is the unique polynomial of degree less than 4 for which the concatenated codeword polynomial, with message coefficients first and checksum coefficients last, is divisible by the generator polynomial.
+
+## 7. Validation
+
+Validation is performed over a Value. If a Value matches the criterion in Section 7.1 then it is a Candidate. If a Candidate matches the criterion in Section 7.5 then it is a Noisy Secret Tag. Determination of whether a Noisy Secret Tag is also a Noisy Secret requires out-of-band information.
+
+### 7.1. Candidate Value
+
+A Value is a Candidate if it is a byte string with length of either 49 or from 51 to 80.
+
+### 7.2. Candidate Namespace Construction
+
+A Candidate Namespace is constructed as a function over a Candidate. The substring from indices 7 to |Candidate| - 42 in the Candidate is the Candidate Namespace as long as it matches the `NamespaceString` production. Otherwise the Candidate has no Candidate Namespace. A Candidate Namespace is a Namespace String.
+
+### 7.3. Candidate Payload Construction
+
+A Candidate Payload is constructed as a function over a Candidate. The substring from indices |Candidate| - 40 to |Candidate| - 9 in the Candidate is the Candidate Payload as long as each character in this substring is also in `BASE32`. Otherwise the Candidate has no Candidate Payload. A Candidate Payload is a Payload String.
+
+### 7.4. Expected Candidate Construction
+
+An Expected Candidate is constructed as a function over a Candidate. Try to obtain a Candidate Namespace using the construction in Section 7.2, and a Candidate Payload using the construction in Section 7.3. If the Candidate has no Candidate Namespace or no Candidate Payload, then the Candidate has no Expected Candidate. Otherwise the Expected Candidate is the Noisy Secret Tag obtained using the construction in Section 5.12.
+
+### 7.5. Noisy Secret Tag Candidate
+
+A Candidate is a Noisy Secret Tag if it is identical to the Expected Candidate obtained from it using the construction in Section 7.4. If no Expected Candidate can be obtained from the Candidate, then the Candidate is not a Noisy Secret Tag.
+
+## 8. Security Considerations
+
+### 8.1. Bearer Credential Handling
+
+Noisy Secrets are bearer credentials, so possession alone is sufficient for authentication. Implementations and operators SHOULD:
+
+1. Generate Noisy Secrets in secure environments.
+2. Store Noisy Secrets securely. Relying parties SHOULD typically store hashes of Noisy Secrets, and users SHOULD use standard security practices to prevent unauthorised access to their Noisy Secrets.
+3. Be careful to avoid accidental exfiltration through configuration files, plaintext logs, or similar mechanisms.
+4. Transmit Noisy Secrets only when necessary, and only through secure channels.
+5. Provide revocation and rotation procedures as appropriate.
+
+### 8.2. Namespace Domain Visibility
+
+If a Namespace encodes a FQDN in a Noisy Secret, that FQDN MUST be controlled by the issuing party. This provides a hint to identify the issuing party to enable the report of leaked Noisy Secrets. It also, however, has the side effect of notifying attackers where to find information about the service that the Noisy Secret has leaked from. This information is often available in the same band as the leaked Noisy Secret itself, if, for example, it was leaked in a configuration file for a service that is already identified by the configuration. Issuing parties SHOULD, however, consider the consequences for a chosen FQDN. The following hierarchy may be helpful:
+
+1. No domain.
+2. Domain pools credentials between organisations and routes reports.
+3. Domain pools services within an organisation and routes reports.
+4. Domain secretly identifies a service.
+5. Domain of a service.
+
+### 8.3. Namespace Domain Trust
+
+An FQDN in a Namespace MUST be controlled by the issuing party. Despite this, it is not guaranteed that such an FQDN derived from a given Noisy Secret is controlled by the issuing party for a number of reasons, including, for example:
+
+* The issuing party of a Noisy Secret did not comply with the requirement to use a domain under their control.
+* The domain was controlled by the issuing party when the Noisy Secret was created, but has since expired.
+
+Therefore a Namespace FQDN is not a proof of origin. Any party can generate a Noisy Secret based on any FQDN, including ones never registered. Care MUST be taken by reporters of leaked credentials to ensure that they are not used as a Denial of Service amplification vector.
+
+### 8.4. Payload Generation
+
+Implementations MUST construct payloads from a cryptographically secure random source. Failure to use such a source can be catastrophic for security. Implementors MUST be careful to avoid modulo bias when obtaining random values.
+
+A Payload generated according to this specification has exactly 160 bits of entropy, because it consists of 32 independent selections from an alphabet of size 32, giving 32^32 = 2^160 possible values. The resistance of a Noisy Secret to guessing is derived from the Payload. The Namespace is optional metadata and the Checksum is deterministic redundancy for validation, so neither SHOULD be counted when assessing the strength of a Noisy Secret.
+
+When an issuing party has generated N Noisy Secrets sharing the same Namespace, the probability of an attacker guessing any one of them in a single online attempt is N / 2^160. When N Noisy Secrets are issued within the same Namespace, the probability of at least two sharing the same Payload is approximately 1 - e^(-N^2 / 2^161). At 2^70 secrets issued, this is approximately 2^(-21), whereas at 2^80 this is approximately 0.39.
+
+### 8.5. Checksum Limitations
+
+Checksum validation is not sufficient authentication. See Section 8.6 for details.
+
+The kind of checksum used in Noisy Secrets guarantees detection of any error affecting at most 4 characters within its input message, but the distribution of characters within the Noisy Secret to the input message is a specification detail that may not be obvious to users.
+
+Each of the two Checksum Tags is constructed over separate Reed-Solomon messages of length 32. The Even Message Tag contains characters from even-indexed positions (0, 2, ..., 30) of the Padded Namespace Tag and Payload String, and the Odd Message Tag contains characters from odd-indexed positions (1, 3, ..., 31), as specified in Section 5.6. Consecutive characters in the Namespace String or the Payload String therefore alternate between the two independent Reed-Solomon messages. The Interleaved Checksum similarly alternates its characters between the two Reed-Solomon codewords. A burst of up to 8 consecutive substitution errors confined to the Namespace String, to the Payload String, to the Interleaved Checksum, or spanning the boundary between the Payload String and the Interleaved Checksum, is guaranteed to be detected, because at most 4 errors will be distributed to each codeword. More generally, any error pattern that produces at most 4 symbol errors in each Reed-Solomon codeword is guaranteed to be detected by the checksums. Errors affecting the Prefix, Pads, or the length of any component are always detected by the validation algorithm independently of the checksums.
+
+Errors that change the length of the Namespace or the length of the Payload are always rejected by the validation algorithm.
+
+Checksums are intended for validation. It is possible to repair errors in 2 characters per input message, but implementors MUST NOT repair errors in Noisy Secrets being submitted as bearer credentials. Users MAY use a correct repair algorithm on their own credentials if found to be corrupted, but SHOULD investigate the cause of the corruption in case of, for example, malicious manipulation of the value.
+
+### 8.6. Validation Considerations
+
+Validation is not authentication and does not protect against malicious forgery. Validation MUST NOT be relied upon to authenticate users. Successful validation MUST only be considered proof that the value being validated is a Noisy Secret Tag, and not that it is an authentic Noisy Secret belonging to a known user.
+
+Timing secure comparison SHOULD be used when checking Noisy Secrets against either other Noisy Secrets, or hashes of Noisy Secrets against hashes of Noisy Secrets.
+
+## 9. Implementation Considerations
+
+### 9.1. Undesired Substrings
+
+The alphabets used by Noisy Secrets overlap with many languages that use Latin script. In many cultures using these languages, certain words are taboo such as profanity, and issuing parties may want to avoid issuing credentials that contain such words as substrings. This specification does not forbid doing so, as it is equivalent to issuing to users and revoking. An alternative view of this practice, however, is that it reduces the security properties of the payload to below 160 bits. This may have consequences for compliance to relevant security regulations, which often set requirements for entropy at boundaries including 160 bits.
+
+### 9.2. Case Sensitivity
+
+Noisy Secrets are case sensitive. Case folding MUST NOT be performed. Noisy Secrets MUST NOT be issued with uppercase characters, and values containing uppercase characters MUST NOT be treated as Noisy Secrets. The foregoing applies to all Noisy Secret Tags.
+
+### 9.3. Namespace Length Prefix
+
+If checking the length of a Candidate by inspecting the Namespace length prefix, note that the `BASE32` character three (`3`) is intentionally never used, and is not a valid length prefix character. The total lengths as integers may be obtained using the following mapping from `BASE32` character to integer:
+
+    2 -> 1
+    3 -> not valid
+    4 -> 3
+    5 -> 4
+    6 -> 5
+    7 -> 6
+    8 -> 7
+    9 -> 8
+    a -> 9
+    b -> 10
+    c -> 11
+    d -> 12
+    e -> 13
+    f -> 14
+    g -> 15
+    h -> 16
+    i -> 17
+    j -> 18
+    k -> 19
+    m -> 20
+    n -> 21
+    p -> 22
+    q -> 23
+    r -> 24
+    s -> 25
+    t -> 26
+    u -> 27
+    v -> 28
+    w -> 29
+    x -> 30
+    y -> 31
+    z -> 32
+
+### 9.4. Confusable Characters
+
+The use of `BASE32` reduces visually confusable characters in a Noisy Secret but does not eliminate them. The primary consideration was to ensure that the Payload is equivalent to exactly 160 bits of entropy. It would be impossible to remove all confusable characters anyway while allowing encodings of FQDNs where the original alphanumeric characters from the domain name are preserved. Therefore Noisy Secrets SHOULD be presented to users in typefaces where differences between all characters in `BASE37` are easily visually apparent.
+
+### 9.5. Lack of Versioning
+
+Noisy Secrets are not versioned. If a divergent successor specification is necessary, it is RECOMMENDED to change the prefix or encoding details and potentially some details of the checksum algorithm to differentiate it from a Noisy Secret. To bolster interoperability, however, the creation of any successor specification SHOULD be avoided if possible.
+
+### 9.6. Underscore Conversion
+
+The order of conversion of underscore characters in Section 5.2 step b is moot given the constraints on strings produced in Section 5.1, but is important for the algorithm in Section 9.8. The order of conversion when applying the modified algorithm described in Section 9.8 MUST be greedy, left to right.
+
+### 9.7. Validation
+
+The validation algorithm in this specification is intended to be simple, not efficient. Implementors MAY use a more efficient algorithm as long as it has the same outcome for every possible input as the algorithm in this specification.
+
+### 9.8. Candidate Domain
+
+If a Candidate Namespace has been extracted from a Candidate which has been validated as a Noisy Secret Tag, then that Candidate Namespace may be used in the place of a Namespace in the algorithm in Section 5.2, even though it is a Namespace String: to obtain this modified algorithm, for Namespace in the original algorithm read Candidate Namespace, and consider the output to be a Candidate Domain. A Candidate Domain is not the same as a Namespace Domain, and may not be a valid FQDN. This modified algorithm MAY be used for determining where to send a report, but its syntactic and semantic validity MUST be determined by out-of-band data.
+
+### 9.9. Scanning
+
+Implementations often scan large bodies of text for possible Noisy Secrets. Regular expressions are useful for identifying Candidates, but a regular expression alone cannot validate the Interleaved Checksum Tag. Therefore a scanner MUST apply the validation algorithm in Section 7 to every regex match before treating it as a Noisy Secret Tag unless false positives are acceptable.
+
+Scanning MUST be case-sensitive and ASCII-based. Implementations SHOULD use explicit ASCII character classes and SHOULD NOT use `\w`, `\d`, `\s`, `\b`, locale-sensitive matching, Unicode case folding, or normalization. In particular, `\b` is not suitable because underscore (`_`) is part of `BASE37`.
+
+For the regexes below, the alphabets are manifested as:
+
+    BASE37 = [0-9_a-z]
+    BASE36 = [0-9a-z]
+    BASE32 = [2-9a-km-np-z]
+
+A general regex for all Noisy Secret Strings is:
+
+    secret_(?:2|[4-9a-km-np-z]_[0-9a-z](?:[0-9_a-z]{0,28}[0-9a-z])?)_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+
+This is only a scanner prefilter. It will also match strings that are not actually Noisy Secret Tags, especially ones where the Namespace String is syntactically plausible but the leading length-prefix character does not agree with the actual namespace length, and ones where the final 8 BASE37 characters are not the correct interleaved even and odd Reed-Solomon checksums for the preceding Namespace and Payload. It may also match syntactically valid NamespaceString values that could not have been produced from a real FQDN by the namespace construction algorithm.
+
+Scanners MAY instead use specialised regexes for each length-prefixed subset.
+These are:
+
+    2: secret_2_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    4: secret_4_[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    5: secret_5_[0-9a-z]{2}_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    6: secret_6_[0-9a-z][0-9_a-z]{1}[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    7: secret_7_[0-9a-z][0-9_a-z]{2}[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    8: secret_8_[0-9a-z][0-9_a-z]{3}[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    9: secret_9_[0-9a-z][0-9_a-z]{4}[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    a: secret_a_[0-9a-z][0-9_a-z]{5}[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    b: secret_b_[0-9a-z][0-9_a-z]{6}[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    c: secret_c_[0-9a-z][0-9_a-z]{7}[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    d: secret_d_[0-9a-z][0-9_a-z]{8}[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    e: secret_e_[0-9a-z][0-9_a-z]{9}[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    f: secret_f_[0-9a-z][0-9_a-z]{10}[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    g: secret_g_[0-9a-z][0-9_a-z]{11}[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    h: secret_h_[0-9a-z][0-9_a-z]{12}[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    i: secret_i_[0-9a-z][0-9_a-z]{13}[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    j: secret_j_[0-9a-z][0-9_a-z]{14}[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    k: secret_k_[0-9a-z][0-9_a-z]{15}[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    m: secret_m_[0-9a-z][0-9_a-z]{16}[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    n: secret_n_[0-9a-z][0-9_a-z]{17}[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    p: secret_p_[0-9a-z][0-9_a-z]{18}[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    q: secret_q_[0-9a-z][0-9_a-z]{19}[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    r: secret_r_[0-9a-z][0-9_a-z]{20}[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    s: secret_s_[0-9a-z][0-9_a-z]{21}[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    t: secret_t_[0-9a-z][0-9_a-z]{22}[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    u: secret_u_[0-9a-z][0-9_a-z]{23}[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    v: secret_v_[0-9a-z][0-9_a-z]{24}[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    w: secret_w_[0-9a-z][0-9_a-z]{25}[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    x: secret_x_[0-9a-z][0-9_a-z]{26}[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    y: secret_y_[0-9a-z][0-9_a-z]{27}[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+    z: secret_z_[0-9a-z][0-9_a-z]{28}[0-9a-z]_[2-9a-km-np-z]{32}[0-9_a-z]{8}
+
+A scanner MAY use a literal prefilter for the fixed substring `secret_` before applying one or more regexes from this section. After a match has been validated as a Noisy Secret Tag, the implementation MAY obtain a Candidate Domain as described in Section 9.8 for reporting or routing purposes.
+
+The regexes in this section are for contiguous exact strings only. Detection of values that have been line-wrapped, whitespace-separated, truncated, or otherwise transformed is out of scope for this specification.
+
+## 10. References
+
+### 10.1. Normative References
+
+Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels", BCP 14, RFC 2119, DOI 10.17487/RFC2119, March 1997, <https://www.rfc-editor.org/info/rfc2119>.
+
+Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174, May 2017, <https://www.rfc-editor.org/info/rfc8174>.
+
+Klensin, J., "Internationalized Domain Names for Applications (IDNA): Definitions and Document Framework", RFC 5890, DOI 10.17487/RFC5890, August 2010, <https://www.rfc-editor.org/info/rfc5890>.
+
+Klensin, J., "Internationalized Domain Names in Applications (IDNA): Protocol", RFC 5891, DOI 10.17487/RFC5891, August 2010, <https://www.rfc-editor.org/info/rfc5891>.
+
+### 10.2. Informative References
+
+Mockapetris, P., "Domain names - concepts and facilities", STD 13, RFC 1034, DOI 10.17487/RFC1034, November 1987, <https://www.rfc-editor.org/info/rfc1034>.
+
+Mockapetris, P., "Domain names - implementation and specification", STD 13, RFC 1035, DOI 10.17487/RFC1035, November 1987, <https://www.rfc-editor.org/info/rfc1035>.
+
+Braden, R., Ed., "Requirements for Internet Hosts - Application and Support", STD 3, RFC 1123, DOI 10.17487/RFC1123, October 1989, <https://www.rfc-editor.org/info/rfc1123>.
+
+Costello, A., "Punycode: A Bootstring encoding of Unicode for Internationalized Domain Names in Applications (IDNA)", RFC 3492, DOI 10.17487/RFC3492, March 2003, <https://www.rfc-editor.org/info/rfc3492>.
+
+Reed, I. S. and G. Solomon, "Polynomial Codes Over Certain Finite Fields", Journal of the Society for Industrial and Applied Mathematics, Vol. 8, No. 2, pp. 300-304, June 1960, DOI 10.1137/0108018, <https://doi.org/10.1137/0108018>.
+
+## Appendix A. Test Vectors
+
+### Appendix A.1. Vector 1
+
+    FQDN:
+        none
+    Namespace:
+        "2"
+    Payload:
+        "22222222222222222222222222222222"
+    Padded Namespace Tag:
+        "2_______________________________"
+    Even Message Tag:
+        "2_______________2222222222222222"
+    Odd Message Tag:
+        "________________2222222222222222"
+    Even field elements:
+        [ 2, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+          2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2]
+    Odd field elements:
+        [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+          2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2]
+    Even Checksum Tag remainder:
+        [27, 20, 9, 26]
+    Even Checksum Tag field elements:
+        [10, 17, 28, 11]
+    Even Checksum Tag:
+        "_gra"
+    Odd Checksum Tag remainder:
+        [12, 4, 26, 7]
+    Odd Checksum Tag field elements:
+        [25, 33, 11, 30]
+    Odd Checksum Tag:
+        "owat"
+    Interleaved Checksum:
+        "_ogwraat"
+    Noisy Secret Tag:
+        "secret_2_22222222222222222222222222222222_ogwraat"
+    Noisy Secret Tag length:
+        49
+
+### Appendix A.2. Vector 2
+
+    FQDN:
+        none
+    Namespace:
+        "2"
+    Payload:
+        "23456789abcdefghijkmnpqrstuvwxyz"
+    Padded Namespace Tag:
+        "2_______________________________"
+    Even Message Tag:
+        "2_______________2468acegiknqsuwy"
+    Odd Message Tag:
+        "________________3579bdfhjmprtvxz"
+    Even field elements:
+        [ 2, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+          2,  4,  6,  8, 11, 13, 15, 17, 19, 21, 24, 27, 29, 31, 33, 35]
+    Odd field elements:
+        [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+          3,  5,  7,  9, 12, 14, 16, 18, 20, 23, 26, 28, 30, 32, 34, 36]
+    Even Checksum Tag remainder:
+        [36, 18, 8, 27]
+    Even Checksum Tag field elements:
+        [1, 19, 29, 10]
+    Even Checksum Tag:
+        "1is_"
+    Odd Checksum Tag remainder:
+        [36, 1, 26, 34]
+    Odd Checksum Tag field elements:
+        [1, 36, 11, 3]
+    Odd Checksum Tag:
+        "1za3"
+    Interleaved Checksum:
+        "11izsa_3"
+    Noisy Secret Tag:
+        "secret_2_23456789abcdefghijkmnpqrstuvwxyz11izsa_3"
+    Noisy Secret Tag length:
+        49
+
+### Appendix A.3. Vector 3
+
+    FQDN:
+        "example.org"
+    Namespace:
+        "e_org_example"
+    Payload:
+        "22222222222222222222222222222222"
+    Padded Namespace Tag:
+        "e_org_example___________________"
+    Even Message Tag:
+        "eogeape_________2222222222222222"
+    Odd Message Tag:
+        "_r_xml__________2222222222222222"
+    Even field elements:
+        [15, 25, 17, 15, 11, 26, 15, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+          2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2]
+    Odd field elements:
+        [10, 28, 10, 34, 23, 22, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+          2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2]
+    Even Checksum Tag remainder:
+        [35, 24, 24, 29]
+    Even Checksum Tag field elements:
+        [2, 13, 13, 8]
+    Even Checksum Tag:
+        "2cc8"
+    Odd Checksum Tag remainder:
+        [14, 13, 26, 35]
+    Odd Checksum Tag field elements:
+        [23, 24, 11, 2]
+    Odd Checksum Tag:
+        "mna2"
+    Interleaved Checksum:
+        "2mcnca82"
+    Noisy Secret Tag:
+        "secret_e_org_example_222222222222222222222222222222222mcnca82"
+    Noisy Secret Tag length:
+        61
+
+### Appendix A.4. Vector 4
+
+    FQDN:
+        "example.org"
+    Namespace:
+        "e_org_example"
+    Payload:
+        "23456789abcdefghijkmnpqrstuvwxyz"
+    Padded Namespace Tag:
+        "e_org_example___________________"
+    Even Message Tag:
+        "eogeape_________2468acegiknqsuwy"
+    Odd Message Tag:
+        "_r_xml__________3579bdfhjmprtvxz"
+    Even field elements:
+        [15, 25, 17, 15, 11, 26, 15, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+          2,  4,  6,  8, 11, 13, 15, 17, 19, 21, 24, 27, 29, 31, 33, 35]
+    Odd field elements:
+        [10, 28, 10, 34, 23, 22, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+          3,  5,  7,  9, 12, 14, 16, 18, 20, 23, 26, 28, 30, 32, 34, 36]
+    Even Checksum Tag remainder:
+        [7, 22, 23, 30]
+    Even Checksum Tag field elements:
+        [30, 15, 14, 7]
+    Even Checksum Tag:
+        "ted7"
+    Odd Checksum Tag remainder:
+        [1, 10, 26, 25]
+    Odd Checksum Tag field elements:
+        [36, 27, 11, 12]
+    Odd Checksum Tag:
+        "zqab"
+    Interleaved Checksum:
+        "tzeqda7b"
+    Noisy Secret Tag:
+        "secret_e_org_example_23456789abcdefghijkmnpqrstuvwxyztzeqda7b"
+    Noisy Secret Tag length:
+        61
