@@ -1,8 +1,6 @@
 Title: Noisy Secrets
 license: https://www.apache.org/licenses/LICENSE-2.0
 
-# Noisy Secrets
-
 Draft Specification, 2026-04-03.
 
 Not intended for review outside of the Apache Software Foundation.
