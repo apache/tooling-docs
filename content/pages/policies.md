@@ -9,4 +9,3 @@ We will list various proposed policies and policy changes. These will be specula
    - [FAQ](./draft-asf-token-standard-faq)
 2. [Release download page guidance for ATR](https://infra.apache.org/release-download-pages.html#current-and-older-releases)
    - Provide the difference between svn dist releases and ATR releases.
- 
