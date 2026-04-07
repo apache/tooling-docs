@@ -20,7 +20,7 @@ jobs:
         with:
           persist-credentials: true
           ref: ${{ github.ref || 'main' }}
-      - uses: apache/infrastructure-actions/pelican@213a958e907762dbd4adb56414cb81ee055226a3
+      - uses: apache/infrastructure-actions/pelican@12a867cb6d7862f4efadf6a50a59fe857fd5e275
         with:
           # This must be appropriate for the branch being built
           destination: 'asf-site'
