@@ -1,0 +1,9 @@
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/src/main/java/org/apache/tooling/atr/AbstractAtrMojo.java
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/src/main/java/org/apache/tooling/atr/CheckComposingMojo.java
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/src/main/java/org/apache/tooling/atr/UploadMojo.java
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/src/main/java/org/apache/tooling/atr/client/AtrClient.java
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/src/main/java/org/apache/tooling/atr/client/AtrClientException.java
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/src/main/java/org/apache/tooling/atr/client/AtrClientFactory.java
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/src/main/java/org/apache/tooling/atr/client/AtrClientFactoryImpl.java
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/src/main/java/org/apache/tooling/atr/client/AtrClientImpl.java
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/generated-sources/plugin/org/apache/tooling/atr_maven_plugin/HelpMojo.java

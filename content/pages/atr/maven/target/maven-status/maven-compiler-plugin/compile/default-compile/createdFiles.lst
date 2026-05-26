@@ -1,0 +1,16 @@
+org/apache/tooling/atr/client/AtrClientImpl.class
+org/apache/tooling/atr/client/AtrClient$ReleaseUploadResponse.class
+org/apache/tooling/atr_maven_plugin/HelpMojo.class
+org/apache/tooling/atr/client/AtrClientFactoryImpl.class
+org/apache/tooling/atr/CheckComposingMojo.class
+org/apache/tooling/atr/client/AtrClient$JwtCreateRequest.class
+org/apache/tooling/atr/client/AtrClient$ReleaseUploadRequest.class
+org/apache/tooling/atr/client/AtrClientException.class
+org/apache/tooling/atr/client/AtrClient.class
+org/apache/tooling/atr/client/AtrClient$ReleaseGetResponse.class
+org/apache/tooling/atr/client/AtrClient$Revision.class
+org/apache/tooling/atr/UploadMojo.class
+org/apache/tooling/atr/client/AtrClient$JwtCreateResponse.class
+org/apache/tooling/atr/client/AtrClient$ReleaseInfo.class
+org/apache/tooling/atr/client/AtrClientFactory.class
+org/apache/tooling/atr/AbstractAtrMojo.class

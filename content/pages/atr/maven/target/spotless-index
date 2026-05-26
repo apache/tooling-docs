@@ -1,0 +1,12 @@
+IwYGOR8AKIOF0Pab/8A4y19AN86k1Y49nWg4x/p1FNU=
+pom.xml 2026-05-26T16:10:05.038115422Z
+src/main/java/org/apache/tooling/atr/AbstractAtrMojo.java 2026-05-25T10:58:24.100506366Z
+src/main/java/org/apache/tooling/atr/CheckComposingMojo.java 2026-05-25T10:58:24.100506366Z
+src/main/java/org/apache/tooling/atr/UploadMojo.java 2026-05-25T10:58:24.100506366Z
+src/main/java/org/apache/tooling/atr/client/AtrClient.java 2026-05-25T10:58:24.100506366Z
+src/main/java/org/apache/tooling/atr/client/AtrClientException.java 2026-05-23T04:41:14.974736326Z
+src/main/java/org/apache/tooling/atr/client/AtrClientFactory.java 2026-05-25T10:58:24.100506366Z
+src/main/java/org/apache/tooling/atr/client/AtrClientFactoryImpl.java 2026-05-25T10:58:24.100506366Z
+src/main/java/org/apache/tooling/atr/client/AtrClientImpl.java 2026-05-25T10:58:24.100506366Z
+src/test/java/org/apache/tooling/atr/client/AtrClientFactoryMock.java 2026-05-25T10:58:24.101506362Z
+src/test/java/org/apache/tooling/atr/client/AtrClientMock.java 2026-05-25T10:58:24.101506362Z

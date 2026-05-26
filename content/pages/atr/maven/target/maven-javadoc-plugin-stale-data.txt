@@ -1,0 +1,95 @@
+-J-Duser.language=
+-J-Duser.country=
+@options
+@packages
+-classpath
+'/home/herve/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar:/home/herve/.m2/repository/org/apache/maven/maven-plugin-api/3.9.16/maven-plugin-api-3.9.16.jar:/home/herve/.m2/repository/org/apache/maven/maven-model/3.9.16/maven-model-3.9.16.jar:/home/herve/.m2/repository/org/apache/maven/maven-artifact/3.9.16/maven-artifact-3.9.16.jar:/home/herve/.m2/repository/org/eclipse/sisu/org.eclipse.sisu.plexus/1.0.0/org.eclipse.sisu.plexus-1.0.0.jar:/home/herve/.m2/repository/org/codehaus/plexus/plexus-classworlds/2.11.0/plexus-classworlds-2.11.0.jar:/home/herve/.m2/repository/org/apache/maven/maven-core/3.9.16/maven-core-3.9.16.jar:/home/herve/.m2/repository/org/apache/maven/maven-builder-support/3.9.16/maven-builder-support-3.9.16.jar:/home/herve/.m2/repository/org/apache/maven/maven-repository-metadata/3.9.16/maven-repository-metadata-3.9.16.jar:/home/herve/.m2/repository/org/apache/maven/maven-model-builder/3.9.16/maven-model-builder-3.9.16.jar:/home/herve/.m2/repository/org/apache/maven/maven-resolver-provider/3.9.16/maven-resolver-provider-3.9.16.jar:/home/herve/.m2/repository/org/apache/maven/resolver/maven-resolver-impl/1.9.27/maven-resolver-impl-1.9.27.jar:/home/herve/.m2/repository/org/apache/maven/resolver/maven-resolver-named-locks/1.9.27/maven-resolver-named-locks-1.9.27.jar:/home/herve/.m2/repository/org/apache/maven/resolver/maven-resolver-spi/1.9.27/maven-resolver-spi-1.9.27.jar:/home/herve/.m2/repository/org/apache/maven/resolver/maven-resolver-util/1.9.27/maven-resolver-util-1.9.27.jar:/home/herve/.m2/repository/org/apache/maven/shared/maven-shared-utils/3.4.2/maven-shared-utils-3.4.2.jar:/home/herve/.m2/repository/org/eclipse/sisu/org.eclipse.sisu.inject/1.0.0/org.eclipse.sisu.inject-1.0.0.jar:/home/herve/.m2/repository/org/ow2/asm/asm/9.9.1/asm-9.9.1.jar:/home/herve/.m2/repository/com/google/inject/guice/5.1.0/guice-5.1.0-classes.jar:/home/herve/.m2/repository/aopalliance/aopalliance/1.0/aopalliance-1.0.jar:/home/herve/.m2/repository/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar:/home/herve/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/home/herve/.m2/repository/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar:/home/herve/.m2/repository/org/codehaus/plexus/plexus-interpolation/1.29/plexus-interpolation-1.29.jar:/home/herve/.m2/repository/org/codehaus/plexus/plexus-component-annotations/2.2.0/plexus-component-annotations-2.2.0.jar:/home/herve/.m2/repository/org/apache/maven/plugin-tools/maven-plugin-annotations/3.15.2/maven-plugin-annotations-3.15.2.jar:/home/herve/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.21.3/jackson-databind-2.21.3.jar:/home/herve/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.21.3/jackson-core-2.21.3.jar:/home/herve/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.21/jackson-annotations-2.21.jar:/home/herve/.m2/repository/org/apache/maven/maven-settings/3.9.16/maven-settings-3.9.16.jar:/home/herve/.m2/repository/org/apache/maven/maven-settings-builder/3.9.16/maven-settings-builder-3.9.16.jar:/home/herve/.m2/repository/org/codehaus/plexus/plexus-sec-dispatcher/2.0/plexus-sec-dispatcher-2.0.jar:/home/herve/.m2/repository/org/codehaus/plexus/plexus-cipher/2.0/plexus-cipher-2.0.jar:/home/herve/.m2/repository/org/apache/maven/resolver/maven-resolver-api/1.9.27/maven-resolver-api-1.9.27.jar:/home/herve/.m2/repository/org/codehaus/plexus/plexus-utils/4.0.3/plexus-utils-4.0.3.jar:/home/herve/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar'
+-encoding
+'UTF-8'
+-protected
+--release
+8
+-sourcepath
+'/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/src/main/java:/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/generated-sources/plugin:/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/generated-sources/annotations'
+-author
+-bottom
+'Copyright &#169; 2026 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/reports/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'Apache Tooling ATR Maven Plugin 1.0.0-beta-1 API'
+-linkoffline
+'https://docs.oracle.com/javase/8/docs/api' '/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/javadoc-bundle-options'
+-notimestamp
+-use
+-version
+-windowtitle
+'Apache Tooling ATR Maven Plugin 1.0.0-beta-1 API'
+org.apache.tooling.atr.client
+org.apache.tooling.atr
+org.apache.tooling.atr_maven_plugin
+/home/herve/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar = 1700351989002
+/home/herve/.m2/repository/org/apache/maven/maven-plugin-api/3.9.16/maven-plugin-api-3.9.16.jar = 1778708259000
+/home/herve/.m2/repository/org/apache/maven/maven-model/3.9.16/maven-model-3.9.16.jar = 1778708247000
+/home/herve/.m2/repository/org/apache/maven/maven-artifact/3.9.16/maven-artifact-3.9.16.jar = 1778708253000
+/home/herve/.m2/repository/org/eclipse/sisu/org.eclipse.sisu.plexus/1.0.0/org.eclipse.sisu.plexus-1.0.0.jar = 1770493853000
+/home/herve/.m2/repository/org/codehaus/plexus/plexus-classworlds/2.11.0/plexus-classworlds-2.11.0.jar = 1778523685000
+/home/herve/.m2/repository/org/apache/maven/maven-core/3.9.16/maven-core-3.9.16.jar = 1778708311000
+/home/herve/.m2/repository/org/apache/maven/maven-builder-support/3.9.16/maven-builder-support-3.9.16.jar = 1778708264000
+/home/herve/.m2/repository/org/apache/maven/maven-repository-metadata/3.9.16/maven-repository-metadata-3.9.16.jar = 1778708287000
+/home/herve/.m2/repository/org/apache/maven/maven-model-builder/3.9.16/maven-model-builder-3.9.16.jar = 1778708272000
+/home/herve/.m2/repository/org/apache/maven/maven-resolver-provider/3.9.16/maven-resolver-provider-3.9.16.jar = 1778708293000
+/home/herve/.m2/repository/org/apache/maven/resolver/maven-resolver-impl/1.9.27/maven-resolver-impl-1.9.27.jar = 1771602683000
+/home/herve/.m2/repository/org/apache/maven/resolver/maven-resolver-named-locks/1.9.27/maven-resolver-named-locks-1.9.27.jar = 1771602654000
+/home/herve/.m2/repository/org/apache/maven/resolver/maven-resolver-spi/1.9.27/maven-resolver-spi-1.9.27.jar = 1771602624000
+/home/herve/.m2/repository/org/apache/maven/resolver/maven-resolver-util/1.9.27/maven-resolver-util-1.9.27.jar = 1771602636000
+/home/herve/.m2/repository/org/apache/maven/shared/maven-shared-utils/3.4.2/maven-shared-utils-3.4.2.jar = 1683838316000
+/home/herve/.m2/repository/org/eclipse/sisu/org.eclipse.sisu.inject/1.0.0/org.eclipse.sisu.inject-1.0.0.jar = 1770493853000
+/home/herve/.m2/repository/org/ow2/asm/asm/9.9.1/asm-9.9.1.jar = 1765034212000
+/home/herve/.m2/repository/com/google/inject/guice/5.1.0/guice-5.1.0-classes.jar = 1643061982000
+/home/herve/.m2/repository/aopalliance/aopalliance/1.0/aopalliance-1.0.jar = 1700351990966
+/home/herve/.m2/repository/com/google/guava/guava/33.6.0-jre/guava-33.6.0-jre.jar = 1776190418000
+/home/herve/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar = 1721163610000
+/home/herve/.m2/repository/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar = 1742400951000
+/home/herve/.m2/repository/org/codehaus/plexus/plexus-interpolation/1.29/plexus-interpolation-1.29.jar = 1762537600000
+/home/herve/.m2/repository/org/codehaus/plexus/plexus-component-annotations/2.2.0/plexus-component-annotations-2.2.0.jar = 1703379357000
+/home/herve/.m2/repository/org/apache/maven/plugin-tools/maven-plugin-annotations/3.15.2/maven-plugin-annotations-3.15.2.jar = 1760988125000
+/home/herve/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.21.3/jackson-databind-2.21.3.jar = 1777406931000
+/home/herve/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.21.3/jackson-core-2.21.3.jar = 1777406384000
+/home/herve/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.21/jackson-annotations-2.21.jar = 1768776434000
+/home/herve/.m2/repository/org/apache/maven/maven-settings/3.9.16/maven-settings-3.9.16.jar = 1778708276000
+/home/herve/.m2/repository/org/apache/maven/maven-settings-builder/3.9.16/maven-settings-builder-3.9.16.jar = 1778708282000
+/home/herve/.m2/repository/org/codehaus/plexus/plexus-sec-dispatcher/2.0/plexus-sec-dispatcher-2.0.jar = 1700897919972
+/home/herve/.m2/repository/org/codehaus/plexus/plexus-cipher/2.0/plexus-cipher-2.0.jar = 1700897919976
+/home/herve/.m2/repository/org/apache/maven/resolver/maven-resolver-api/1.9.27/maven-resolver-api-1.9.27.jar = 1771602618000
+/home/herve/.m2/repository/org/codehaus/plexus/plexus-utils/4.0.3/plexus-utils-4.0.3.jar = 1774620249000
+/home/herve/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar = 1700351987874
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/src/main/java = 1779511274974
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/generated-sources/plugin = 1779811993973
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/generated-sources/annotations = 1779811994841
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/reports/apidocs/element-list = 1779811996706
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/reports/apidocs/help-doc.html = 1779811996758
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/reports/apidocs/module-search-index.js = 1779811996743
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/reports/apidocs/link.svg = 1779811996760
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/reports/apidocs/script.js = 1779811996760
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/reports/apidocs/index-all.html = 1779811996754
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/reports/apidocs/index.html = 1779811996736
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/reports/apidocs/member-search-index.js = 1779811996743
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/reports/apidocs/search-page.js = 1779811996760
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/reports/apidocs/copy.svg = 1779811996760
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/reports/apidocs/overview-summary.html = 1779811996755
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/reports/apidocs/search.html = 1779811996754
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/reports/apidocs/stylesheet.css = 1779811996759
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/reports/apidocs/allpackages-index.html = 1779811996743
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/reports/apidocs/package-search-index.js = 1779811996743
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/reports/apidocs/search.js = 1779811996760
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/reports/apidocs/type-search-index.js = 1779811996743
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/reports/apidocs/overview-tree.html = 1779811996735
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/reports/apidocs/allclasses-index.html = 1779811996742
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/reports/apidocs/serialized-form.html = 1779811996719
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/reports/apidocs/tag-search-index.js = 1779811996743
+/home/herve/dev/apache/tooling/tooling-atr-maven-plugin/target/reports/apidocs/constant-values.html = 1779811996715

@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.apache</groupId>
+    <artifactId>apache</artifactId>
+    <version>38</version>
+    <relativePath />
+  </parent>
+
+  <groupId>org.apache.tooling</groupId>
+  <artifactId>atr-maven-plugin</artifactId>
+  <version>1.0.0-beta-1</version>
+  <packaging>maven-plugin</packaging>
+
+  <name>Apache Tooling ATR Maven Plugin</name>
+  <description>Maven plugin for ATR (Apache Test Release) integration to upload Apache distribution artifacts.</description>
+
+  <url>https://apache.github.io/tooling-atr-maven-plugin</url>
+
+  <developers>
+    <developer>
+      <id>sjaranowski</id>
+      <name>Slawomir Jaranowski</name>
+      <email>sjaranowski@apache.org</email>
+      <timezone>Europe/Warsaw</timezone>
+    </developer>
+    <developer>
+      <id>hboutemy</id>
+      <name>Hervé Boutemy</name>
+      <email>hboutemy@apache.org</email>
+      <organization>ASF</organization>
+      <timezone>Europe/Paris</timezone>
+    </developer>
+  </developers>
+
+  <mailingLists>
+    <mailingList>
+      <name>Tooling Developer List</name>
+      <subscribe>mailto:dev-subscribe@tooling.apache.org</subscribe>
+      <unsubscribe>mailto:dev-unsubscribe@tooling.apache.org</unsubscribe>
+      <post>mailto:dev@tooling.apache.org</post>
+      <archive>https://lists.apache.org/list.html?dev@tooling.apache.org</archive>
+    </mailingList>
+    <mailingList>
+      <name>Tooling Commits List</name>
+      <subscribe>mailto:commits-subscribe@tooling.apache.org</subscribe>
+      <unsubscribe>mailto:commits-unsubscribe@tooling.apache.org</unsubscribe>
+      <archive>https://lists.apache.org/list.html?commits@tooling.apache.org</archive>
+    </mailingList>
+  </mailingLists>
+
+  <prerequisites>
+    <maven>3.9.0</maven>
+  </prerequisites>
+
+  <scm>
+    <connection>scm:git:https://gitbox.apache.org/repos/asf/tooling-atr-maven-plugin.git</connection>
+    <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/tooling-atr-maven-plugin.git</developerConnection>
+    <tag>main</tag>
+    <url>https://github.com/apache/tooling-atr-maven-plugin/tree/${project.scm.tag}</url>
+  </scm>
+
+  <issueManagement>
+    <system>GitHub Issues</system>
+    <url>https://github.com/apache/tooling-atr-maven-plugin/issues</url>
+  </issueManagement>
+
+  <ciManagement>
+    <system>GitHub Actions</system>
+    <url>https://github.com/apache/tooling-atr-maven-plugin/actions</url>
+  </ciManagement>
+
+  <distributionManagement>
+    <site>
+      <id>tooling-docs</id>
+      <!-- target repository for documentation -->
+      <url>scm:git:https://github.com/apache/tooling-atr-maven-plugin.git</url>
+    </site>
+  </distributionManagement>
+
+  <properties>
+    <mavenVersion>3.9.16</mavenVersion>
+
+    <minimalJavaBuildVersion>17</minimalJavaBuildVersion>
+
+    <version.maven-shared-resources>6</version.maven-shared-resources>
+    <version.spotless-maven-plugin>3.5.1</version.spotless-maven-plugin>
+    <version.palantirJavaFormat>2.91.0</version.palantirJavaFormat>
+
+    <spotless.action>apply</spotless.action>
+
+    <invoker.streamLogsOnFailures>true</invoker.streamLogsOnFailures>
+    <invoker.rerunFailingTestsCount>1</invoker.rerunFailingTestsCount>
+
+    <project.build.outputTimestamp>2026-05-17T23:00:00Z</project.build.outputTimestamp>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>javax.inject</groupId>
+      <artifactId>javax.inject</artifactId>
+      <version>1</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-plugin-api</artifactId>
+      <version>${mavenVersion}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-core</artifactId>
+      <version>${mavenVersion}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven.plugin-tools</groupId>
+      <artifactId>maven-plugin-annotations</artifactId>
+      <version>${version.maven-plugin-tools}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.21.3</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>2.21</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-settings</artifactId>
+      <version>${mavenVersion}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-settings-builder</artifactId>
+      <version>${mavenVersion}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven.resolver</groupId>
+      <artifactId>maven-resolver-api</artifactId>
+      <version>1.9.27</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-utils</artifactId>
+      <version>4.0.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.36</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-plugin-plugin</artifactId>
+          <executions>
+            <execution>
+              <id>generate-helpmojo</id>
+              <goals>
+                <goal>helpmojo</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-invoker-plugin</artifactId>
+          <configuration>
+            <debug>true</debug>
+            <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
+            <preBuildHookScript>setup</preBuildHookScript>
+            <postBuildHookScript>verify</postBuildHookScript>
+            <localRepositoryPath>${project.build.directory}/local-repo</localRepositoryPath>
+            <settingsFile>src/it/settings.xml</settingsFile>
+            <rerunFailingTestsCount>${invoker.rerunFailingTestsCount}</rerunFailingTestsCount>
+            <streamLogsOnFailures>${invoker.streamLogsOnFailures}</streamLogsOnFailures>
+            <pomIncludes>
+              <pomInclude>*/pom.xml</pomInclude>
+            </pomIncludes>
+            <environmentVariables>
+              <JENKINS_MAVEN_AGENT_DISABLED>true</JENKINS_MAVEN_AGENT_DISABLED>
+            </environmentVariables>
+            <extraArtifacts>
+              <!-- artifac with mock to use with ITs -->
+              <artifact>${project.groupId}:${project.artifactId}:${project.version}:test-jar</artifact>
+            </extraArtifacts>
+          </configuration>
+          <executions>
+            <execution>
+              <goals>
+                <goal>install</goal>
+                <goal>integration-test</goal>
+                <goal>verify</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <configuration>
+            <!-- skip site deploy, we will use scm-publish plugin to publish -->
+            <skipDeploy>true</skipDeploy>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>test-jar</id>
+            <goals>
+              <goal>test-jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-scm-publish-plugin</artifactId>
+        <configuration>
+          <content>target/site</content>
+          <tryUpdate>true</tryUpdate>
+          <!-- repository branch -->
+          <scmBranch>gh-pages</scmBranch>
+          <!-- target directory for documentation -->
+          <subDirectory>/</subDirectory>
+        </configuration>
+        <executions>
+          <execution>
+            <id>site-deploy</id>
+            <goals>
+              <goal>publish-scm</goal>
+            </goals>
+            <phase>site-deploy</phase>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>com.diffplug.spotless</groupId>
+        <artifactId>spotless-maven-plugin</artifactId>
+        <version>${version.spotless-maven-plugin}</version>
+        <configuration>
+          <java>
+            <!-- orders of used formatters are important MPOM-376 -->
+            <!-- eg. palantir override importOrder, so should be first -->
+            <palantirJavaFormat>
+              <!-- Declare version so that spotless does not choose a version based on JDK version -->
+              <version>${version.palantirJavaFormat}</version>
+            </palantirJavaFormat>
+            <removeUnusedImports />
+            <importOrder>
+              <file>config/maven-eclipse-importorder.txt</file>
+            </importOrder>
+            <licenseHeader>
+              <file>config/maven-header-plain.txt</file>
+            </licenseHeader>
+          </java>
+          <!-- accept all endings to support validations on top of source archives -->
+          <lineEndings>PRESERVE</lineEndings>
+          <pom>
+            <sortPom>
+              <expandEmptyElements>false</expandEmptyElements>
+              <!-- https://issues.apache.org/jira/browse/MRELEASE-1111 -->
+              <spaceBeforeCloseEmptyElement>true</spaceBeforeCloseEmptyElement>
+              <quiet>true</quiet>
+            </sortPom>
+          </pom>
+          <upToDateChecking>
+            <enabled>true</enabled>
+          </upToDateChecking>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.apache.maven.shared</groupId>
+            <artifactId>maven-shared-resources</artifactId>
+            <version>${version.maven-shared-resources}</version>
+          </dependency>
+        </dependencies>
+        <executions>
+          <execution>
+            <goals>
+              <goal>${spotless.action}</goal>
+            </goals>
+            <phase>process-sources</phase>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.eclipse.sisu</groupId>
+        <artifactId>sisu-maven-plugin</artifactId>
+        <version>1.0.0</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>main-index</goal>
+              <goal>test-index</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>ci-management</report>
+              <report>dependencies</report>
+              <report>issue-management</report>
+              <report>mailing-lists</report>
+              <report>plugin-management</report>
+              <report>plugins</report>
+              <report>scm</report>
+              <report>summary</report>
+              <report>team</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-plugin-report-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>report</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+    </plugins>
+  </reporting>
+
+  <profiles>
+    <profile>
+      <id>run-its</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-invoker-plugin</artifactId>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>format-check</id>
+      <activation>
+        <property>
+          <name>env.CI</name>
+        </property>
+      </activation>
+      <properties>
+        <spotless.action>check</spotless.action>
+      </properties>
+    </profile>
+    <profile>
+      <!-- a profile to allow dependabot to manage palantir-java-format version -->
+      <id>palantir-javaformat-dependabot</id>
+      <dependencyManagement>
+        <dependencies>
+          <dependency>
+            <groupId>com.palantir.javaformat</groupId>
+            <artifactId>palantir-java-format</artifactId>
+            <version>${version.palantirJavaFormat}</version>
+          </dependency>
+        </dependencies>
+      </dependencyManagement>
+    </profile>
+
+    <profile>
+      <!-- proof of concept of how this can be integrated in ASF parent POM https://maven.apache.org/pom/asf/ in the future, as an optional profile -->
+      <id>push-to-atr</id>
+      <!--
+        mvn -Papache-release,push-to-atr deploy
+        or
+        mvn release:perform -Ppush-to-atr during release
+       -->
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.tooling</groupId>
+            <artifactId>atr-maven-plugin</artifactId>
+            <version>${project.version}</version>
+            <configuration>
+              <project>maven-atr-plugin</project>
+              <!-- ${project.artifactId} default value does not match our need -->
+              <!-- https://release-test.apache.org/projects/maven-atr-plugin -->
+            </configuration>
+            <executions>
+              <execution>
+                <id>atr-check-composing</id>
+                <goals>
+                  <goal>check-composing</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>upload-to-atr</id>
+                <goals>
+                  <goal>upload</goal>
+                </goals>
+                <configuration>
+                  <files>
+                    <file>${project.build.directory}/${project.artifactId}-${project.version}-source-release.zip</file>
+                    <file>${project.build.directory}/${project.artifactId}-${project.version}-source-release.zip.sha512</file>
+                    <file>${project.build.directory}/${project.artifactId}-${project.version}-source-release.zip.asc</file>
+                  </files>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+</project>
