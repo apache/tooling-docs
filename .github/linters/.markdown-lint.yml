@@ -1,3 +1,5 @@
+# https://github.com/davidanson/markdownlint#rules--aliases
+
 MD003:
   style: atx
 
