@@ -1,6 +1,6 @@
 staging:
   profile: beta
-  autostage: preview/*
+  whoami: preview/atr-beta-staging
 
 pelican:
   notify: commits@tooling.apache.org
