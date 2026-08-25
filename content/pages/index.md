@@ -31,7 +31,6 @@ All ASF PMCs and Incubating podlings may participate in Beta testing of our new 
 Login to the ATR using your ASF credentials and you will have access to your PMC's projects.
 Incubating projects are welcome to join.
 
-
 1. ATR: https://releases.apache.org
 2. Docs:  https://releases.apache.org/docs
 3. Open API:  https://releases.apache.org/api/docs
@@ -56,4 +55,3 @@ To report a new vulnerability you have discovered please follow the [ASF vulnera
 - ASF Slack Channels: [#tooling-discuss](https://the-asf.slack.com/archives/C086X8CKEMB) – [#apache-trusted-releases](https://the-asf.slack.com/archives/C049WADAAQG)
 - Mailing List: dev@tooling.apache.org – [archives](https://lists.apache.org/list.html?dev@tooling.apache.org)
 - Subscribe to Mailing List: dev-subscribe@tooling.apache.org
-
