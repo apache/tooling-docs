@@ -12,5 +12,10 @@ There are some basic things you could do if you're going to help out with the AS
   - Work on documentation.
   - Discuss policy clarifications and other difficult issues including moving questions and proposals to the appropriate place.
 
+We also have some tools under development that are volunteer led.
+
+  - A Maven plugin to help with starting an ATR release. This is a Java project from several Maven PMC Members.
+  - A Responsible AI service for distributing and metering LLM use. Called **LLM-A-O**.
+
 **Come talk to us on [Slack](https://the-asf.slack.com/) in the
 [#tooling-discuss](https://the-asf.slack.com/archives/C086X8CKEMB) channel!**
