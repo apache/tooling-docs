@@ -1,0 +1,45 @@
+staging:
+  profile:
+  autostage: preview/*
+
+pelican:
+  notify: commits@tooling.apache.org
+  autobuild: preview/*
+  target: asf-site
+  whoami: main
+
+github:
+  description: "ASF Tooling Team Documentation Repository"
+  homepage: https://tooling.apache.org/
+  custom_subjects:
+    new_pr: "[PR] {title} ({repository})"
+    close_pr: "Re: [PR] {title} ({repository})"
+    comment_pr: "Re: [PR] {title} ({repository})"
+    merge_pr: "Re: [PR] {title} ({repository})"
+    new_issue: "[I] {title} ({repository})"
+    comment_issue: "Re: [I] {title} ({repository})"
+    close_issue: "Re: [I] {title} ({repository})"
+    catchall: "[GH] {title} ({repository})"
+  labels:
+    - tooling
+    - website
+    - pelican
+
+  rulesets:
+    - name: "Default Branch Protection"
+      type: branch
+      branches:
+        includes:
+          - "~DEFAULT_BRANCH"
+          - "release/*"
+          - "rel/*"
+        excludes: []
+      bypass_teams:
+        - root
+      restrict_deletion: true
+      restrict_force_push: true
+
+notifications:
+  commits: commits@tooling.apache.org
+  issues: issues@tooling.apache.org
+  pullrequests: issues@tooling.apache.org

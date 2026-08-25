@@ -1,0 +1,348 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legacy ASF Releases from SVN Dist - ASF Tooling Website</title>
+<link rel="shortcut icon" href="https://apache.org/favicons/favicon.ico">
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/fontawesome.all.min.css" rel="stylesheet">
+<link href="/css/headerlink.css" rel="stylesheet">
+<link href="/css/app.css" rel="stylesheet">
+<link href="/highlight/github.min.css" rel="stylesheet">
+<script src="/highlight/highlight.min.js"></script>
+<script src="/js/mermaid.min.js"></script>
+<!-- pagefind search -->
+<link href="/_pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/_pagefind/pagefind-ui.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ element: "#pagefind-search" });
+  });
+  var pageTitle = '';
+  if(pageTitle === '404'){
+      window.addEventListener('DOMContentLoaded', (event) => {
+          new PagefindUI({ element: "#page-404-search" });
+      });
+  }
+</script>
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "default"
+  });
+</script>
+<!-- pagefind search box styling -->
+<style>
+  body {
+      padding-top: 44px;
+  }
+  .search-form {
+      right: 0;
+      left: initial !important;
+      min-width: 25vw;
+      max-width: 90vw;
+      max-height: calc(95vh - 100px);
+      overflow: auto;
+      margin-top: 5px;
+  }
+  .mermaid {
+      margin: 1.2em 0;
+      padding: 1em;
+      background: #fff;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+  }
+</style>  </head>
+  <body class="d-flex flex-column h-100">
+<!-- nav bar -->
+<nav class="navbar navbar-expand-md navbar-light bg-info-light fixed-top" aria-label="Tooling Initiative Navigation">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <img src="https://apache.org/img/asf_logo.png" alt="The Apache Software Foundation" style="height: 42px; margin-left: 6px;">
+      <span style="font-weight: bold; position: relative; top: 5px; margin-left: 10px;">Tooling Initiative</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarADP" aria-controls="navbarADP" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarADP" style="position: relative; top: 4px; margin-left: 16px;">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">About</a>
+          <ul class="dropdown-menu">
+            <!--<li><a class="dropdown-item" href="/blog/">Tooling Blog</a></li>-->
+            <li><a class="dropdown-item" href="/team.html">About the team</a></li>
+            <li><a class="dropdown-item" href="/volunteer.html">Volunteer with Tooling</a></li>
+            <!--<li><a class="dropdown-item" href="/job-posting.html">Job Posting</a></li>-->
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/trusted-releases.html">Trusted Releases</a></li>
+            <li><a class="dropdown-item" href="/supply-chain.html">Supply Chain Attacks FAQ</a></li>
+            <li><a class="dropdown-item" href="/policies.html">Policies</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Tools</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://release-test.apache.org/">Trusted Releases Alpha</a></li>
+            <li><a class="dropdown-item" href="https://agenda.apache.org">Board Agenda Tool</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Docs</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://release-test.apache.org/docs/">Trusted Releases</a></li>
+            <li><a class="dropdown-item" href="https://release-test.apache.org/api/docs">ATR Open API</a></li>
+            <li><a class="dropdown-item" href="/atr/maven/">ATR Maven Plugin</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Source</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://github.com/apache/tooling-docs/">Documentation Website</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="https://github.com/apache/tooling-trusted-releases">Trusted Releases</a></li>
+            <li><a class="dropdown-item" href="https://github.com/apache/tooling-releases-client">Trusted Releases Client</a></li>
+            <li><a class="dropdown-item" href="https://github.com/apache/tooling-actions">Trusted Releases Actions</a></li>
+            <li><a class="dropdown-item" href="https://github.com/apache/tooling-atr-maven-plugin">ATR Maven Plugin</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="https://github.com/apache/tooling-agenda">Agenda Tool</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="https://github.com/apache/tooling-secretary">Secretary's Workbench</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle hidden-xs" data-bs-toggle="dropdown"><span class="fa-solid fa-magnifying-glass" aria-hidden="true"></span> Search</a>
+          <ul class="search-form dropdown-menu">
+            <li>
+              <div id="pagefind-search" class="input-group" style="width: 100%; padding: 0 5px;"></div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            About The ASF
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="https://www.apache.org/">Foundation</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="https://www.apache.org/licenses/">License</a></li>
+            <li><a class="dropdown-item" href="https://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a class="dropdown-item" href="https://www.apache.org/foundation/thanks.html">Thanks</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="https://www.apache.org/security/">Security</a></li>
+            <li><a class="dropdown-item" href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy Policy</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>    <main class="flex-shrink-0">
+      <div>
+<!-- page contents -->
+<div id="contents">
+    <div class="bg-white p-5 rounded">
+        <div class="col-sm-12 mx-auto">
+          <h1>
+            Legacy ASF Releases from SVN Dist
+          </h1>
+          <p>We have three types of ASF Releases to import in ATR using a "Pull from '<a href="https://dist.apache.org/repos/dist/">SVN Dist</a>'" process:</p>
+<ol>
+<li>
+<p>Current Release Candidates from <a href="https://dist.apache.org/repos/dist/dev/"><code>dist/dev</code></a>, as the Release Manager requests from within the ATR Web UI.</p>
+</li>
+<li>
+<p>Current/last Releases from <a href="https://dist.apache.org/repos/dist/release/"><code>dist/release</code></a>: this will be used for the initial migration and may be used from time to time as PMCs use the old methods.</p>
+</li>
+<li>
+<p>Archived Releases in <a href="https://archive.apache.org/dist/">Archive Distribution Directory</a> which are migrated from the archive if not present in the Current Releases.</p>
+</li>
+</ol>
+<h2>ATR Web UX</h2>
+<p>We will need pages to perform tasks related to the use of our legacy <a href="https://dist.apache.org/repos/dist/">SVN dist</a> setup.</p>
+<h3>PMC Management Page</h3>
+<ol>
+<li>
+<p><strong>Create Release Candidate</strong> - upload the packages to ATR from a release candidate from <a href="https://dist.apache.org/repos/dist/dev/"><code>svn:dist/dev</code></a>. This upload page can also handle direct uploads, without the <code>svn:dist/dev</code> step.</p>
+</li>
+<li>
+<p><strong>Previous Release</strong> - upload an approved release from <code>svn:dist/release</code>.</p>
+</li>
+</ol>
+<h3>System Admin Page</h3>
+<ol>
+<li>
+<p><strong>Synchronise Current Releases</strong> - scan <a href="https://dist.apache.org/repos/dist/release/"><code>svn:dist/release</code></a> and migrate any not in the ATR.</p>
+</li>
+<li>
+<p><strong>Synchronize Release Archive Distribution Directory</strong> - scan <a href="https://archive.apache.org/dist/"><code>archive</code></a> repository and migrate any archived not in the ATR as a Current or Archived Release.</p>
+</li>
+</ol>
+<h2>Backends Hosting Release Distribution</h2>
+<p>The legacy domains are currently connected to <code>svn:dist/release</code> as follows:</p>
+<ol>
+<li>rsync.apache.org has a directory that updates a checkout of <a href="https://dist.apache.org/repos/dist/release/"><code>svn:dist/release</code></a></li>
+<li><a href="https://downloads.apache.org/">downloads.apache.org</a> periodically rsyncs with rsync.apache.org</li>
+<li><a href="https://archive.apache.org/dist/">archive.apache.org</a> periodically rsyncs with rsync.apache.org without removing artifacts from the destination.</li>
+</ol>
+<h3>Transitional Steps</h3>
+<pre><code class="language-mermaid">flowchart
+  subgraph Legacy
+    A[svn:dist/release]
+    B[rsync.apache.org]
+    A --&gt;|svn| B
+    C["downloads.apache.org"]
+    D[archive.apache.org]
+    B --&gt;|rsync| C
+    B --&gt;|rsync| D
+  end
+</code></pre>
+<ol>
+<li>
+<p><strong>ATR writes to SVN Dist</strong> - ATR Releases write to <code>svn:dist/release</code> as an interim step.</p>
+<ul>
+<li>(a) ATR commits new releases distributions to SVN dist/release.</li>
+</ul>
+</li>
+</ol>
+<pre><code class="language-mermaid">flowchart
+  subgraph Transition 1A
+    ATR[ATR releases.apache.org]
+    A[svn:dist/release]
+    ATR --&gt;|svn| A
+    B[rsync.apache.org]
+    A --&gt;|svn| B
+    C["downloads.apache.org"]
+    D[archive.apache.org]
+    B --&gt;|rsync| C
+    B --&gt;|rsync| D
+  end
+</code></pre>
+<ul>
+<li>(b) ATR both watches changes to SVN dist release and commits new ATR-first changes to SVN dist release.</li>
+</ul>
+<pre><code class="language-mermaid">flowchart
+  subgraph Transition 1B
+    AA[svn:dist/release]
+    ATR[releases.apache.org]
+    AA --&gt;|svn| ATR
+    A[svn:dist/release]
+    ATR --&gt;|svn| A
+    B[rsync.apache.org]
+    A --&gt;|svn| B
+    C["downloads.apache.org"]
+    D[archive.apache.org]
+    B --&gt;|rsync| C
+    B --&gt;|rsync| D
+  end
+</code></pre>
+<ol start="2">
+<li><strong>ATR and Legacy are Integrated</strong> - Insert ATR into the rsync chain.
+<ul>
+<li>
+<p>ATR has a directory with the same organization as <code>svn:dist/release</code> using symbolic links to the Releases in the ATR Datastore.</p>
+</li>
+<li>
+<p>(a) ATR's rsync from rsync.apache.org should detect legacy release addition and deletion.</p>
+</li>
+</ul>
+</li>
+</ol>
+<pre><code class="language-mermaid">flowchart
+  subgraph Transition 2A
+    A[svn:dist/release]
+    B[rsync.apache.org]
+    A --&gt;|svn| B
+    ATR[releases.apache.org]
+    B --&gt;|rsync| ATR
+    C["downloads.apache.org"]
+    D[archive.apache.org]
+    ATR --&gt;|rsync| C
+    ATR --&gt;|rsync| D
+  end
+</code></pre>
+<p>Or</p>
+<ul>
+<li>(b) ATR coexists on rsync.apache.org and detects legacy release addition and deletion.</li>
+</ul>
+<pre><code class="language-mermaid">flowchart
+  subgraph Transition 2B
+    A[svn:dist/release]
+    subgraph ATR on Rsync
+      ATR[releases.apache.org]
+      B[rsync.apache.org]
+      ATR &lt;--&gt; B
+    end
+    A --&gt;|svn| ATR
+    C["downloads.apache.org"]
+    D[archive.apache.org]
+    B --&gt;|rsync| C
+    B --&gt;|rsync| D
+  end
+</code></pre>
+<ol start="3">
+<li><strong>Legacy SVN Dist is Retired</strong> - <code>svn:dist/release</code> is retired.</li>
+</ol>
+<pre><code class="language-mermaid">flowchart
+  subgraph Transition 3
+    ATR[ATR releases.apache.org]
+    C["downloads.apache.org"]
+    D[archive.apache.org]
+    ATR --&gt;|rsync| C
+    ATR --&gt;|rsync| D
+  end
+</code></pre>
+<ol start="4">
+<li><strong>Further Integration</strong> - downloads.apache.org is hosted on ATR. Downloads.apache.org is multiple servers. ATR would need to work on multiple servers</li>
+</ol>
+<pre><code class="language-mermaid">flowchart
+  subgraph Transition 4
+    ATR["releases.apache.org"]
+    D[archive.apache.org]
+    ATR --&gt;|rsync| D
+  end
+</code></pre>
+
+        </div>
+    </div>
+</div>    <!-- footer -->
+    <div class="row">
+      <div class="large-12 medium-12 columns">
+        <p style="font-style: italic; font-size: 0.8rem; text-align: center;">
+          Copyright 2026, <a href="https://www.apache.org/">The Apache Software Foundation</a>, Licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.<br>
+          Apache&reg; and the Apache logo are trademarks or registered trademarks of The Apache Software Foundation.
+        </p>
+      </div>
+    </div>      </div>
+    </main>
+    <script src="/js/bootstrap.bundle.min.js" integrity="sha384-TYMA+uAx4f43rilxPIhmlqA+Vi+xbyMe+YVR3BcL15NyHLqd+7WYNtyBPdayiOPx"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+      function decodeHtmlEntities(str) {
+        const txt = document.createElement("textarea");
+        txt.innerHTML = str;
+        return txt.value;
+      }
+      document.querySelectorAll("pre > code.language-mermaid").forEach((code, i) => {
+        let decoded = decodeHtmlEntities(code.innerHTML);
+        // Normalize whitespace
+        decoded = decoded.replace(/\t/g, "    ");
+        decoded = decoded.replace(/^\s*\n/, "").replace(/\n\s*$/, "");
+        const div = document.createElement("div");
+        div.className = "mermaid";
+        div.textContent = decoded;
+        code.parentElement.replaceWith(div);
+        console.log(`=== Mermaid block ${i} ===`);
+        console.log(decoded);
+      });
+      // Mermaid v10+ runs asynchronously
+      mermaid.run({ querySelector: ".mermaid" })
+        .catch(err => {
+          console.error("Mermaid rendering failed:", err);
+        });
+      });
+    </script>
+    <script>hljs.highlightAll();</script>  </body>
+</html>
