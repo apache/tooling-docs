@@ -58,6 +58,10 @@ Depending on the method chosen to upload your release candidate artifacts PATs, 
 
 ## Release Phases
 
+1. Compose
+2. Vote
+3. Finish
+
    - Incorporate all PMC Releases.
      - Download page.
      - Release Candidate page.
