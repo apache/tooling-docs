@@ -58,6 +58,8 @@ Depending on the method chosen to upload your release candidate artifacts PATs, 
 
 ## Release Phases
 
+ATR has three phases for a release.
+
 1. Compose
 2. Vote
 3. Finish
