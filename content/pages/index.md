@@ -31,6 +31,7 @@ All ASF PMCs and Incubating podlings may participate in Beta testing of our new 
 Login to the ATR using your ASF credentials and you will have access to your PMC's projects.
 Incubating projects are welcome to join.
 
+
 1. ATR: https://releases.apache.org
 2. Docs:  https://releases.apache.org/docs
 3. Open API:  https://releases.apache.org/api/docs
