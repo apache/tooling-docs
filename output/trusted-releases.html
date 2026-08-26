@@ -154,22 +154,22 @@
           <p>The main project for the Tooling Initiative is the Apache Trusted Releases platform.</p>
 <ol>
 <li>
-<p>Endpoints:</p>
+<p>Websites:</p>
 <ul>
-<li><a href="https://releases.apache.org">https://releases.apache.org</a></li>
-<li><a href="https://release-catalog.apache.org">https://release-catalog.apache.org</a></li>
+<li><a href="https://releases.apache.org">https://releases.apache.org</a> - this is the ATR UX which is dynamic requiring ASF login credentials.</li>
+<li><a href="https://release-catalog.apache.org">https://release-catalog.apache.org</a> - this is the full ASF release catalog in a static website hosted by httpd.</li>
 </ul>
 </li>
 <li>
 <p>Repositories:</p>
 <ul>
-<li><a href="https://github.com/apache/tooling-trusted-releases">https://github.com/apache/tooling-trusted-releases</a></li>
-<li><a href="https://github.com/apache/tooling-releases-client">https://github.com/apache/tooling-releases-client</a></li>
-<li><a href="https://github.com/apache/tooling-actions">https://github.com/apache/tooling-actions</a></li>
+<li><a href="https://github.com/apache/tooling-trusted-releases">https://github.com/apache/tooling-trusted-releases</a> - the ATR UX and API.</li>
+<li><a href="https://github.com/apache/tooling-releases-client">https://github.com/apache/tooling-releases-client</a> - a Python client for Release Managers.</li>
+<li><a href="https://github.com/apache/tooling-actions">https://github.com/apache/tooling-actions</a> - Github Actions for Trusted Publishing.</li>
 </ul>
 </li>
 </ol>
-<h2>Beta platform goals</h2>
+<h2>Beta platform features</h2>
 <ul>
 <li>Minimize human interaction</li>
 <li>Easily follow release policy</li>
@@ -185,15 +185,17 @@
 </ul>
 <h2>Configuration</h2>
 <p>The Apache Trusted Releases (ATR) platform makes a distinction between the two parts of a Project Management Committee.
-First the PMC is a management committee with associated committers. Second, the PMC manages one or more projects.</p>
+First the PMC is a management committee with associated committers. Second, the PMC manages one or more projects.
+To start to use ATR for your releases there is PMC configuration to review and adjust.</p>
 <h3>Committee</h3>
 <p>For the Committee ATR tracks Projects, Release Managers, and Signing Keys.
 The committee consists of the PMC Members and includes project committers by reference.
-All PMC Members are enabled to be Release Managers. A PMC Member can designate any committer as a Release Manager.
-The committee also has an associated set of GPG signing keys found in <code>svn:dist:release</code> by convention.
+All PMC Members are enabled to be Release Managers. A PMC Member can designate any committer as a Release Manager.</p>
+<p>The committee also has an associated set of GPG signing keys found in <code>svn:dist:release</code> by convention.
 ATR can be configured to maintain the KEYS file for you.</p>
 <p>Committees that are approved for CI Release builds require special setup. Permissions are shown on the committee page.
-Look into <a href="https://github.com/apache/tooling-actions">Tooling actions</a> for Github Actions to use for trusted publishing.</p>
+Look into <a href="https://github.com/apache/tooling-actions">Tooling actions</a> for Github Actions to use for
+<a href="https://releases.apache.org/docs/trusted-publishing">Trusted Publishing</a>.</p>
 <h3>Projects</h3>
 <p>Most PMCs have only their namesake project. There are many projects that have 2-8 subprojects and there are a few
 that have dozens of subprojects. We've determined subprojects via two methods. First via an existing DOAP file
@@ -201,22 +203,32 @@ known to <a href="https://projects.apache.org">https://projects.apache.org</a>, 
 This process was imperfect and we require PMCs with multiple projects to correct and confirm these. The best place to verify projects is
 by reviewing the PMC's catalog page at <a href="https://release-catalog.apache.org/">https://release-catalog.apache.org/</a>. Engage with the Tooling team
 to make corrections.</p>
-<p>There are many different project settings. You can review these in the ATR website and then export a yaml fragment to save
-it in your project repository's <code>.asf.yaml</code> file.</p>
-<h3>Release Mangers</h3>
-<p>Each user can manage their access tokens and keys. At a minimum new Release Managers will need to save their GPG public key.
+<p>There are many different project settings. These are categorized according to their aspect.</p>
+<ol>
+<li>Releases - start a new release version and view the project's current releases.</li>
+<li>Metadata - the project name, description, and other urls. Some of these are required.</li>
+<li>Security - security emails and threat model urls.</li>
+<li>Lifecycle - how the project handles versioning. <code>semver</code>, <code>calver</code>, or <code>simple</code>.</li>
+<li>Trusted Publishing - what GitHub repositories, branch, and workflows to trust.</li>
+<li>Compose - license checking and other composition settings.</li>
+<li>Vote - voting options and email templates.</li>
+<li>Finish - distribution subdirectory and announcement email templates.</li>
+</ol>
+<p>You can review these in the ATR website and then export a yaml fragment to save it in your project repository's <code>.asf.yaml</code> file.</p>
+<h3>Release Managers</h3>
+<p>Each Release Manager should manage their access tokens and keys. At a minimum new Release Managers will need to save their GPG public key.
 Depending on the method chosen to upload your release candidate artifacts PATs, JWTs, or SSH keys may be required.</p>
-<h2>Release Phases</h2>
-<p>ATR has three phases for a release.</p>
+<h2>Release Candidate Phases</h2>
+<p>ATR has three phases for a Release Candidate. The Release Manager will guide the Candidate through these phases.</p>
 <ol>
 <li>
-<p>Compose</p>
+<p>Compose - this phase starts when a new release version is created. Every artifact is checked in several ways. New revisions may be made,</p>
 </li>
 <li>
-<p>Vote</p>
+<p>Vote - this phase provides a supervised voting period and a public view of the candidate artifacts and check results.</p>
 </li>
 <li>
-<p>Finish</p>
+<p>Finish - this phase allows for the distribution of the release and ends with the announcement.</p>
 <ul>
 <li>Incorporate all PMC Releases.
 <ul>
