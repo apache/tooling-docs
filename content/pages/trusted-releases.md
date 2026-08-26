@@ -1,57 +1,61 @@
 Title: Apache Trusted Releases platform
 license: https://www.apache.org/licenses/LICENSE-2.0
 
-The main project is the Apache Trusted Releases platform.
+The main project for the Tooling Initiative is the Apache Trusted Releases platform.
 
-Endpoints:
+1. Endpoints:
 
-- https://releases.apache.org
-- https://release-catalog.apache.org
+   - https://releases.apache.org
+   - https://release-catalog.apache.org
 
-Repositories:
+2. Repositories:
 
-- https://github.com/apache/tooling-trusted-releases
-- https://github.com/apache/tooling-releases-client
-- https://github.com/apache/tooling-actions
+   - https://github.com/apache/tooling-trusted-releases
+   - https://github.com/apache/tooling-releases-client
+   - https://github.com/apache/tooling-actions
 
-## Trusted Releases Beta
+## Beta platform goals
 
-   - Minimize human interaction.
-   - Easily follow release policy.
-   - MFA access required.
-   - Designate Release Managers and maintain public GPG signing keys.
-   - Confirm release catalog and configure sub-projects.
-   - Securely compose Release Candidates.
-   - Vote includes community through email thread tracking.
-   - Finished releases are delivered to `svn:dist:release`.
-   - Expedited security releases are completely private.
-   - Templated vote and announcement emails.
+   - Minimize human interaction
+   - Easily follow release policy
+   - Require MFA for access
+   - Designate Release Managers and maintain their GPG public signing keys
+   - Confirm the derived release catalog and properly configure sub-projects
+   - Securely compose Release Candidates
+   - Enforce vote standards while continuing to include community
+   - Releases are still delivered to `svn:dist:release`
    - Legacy release awareness in building a full release catalog.
+   - Expedited security releases are completely private
+   - Templated vote and announcement emails
 
-## Committee Configuration
+## Configuration
 
 The Apache Trusted Releases (ATR) platform makes a distinction between the two parts of a Project Management Committee.
+First the PMC is a management committee with associated committers. Second, the PMC manages one or more projects.
+
+### Committee
+
+For the Committee ATR tracks Projects, Release Managers, and Signing Keys.
 The committee consists of the PMC Members and includes project committers by reference.
 All PMC Members are enabled to be Release Managers. A PMC Member can designate any committer as a Release Manager.
-The committee also has an associated set of GPG signing keys found in `svn:dist:release` by convention. ATR can be configured
-to maintain the KEYS file for you.
+The committee also has an associated set of GPG signing keys found in `svn:dist:release` by convention.
+ATR can be configured to maintain the KEYS file for you.
 
 Committees that are approved for CI Release builds require special setup. Permissions are shown on the committee page.
 Look into [Tooling actions](https://github.com/apache/tooling-actions) for Github Actions to use for trusted publishing.
 
-## Project Configuration
-
+### Projects
 Most PMCs have only their namesake project. There are many projects that have 2-8 subprojects and there are a few
 that have dozens of subprojects. We've determined subprojects via two methods. First via an existing DOAP file
-known to https://projects.apache.org, and second by analyzing all existing and archived releases made by the PMC.
-This process is imperfect and we require PMCs with multiple projects to confirm these. The best place to verify projects is
+known to https://projects.apache.org, and second by analyzing all existing and archived releases.
+This process was imperfect and we require PMCs with multiple projects to correct and confirm these. The best place to verify projects is
 by reviewing the PMC's catalog page at https://release-catalog.apache.org/. Engage with the Tooling team
 to make corrections.
 
-There are many different project settings. You can review these in the website and then export a yaml fragment to save
-it in your project's `.asf.yaml` file.
+There are many different project settings. You can review these in the ATR website and then export a yaml fragment to save
+it in your project repository's `.asf.yaml` file.
 
-## User Settings
+### Release Mangers
 
 Each user can manage their access tokens and keys. At a minimum new Release Managers will need to save their GPG public key.
 Depending on the method chosen to upload your release candidate artifacts PATs, JWTs, or SSH keys may be required.
