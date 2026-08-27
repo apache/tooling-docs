@@ -11,8 +11,9 @@ The main project for the Tooling Initiative is the Apache Trusted Releases (ATR)
 ## Repositories
 
    - https://github.com/apache/tooling-trusted-releases - the ATR UX and API.
-   - https://github.com/apache/tooling-releases-client - a Python client for Release Managers.
+   - https://github.com/apache/tooling-releases-client - a Python client for Release Managers to interact with the ATR API.
    - https://github.com/apache/tooling-actions - Github Actions for Trusted Publishing.
+   - https://github.com/apache/tooling-atr-maven-plugin - Maven plugin for uploading release candidates to ATR.
 
 [TOC]
 
