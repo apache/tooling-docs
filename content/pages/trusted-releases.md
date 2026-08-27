@@ -16,7 +16,7 @@ The main project for the Tooling Initiative is the Apache Trusted Releases (ATR)
 
 [TOC]
 
-## Beta platform features {#features}
+## Beta platform features
 
    - Minimize human interaction
    - Easily follow release policy
@@ -30,13 +30,13 @@ The main project for the Tooling Initiative is the Apache Trusted Releases (ATR)
    - Expedited security releases are completely private
    - Templated vote and announcement emails
 
-## Configuration {#configuration}
+## Configuration
 
 The Apache Trusted Releases (ATR) platform makes a distinction between the two parts of a Project Management Committee.
 First the PMC is a management committee with associated committers. Second, the PMC manages one or more projects.
 To start to use ATR for your releases there is PMC configuration to review and adjust.
 
-### Committee {#committee}
+### Committee
 
 For the Committee ATR tracks Projects, Release Managers, and Signing Keys.
 The committee consists of the PMC Members and includes project committers by reference.
@@ -49,7 +49,7 @@ Committees that are approved for CI Release builds require special setup. Permis
 Look into [Tooling actions](https://github.com/apache/tooling-actions) for Github Actions to use for
 [Trusted Publishing](https://releases.apache.org/docs/trusted-publishing).
 
-### Projects {#projects}
+### Projects
 
 Most PMCs have only their namesake project. There are many projects that have 2-8 subprojects and there are a few
 that have dozens of subprojects. We've determined subprojects via two methods. First via an existing DOAP file
@@ -71,12 +71,12 @@ There are many different project settings. These are categorized according to th
 
 You can review these in the ATR website and then export a yaml fragment to save it in your project repository's `.asf.yaml` file.
 
-### Release Manager {#release-manager}
+### Release Manager
 
 Each Release Manager should manage their access tokens and keys. At a minimum new Release Managers will need to save their GPG public key.
 Depending on the method chosen to upload your release candidate artifacts PATs, JWTs, or SSH keys may be required.
 
-## Release Candidate Phases {#phases}
+## Release Candidate Phases
 
 ATR has three phases for a Release Candidate. The Release Manager will guide the Release Candidate through these phases in order
 to make a Release of a new Version of a Project.
@@ -88,7 +88,7 @@ A Release Candidate can be started in several ways.
 3. The ATR Maven Plugin will start a new version when you run the target. You must configure Maven with a PAT created in the UX.
 4. If you have permission to build releases in CI then you can use a GitHub Action.
 
-### 1. Compose {#compose}
+### 1. Compose
 
 This phase starts when a new release version is created. Every uploaded artifact is checked in several ways. New revisions may be made.
 If you cancel a Vote you can return to the Compose phase and replace your artifacts with new revisions. There are several ways to upload.
@@ -109,7 +109,7 @@ After artifacts are uploaded they go through two steps.
    artifact. We validate and evaluate any SBOM artifact provided. Because our excludes checks are imperfect, we expect Release Managers
    to exercise judgment about license exceptions.
 
-### 2. Vote {#vote}
+### 2. Vote
 
 This phase provides a supervised voting period. Voters are provided with a public view of the candidate artifacts and check results.
 (Expedited vote pages are only available to PMC Members.)
@@ -124,13 +124,13 @@ Votes are tabulated and reflected in a vote thread in one of three ways
 ATR assures that VOTEs are open for a PMC chosen minimum of from 72 hours to 168 hours. Expedited releases will automatically be completed when
 enough +1 (binding) votes have occurred.
 
-### 3. Finish {#finish}
+### 3. Finish
 
 This phase allows for the distribution of the release and ends with the announcement. In this phase the release artifacts are pushed to
 `svn:dist:release`, you wait for them to propagate to downloads.apache.org, do any distributions like to Maven Central, and then you announce
 the release!
 
-## Release Catalog {#catalog}
+## Release Catalog
 
 ATR maintains a Release Catalog in its database. It watches `svn:dist:release` with `pubsub` and catalogs legacy releases along with ATR releases.
 A record of each release is sent to the `releases@tooling.apache.org` mailbox. With each release and archival of a release a static
