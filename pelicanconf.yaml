@@ -16,6 +16,7 @@ plugins:
     - toc
     - spu
     - gfm
+    - asfgenid
 content:
   pages: pages
   static:
