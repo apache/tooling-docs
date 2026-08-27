@@ -1,7 +1,7 @@
 Title: Apache Trusted Releases platform
 license: https://www.apache.org/licenses/LICENSE-2.0
 
-The main project for the Tooling Initiative is the Apache Trusted Releases platform.
+The main project for the Tooling Initiative is the Apache Trusted Releases (ATR) platform.
 
 1. Websites:
 
@@ -76,11 +76,46 @@ Depending on the method chosen to upload your release candidate artifacts PATs, 
 
 ## Release Candidate Phases
 
-ATR has three phases for a Release Candidate. The Release Manager will guide the Candidate through these phases.
+ATR has three phases for a Release Candidate. The Release Manager will guide the Release Candidate through these phases in order
+to make a Release of a new Version of a Project.
 
-1. Compose - this phase starts when a new release version is created. Every artifact is checked in several ways. New revisions may be made,
-2. Vote - this phase provides a supervised voting period and a public view of the candidate artifacts and check results.
-3. Finish - this phase allows for the distribution of the release and ends with the announcement.
+A Release Candidate can be started in several ways.
+
+1. The ATR UX provides a few places to start a release. If you are making a secret Expedited Release then the UX is the only place.
+2. The Python client provides a command. You must provide a PAT created in the UX.
+3. The ATR Maven Plugin will start a new version when you run the target. You must configure Maven with a PAT created in the UX.
+4. If you have permission to build releases in CI then you can use a GitHub Action.
+
+### 1. Compose
+
+This phase starts when a new release version is created. Every uploaded artifact is checked in several ways. New revisions may be made.
+If you cancel a Vote you can return to the Compose phase and replace your artifacts with new revisions. There are several ways to upload.
+
+1. The ATR UX provides a few methods
+   - Browser upload. This is best for small source only releases.
+   - SVN Dev directory. If you are still creating your release and checking in your artifacts in SVN then ATR can upload from there.
+   - Rsync. This is best when you have many convenience binary artifacts. You will need to provide you SSH public key to ATR.
+2. The Python client provides a command. You must provide a PAT created in the UX.
+3. The ATR Maven Plugin will start a new version when you run the target. You must configure Maven with a PAT created in the UX.
+4. If you have permission to build releases in CI then you can use a GitHub Action. The UX provides instructions.
+
+After artifacts are uploaded they go through two steps.
+
+1. Quarantine. Here each artifact is checked for defects like zip bombs and path traversal issues. Problems you would not to give your
+   downstream users and ones we cannot allow on the ATR server.
+2. Checks. Here we perform license, signature, and checksum checks. We make sure that you have included at least one source release
+   artifact. We validate and evaluate any SBOM artifact provided. Because our excludes checks are imperfect, we expect Release Managers
+   to exercise judgment about license exceptions.
+
+### 2. Vote
+
+This phase provides a supervised voting period and a public view of the candidate artifacts and check results.
+
+### 3. Finish
+
+This phase allows for the distribution of the release and ends with the announcement.
+
+## Release Catalog
 
    - Incorporate all PMC Releases.
      - Download page.
@@ -101,39 +136,7 @@ ATR has three phases for a Release Candidate. The Release Manager will guide the
 
    See [Platform Services](platform.html) for detailed requirements for the **ATR**.
 
-## 4. Automate Release Process around Compliance
-
-   - Meet Release Policy
-     - Legal Policy
-     - Infra Policy
-     - Security Policy
-   - SBOMs and Attestations
-     - Include dependency and license compliance.
-     - Provide clear attribution and information about Release Votes.
-   - Certificate and Credential Management
-     - Manage the signing keys needed for automation.
-   - Download Page including available SBOM and verification instructions.
-   - Announcement Email.
-
 ## 5. Release Lifecycle Phases
 
    Here is a flow chart showing the [Release Lifecycle Phases](https://github.com/apache/tooling-docs/blob/main/apache-trusted-releases/lifecycle.md).
-
-## 6. Infrastructure Requirements
-
-   - Run book for releases.apache.org
-   - Progress on the retirement path for `svn:dist`. See [Legacy Releases from SVN Dist](svn-dist.html)
-     for possible transitional states. For the beta test _transition 1B_ is preferred.
-   - Legacy urls for dist.apache.org, downloads.apache.org, dlcdn.apache.org, and archive.apache.org remain supported.
-   - Path schemes for downloads.apache.org, dlcdn.apache.org, and archive.apache.org remain.
-
-## 7. Future Requirements
-
-   - Integrate with the [Security Advisory Process](https://github.com/apache/tooling-docs/blob/main/apache-trusted-releases/advisory-process.md) to make it easy to track applicable advisories on download pages.
-   - Expand support for [Evaluating Build Claims](https://github.com/apache/tooling-docs/blob/main/apache-trusted-releases/evaluate.md) to additional build tools.
-   - Expand automated support for additional [Distribution Channels](https://github.com/apache/tooling-docs/blob/main/apache-trusted-releases/distributions.md).
-   - Include a [Signing Candidates](https://github.com/apache/tooling-docs/blob/main/apache-trusted-releases/digital-signatures.md) phase during ATR processing.
-
-     > There are policy implications to the automation of digital signatures.
-     > For now, creating digital signatures on certain artifact types must be done prior to GPG signing and
-     > prior to submission of the release candidate.
+   
