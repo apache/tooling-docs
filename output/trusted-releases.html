@@ -169,7 +169,7 @@
 </ul>
 </li>
 </ol>
-<h2 id="beta-platform-features">Beta platform features<a class="headerlink" href="#beta-platform-features" title="Permalink">&para;</a></h2>
+<h2 id="features">Beta platform features<a class="headerlink" href="#features" title="Permalink">&para;</a></h2>
 <ul>
 <li>Minimize human interaction</li>
 <li>Easily follow release policy</li>
@@ -215,10 +215,10 @@ to make corrections.</p>
 <li>Finish - distribution subdirectory and announcement email templates.</li>
 </ol>
 <p>You can review these in the ATR website and then export a yaml fragment to save it in your project repository's <code>.asf.yaml</code> file.</p>
-<h3 id="release-managers">Release Managers<a class="headerlink" href="#release-managers" title="Permalink">&para;</a></h3>
+<h3 id="release-manager">Release Manager<a class="headerlink" href="#release-manager" title="Permalink">&para;</a></h3>
 <p>Each Release Manager should manage their access tokens and keys. At a minimum new Release Managers will need to save their GPG public key.
 Depending on the method chosen to upload your release candidate artifacts PATs, JWTs, or SSH keys may be required.</p>
-<h2 id="release-candidate-phases">Release Candidate Phases<a class="headerlink" href="#release-candidate-phases" title="Permalink">&para;</a></h2>
+<h2 id="phases">Release Candidate Phases<a class="headerlink" href="#phases" title="Permalink">&para;</a></h2>
 <p>ATR has three phases for a Release Candidate. The Release Manager will guide the Release Candidate through these phases in order
 to make a Release of a new Version of a Project.</p>
 <p>A Release Candidate can be started in several ways.</p>
@@ -228,7 +228,7 @@ to make a Release of a new Version of a Project.</p>
 <li>The ATR Maven Plugin will start a new version when you run the target. You must configure Maven with a PAT created in the UX.</li>
 <li>If you have permission to build releases in CI then you can use a GitHub Action.</li>
 </ol>
-<h3 id="1-compose">1. Compose<a class="headerlink" href="#1-compose" title="Permalink">&para;</a></h3>
+<h3 id="compose">1. Compose<a class="headerlink" href="#compose" title="Permalink">&para;</a></h3>
 <p>This phase starts when a new release version is created. Every uploaded artifact is checked in several ways. New revisions may be made.
 If you cancel a Vote you can return to the Compose phase and replace your artifacts with new revisions. There are several ways to upload.</p>
 <ol>
@@ -251,11 +251,11 @@ downstream users and ones we cannot allow on the ATR server.</li>
 artifact. We validate and evaluate any SBOM artifact provided. Because our excludes checks are imperfect, we expect Release Managers
 to exercise judgment about license exceptions.</li>
 </ol>
-<h3 id="2-vote">2. Vote<a class="headerlink" href="#2-vote" title="Permalink">&para;</a></h3>
+<h3 id="vote">2. Vote<a class="headerlink" href="#vote" title="Permalink">&para;</a></h3>
 <p>This phase provides a supervised voting period and a public view of the candidate artifacts and check results.</p>
-<h3 id="3-finish">3. Finish<a class="headerlink" href="#3-finish" title="Permalink">&para;</a></h3>
+<h3 id="finish">3. Finish<a class="headerlink" href="#finish" title="Permalink">&para;</a></h3>
 <p>This phase allows for the distribution of the release and ends with the announcement.</p>
-<h2 id="release-catalog">Release Catalog<a class="headerlink" href="#release-catalog" title="Permalink">&para;</a></h2>
+<h2 id="catalog">Release Catalog<a class="headerlink" href="#catalog" title="Permalink">&para;</a></h2>
 <ul>
 <li>Incorporate all PMC Releases.
 <ul>
