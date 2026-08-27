@@ -27,14 +27,14 @@ The main project for the Tooling Initiative is the Apache Trusted Releases (ATR)
    - Securely compose Release Candidates
    - Enforce vote standards while continuing to include community
    - Releases are still delivered to `svn:dist:release`
-   - Legacy release awareness in building a full release catalog.
+   - Legacy release awareness in building a full release catalog
    - Expedited security releases are completely private
    - Templated vote and announcement emails
 
 ## Configuration
 
 The Apache Trusted Releases (ATR) platform makes a distinction between the two parts of a Project Management Committee.
-First the PMC is a management committee with associated committers. Second, the PMC manages one or more projects.
+First, the PMC is a management committee with associated committers. Second, the PMC manages one or more projects.
 To start to use ATR for your releases there is PMC configuration to review and adjust.
 
 ### Committee
@@ -97,7 +97,7 @@ If you cancel a Vote you can return to the Compose phase and replace your artifa
 1. The ATR UX provides a few methods
    - Browser upload. This is best for small source only releases.
    - SVN Dev directory. If you are still creating your release and checking in your artifacts in SVN then ATR can upload from there.
-   - Rsync. This is best when you have many convenience binary artifacts. You will need to provide you SSH public key to ATR.
+   - Rsync. This is best when you have many convenience binary artifacts. You will need to provide your SSH public key to ATR.
 2. The Python client provides a command. You must provide a PAT created in the UX.
 3. The ATR Maven Plugin will start a new version when you run the target. You must configure Maven with a PAT created in the UX.
 4. If you have permission to build releases in CI then you can use a GitHub Action. The UX provides instructions.
