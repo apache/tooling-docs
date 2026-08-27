@@ -151,7 +151,7 @@
           <h1>
             Apache Trusted Releases platform
           </h1>
-          <div id="toc" style="border-radius: 3px; border: 1px solid #999; background-color: #EEE; padding: 4px;"><h4 id="table-of-contents">Table of Contents:<a class="headerlink" href="#table-of-contents" title="Permalink">&para;</a></h4><ul><ul><li><a class="toc-href" href="#beta platform features {#features}" id="features" title="Beta platform features {#features}">Beta platform features<a class="headerlink" href="#features" title="Permalink">&para;</a></a></li><li><a class="toc-href" href="#configuration {#configuration}" id="configuration" title="Configuration {#configuration}">Configuration<a class="headerlink" href="#configuration" title="Permalink">&para;</a></a><ul><li><a class="toc-href" href="#committee {#committee}" id="committee" title="Committee {#committee}">Committee<a class="headerlink" href="#committee" title="Permalink">&para;</a></a></li><li><a class="toc-href" href="#projects {#projects}" id="projects" title="Projects {#projects}">Projects<a class="headerlink" href="#projects" title="Permalink">&para;</a></a></li><li><a class="toc-href" href="#release manager {#release-manager}" id="release-manager" title="Release Manager {#release-manager}">Release Manager<a class="headerlink" href="#release-manager" title="Permalink">&para;</a></a></li></ul></li><li><a class="toc-href" href="#release candidate phases {#phases}_1" id="phases" title="Release Candidate Phases {#phases}">Release Candidate Phases<a class="headerlink" href="#phases" title="Permalink">&para;</a></a><ul><li><a class="toc-href" href="#1. compose {#compose}" id="compose" title="1. Compose {#compose}">1. Compose<a class="headerlink" href="#compose" title="Permalink">&para;</a></a></li><li><a class="toc-href" href="#2. vote {#vote}" id="vote" title="2. Vote {#vote}">2. Vote<a class="headerlink" href="#vote" title="Permalink">&para;</a></a></li><li><a class="toc-href" href="#3. finish {#finish}" id="finish" title="3. Finish {#finish}">3. Finish<a class="headerlink" href="#finish" title="Permalink">&para;</a></a></li></ul></li><li><a class="toc-href" href="#release catalog {#catalog}_1" id="catalog" title="Release Catalog {#catalog}">Release Catalog<a class="headerlink" href="#catalog" title="Permalink">&para;</a></a></li></ul></ul></div>
+          <p>[TOC2]</p>
 <p>The main project for the Tooling Initiative is the Apache Trusted Releases (ATR) platform.</p>
 <ol>
 <li>
@@ -170,7 +170,7 @@
 </ul>
 </li>
 </ol>
-<h2 id="features_1">Beta platform features<a class="headerlink" href="#features_1" title="Permalink">&para;</a></h2>
+<h2 id="features">Beta platform features<a class="headerlink" href="#features" title="Permalink">&para;</a></h2>
 <ul>
 <li>Minimize human interaction</li>
 <li>Easily follow release policy</li>
@@ -184,11 +184,11 @@
 <li>Expedited security releases are completely private</li>
 <li>Templated vote and announcement emails</li>
 </ul>
-<h2 id="configuration_1">Configuration<a class="headerlink" href="#configuration_1" title="Permalink">&para;</a></h2>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permalink">&para;</a></h2>
 <p>The Apache Trusted Releases (ATR) platform makes a distinction between the two parts of a Project Management Committee.
 First the PMC is a management committee with associated committers. Second, the PMC manages one or more projects.
 To start to use ATR for your releases there is PMC configuration to review and adjust.</p>
-<h3 id="committee_1">Committee<a class="headerlink" href="#committee_1" title="Permalink">&para;</a></h3>
+<h3 id="committee">Committee<a class="headerlink" href="#committee" title="Permalink">&para;</a></h3>
 <p>For the Committee ATR tracks Projects, Release Managers, and Signing Keys.
 The committee consists of the PMC Members and includes project committers by reference.
 All PMC Members are enabled to be Release Managers. A PMC Member can designate any committer as a Release Manager.</p>
@@ -197,7 +197,7 @@ ATR can be configured to maintain the KEYS file for you.</p>
 <p>Committees that are approved for CI Release builds require special setup. Permissions are shown on the committee page.
 Look into <a href="https://github.com/apache/tooling-actions">Tooling actions</a> for Github Actions to use for
 <a href="https://releases.apache.org/docs/trusted-publishing">Trusted Publishing</a>.</p>
-<h3 id="projects_1">Projects<a class="headerlink" href="#projects_1" title="Permalink">&para;</a></h3>
+<h3 id="projects">Projects<a class="headerlink" href="#projects" title="Permalink">&para;</a></h3>
 <p>Most PMCs have only their namesake project. There are many projects that have 2-8 subprojects and there are a few
 that have dozens of subprojects. We've determined subprojects via two methods. First via an existing DOAP file
 known to <a href="https://projects.apache.org">https://projects.apache.org</a>, and second by analyzing all existing and archived releases.
@@ -216,10 +216,10 @@ to make corrections.</p>
 <li>Finish - distribution subdirectory and announcement email templates.</li>
 </ol>
 <p>You can review these in the ATR website and then export a yaml fragment to save it in your project repository's <code>.asf.yaml</code> file.</p>
-<h3 id="release-manager_1">Release Manager<a class="headerlink" href="#release-manager_1" title="Permalink">&para;</a></h3>
+<h3 id="release-manager">Release Manager<a class="headerlink" href="#release-manager" title="Permalink">&para;</a></h3>
 <p>Each Release Manager should manage their access tokens and keys. At a minimum new Release Managers will need to save their GPG public key.
 Depending on the method chosen to upload your release candidate artifacts PATs, JWTs, or SSH keys may be required.</p>
-<h2 id="phases_1">Release Candidate Phases<a class="headerlink" href="#phases_1" title="Permalink">&para;</a></h2>
+<h2 id="phases">Release Candidate Phases<a class="headerlink" href="#phases" title="Permalink">&para;</a></h2>
 <p>ATR has three phases for a Release Candidate. The Release Manager will guide the Release Candidate through these phases in order
 to make a Release of a new Version of a Project.</p>
 <p>A Release Candidate can be started in several ways.</p>
@@ -229,7 +229,7 @@ to make a Release of a new Version of a Project.</p>
 <li>The ATR Maven Plugin will start a new version when you run the target. You must configure Maven with a PAT created in the UX.</li>
 <li>If you have permission to build releases in CI then you can use a GitHub Action.</li>
 </ol>
-<h3 id="compose_1">1. Compose<a class="headerlink" href="#compose_1" title="Permalink">&para;</a></h3>
+<h3 id="compose">1. Compose<a class="headerlink" href="#compose" title="Permalink">&para;</a></h3>
 <p>This phase starts when a new release version is created. Every uploaded artifact is checked in several ways. New revisions may be made.
 If you cancel a Vote you can return to the Compose phase and replace your artifacts with new revisions. There are several ways to upload.</p>
 <ol>
@@ -252,7 +252,7 @@ downstream users and ones we cannot allow on the ATR server.</li>
 artifact. We validate and evaluate any SBOM artifact provided. Because our excludes checks are imperfect, we expect Release Managers
 to exercise judgment about license exceptions.</li>
 </ol>
-<h3 id="vote_1">2. Vote<a class="headerlink" href="#vote_1" title="Permalink">&para;</a></h3>
+<h3 id="vote">2. Vote<a class="headerlink" href="#vote" title="Permalink">&para;</a></h3>
 <p>This phase provides a supervised voting period. Voters are provided with a public view of the candidate artifacts and check results.
 (Expedited vote pages are only available to PMC Members.)</p>
 <p>Votes are tabulated and reflected in a vote thread in one of three ways</p>
@@ -264,11 +264,11 @@ The vote can be resolved automatically. For an Expedited release this is the onl
 </ol>
 <p>ATR assures that VOTEs are open for a PMC chosen minimum of from 72 hours to 168 hours. Expedited releases will automatically be completed when
 enough +1 (binding) votes have occurred.</p>
-<h3 id="finish_1">3. Finish<a class="headerlink" href="#finish_1" title="Permalink">&para;</a></h3>
+<h3 id="finish">3. Finish<a class="headerlink" href="#finish" title="Permalink">&para;</a></h3>
 <p>This phase allows for the distribution of the release and ends with the announcement. In this phase the release artifacts are pushed to
 <code>svn:dist:release</code>, you wait for them to propagate to downloads.apache.org, do any distributions like to Maven Central, and then you announce
 the release!</p>
-<h2 id="catalog_1">Release Catalog<a class="headerlink" href="#catalog_1" title="Permalink">&para;</a></h2>
+<h2 id="catalog">Release Catalog<a class="headerlink" href="#catalog" title="Permalink">&para;</a></h2>
 <p>ATR maintains a Release Catalog in its database. It watches <code>svn:dist:release</code> with <code>pubsub</code> and catalogs legacy releases along with ATR releases.
 A record of each release is sent to the <code>releases@tooling.apache.org</code> mailbox. With each release and archival of a release a static
 <a href="https://release-catalog.apache.org">Release Catalog</a> is updated.</p>
