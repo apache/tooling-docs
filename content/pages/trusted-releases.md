@@ -4,12 +4,10 @@ license: https://www.apache.org/licenses/LICENSE-2.0
 The main project for the Tooling Initiative is the Apache Trusted Releases (ATR) platform.
 
 1. Websites:
-
    - https://releases.apache.org - this is the ATR UX which is dynamic requiring ASF login credentials.
    - https://release-catalog.apache.org - this is the full ASF release catalog in a static website hosted by httpd.
 
 2. Repositories:
-
    - https://github.com/apache/tooling-trusted-releases - the ATR UX and API.
    - https://github.com/apache/tooling-releases-client - a Python client for Release Managers.
    - https://github.com/apache/tooling-actions - Github Actions for Trusted Publishing.
