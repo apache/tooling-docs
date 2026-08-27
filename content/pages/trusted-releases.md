@@ -1,8 +1,6 @@
 Title: Apache Trusted Releases platform
 license: https://www.apache.org/licenses/LICENSE-2.0
 
-[TOC2]
-
 The main project for the Tooling Initiative is the Apache Trusted Releases (ATR) platform.
 
 1. Websites:
@@ -15,6 +13,8 @@ The main project for the Tooling Initiative is the Apache Trusted Releases (ATR)
    - https://github.com/apache/tooling-trusted-releases - the ATR UX and API.
    - https://github.com/apache/tooling-releases-client - a Python client for Release Managers.
    - https://github.com/apache/tooling-actions - Github Actions for Trusted Publishing.
+
+[TOC]
 
 ## Beta platform features {#features}
 
