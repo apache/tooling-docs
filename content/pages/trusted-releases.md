@@ -109,10 +109,27 @@ After artifacts are uploaded they go through two steps.
 
 ### 2. Vote {#vote}
 
-This phase provides a supervised voting period and a public view of the candidate artifacts and check results.
+This phase provides a supervised voting period. Voters are provided with a public view of the candidate artifacts and check results.
+(Expedited vote pages are only available to PMC Members.)
+
+Votes are tabulated and reflected in a vote thread in one of three ways
+
+1. Trusted. ATR announces the vote, but votes are cast on the ATR vote page and recorded as ballots, with receipts sent to the thread.
+   The vote can be resolved automatically. For an Expedited release this is the only way to vote and that is limited to the private@ mailing list.
+2. Email. ATR announces the vote, and votes are cast by replying to the thread. ATR tabulates the replies when the vote is resolved.
+3. Manual. The vote is held entirely outside ATR. You provide the vote thread URL and record the result manually.
+
+ATR assures that VOTEs are open for a PMC chosen minimum of from 72 hours to 168 hours. Expedited releases will automatically be completed when
+enough +1 (binding) votes have occurred.
 
 ### 3. Finish {#finish}
 
-This phase allows for the distribution of the release and ends with the announcement.
+This phase allows for the distribution of the release and ends with the announcement. In this phase the release artifacts are pushed to
+`svn:dist:release`, you wait for them to propagate to downloads.apache.org, do any distributions like to Maven Central, and then you announce
+the release!
 
 ## Release Catalog {#catalog}
+
+ATR maintains a Release Catalog in its database. It watches `svn:dist:release` with `pubsub` and catalogs legacy releases along with ATR releases.
+A record of each release is sent to the `releases@tooling.apache.org` mailbox. With each release and archival of a release a static
+[Release Catalog](https://release-catalog.apache.org) is updated.
