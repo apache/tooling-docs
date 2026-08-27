@@ -156,7 +156,7 @@
 <blockquote>
 <p>The view here is descriptive of a JSON model, but the implementation will be a combination of filesystem files and subdirs along with a database schema.</p>
 </blockquote>
-<h2>PMCs</h2>
+<h2 id="pmcs">PMCs<a class="headerlink" href="#pmcs" title="Permalink">&para;</a></h2>
 <p>Projects are run by a PMC with members and committers, have metadata, vote policy settings, and product lines.</p>
 <ol>
 <li>Key</li>
@@ -172,7 +172,7 @@
 <li>Public Signing Keys</li>
 <li>Vote Policy</li>
 </ol>
-<h3>Product Lines</h3>
+<h3 id="product-lines">Product Lines<a class="headerlink" href="#product-lines" title="Permalink">&para;</a></h3>
 <p>One or more product lines with separate releases including the main one. A product line may override PMC vote policy.</p>
 <ol>
 <li>Key</li>
@@ -189,7 +189,7 @@
 </ul>
 </li>
 </ol>
-<h3>Public Signing Keys</h3>
+<h3 id="public-signing-keys">Public Signing Keys<a class="headerlink" href="#public-signing-keys" title="Permalink">&para;</a></h3>
 <p>Public Signing Keys are stored using the User ID of the owner as the key.</p>
 <ol>
 <li>User</li>
@@ -197,7 +197,7 @@
 <li>Type</li>
 <li>Expiration</li>
 </ol>
-<h3>Vote Policy</h3>
+<h3 id="vote-policy">Vote Policy<a class="headerlink" href="#vote-policy" title="Permalink">&para;</a></h3>
 <p>These are a set of choices which control how a release vote is conducted by the ATR.</p>
 <ol>
 <li>Mailto Addresses for Emails - defaults to the project dev list, but the PMC can change these and add contacts.
@@ -208,7 +208,7 @@ This will be helpful in getting dependent projects to check releases early.</li>
 <li>Pause for RM check if any -1 votes flag - normally when the vote passes we proceed to the next steps,
 but we should allow the RM a chance to confirm if a -1 vote should stop the release.</li>
 </ol>
-<h2>Releases</h2>
+<h2 id="releases">Releases<a class="headerlink" href="#releases" title="Permalink">&para;</a></h2>
 <p>Releases are related groups of packages. Candidate releases go through stages and these have phases.
 When approved to be released the stage is moved to current.
 Current releases have initial phases to distribute and announce the release.</p>
@@ -238,7 +238,7 @@ Current releases have initial phases to distribute and announce the release.</p>
 </ul>
 </li>
 </ol>
-<h2>Distribution Channels</h2>
+<h2 id="distribution-channels">Distribution Channels<a class="headerlink" href="#distribution-channels" title="Permalink">&para;</a></h2>
 <p>Distribution channels are where PMCs distribute release packages. These need to be defined in the ATR.
 Distribution channels may be for test packages. Package Managers will be automated over time.</p>
 <ol>
@@ -249,9 +249,9 @@ Distribution channels may be for test packages. Package Managers will be automat
 <li>Is Test?</li>
 <li>Automation endpoint</li>
 </ol>
-<h2>User Roles</h2>
+<h2 id="user-roles">User Roles<a class="headerlink" href="#user-roles" title="Permalink">&para;</a></h2>
 <p>Multiple roles are possible and available actions are composed. Empty cells denote "no".</p>
-<table>
+<table class="table">
 <thead>
 <tr>
 <th>Activity</th>
