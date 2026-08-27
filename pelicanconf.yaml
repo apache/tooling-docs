@@ -27,3 +27,9 @@ content:
     - fonts
 genid:
   unsafe: yes
+  metadata: yes
+  elements: yes
+  headings_depth: 4
+  permalinks: yes
+  toc_depth: 4
+  tables: yes
