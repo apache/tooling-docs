@@ -169,7 +169,7 @@
 </ul>
 </li>
 </ol>
-<h2>Beta platform features</h2>
+<h2>Beta platform features {#features}</h2>
 <ul>
 <li>Minimize human interaction</li>
 <li>Easily follow release policy</li>
@@ -183,11 +183,11 @@
 <li>Expedited security releases are completely private</li>
 <li>Templated vote and announcement emails</li>
 </ul>
-<h2>Configuration</h2>
+<h2>Configuration {#configuration}</h2>
 <p>The Apache Trusted Releases (ATR) platform makes a distinction between the two parts of a Project Management Committee.
 First the PMC is a management committee with associated committers. Second, the PMC manages one or more projects.
 To start to use ATR for your releases there is PMC configuration to review and adjust.</p>
-<h3>Committee</h3>
+<h3>Committee {#committee}</h3>
 <p>For the Committee ATR tracks Projects, Release Managers, and Signing Keys.
 The committee consists of the PMC Members and includes project committers by reference.
 All PMC Members are enabled to be Release Managers. A PMC Member can designate any committer as a Release Manager.</p>
@@ -196,7 +196,7 @@ ATR can be configured to maintain the KEYS file for you.</p>
 <p>Committees that are approved for CI Release builds require special setup. Permissions are shown on the committee page.
 Look into <a href="https://github.com/apache/tooling-actions">Tooling actions</a> for Github Actions to use for
 <a href="https://releases.apache.org/docs/trusted-publishing">Trusted Publishing</a>.</p>
-<h3>Projects</h3>
+<h3>Projects {#projects}</h3>
 <p>Most PMCs have only their namesake project. There are many projects that have 2-8 subprojects and there are a few
 that have dozens of subprojects. We've determined subprojects via two methods. First via an existing DOAP file
 known to <a href="https://projects.apache.org">https://projects.apache.org</a>, and second by analyzing all existing and archived releases.
@@ -215,10 +215,10 @@ to make corrections.</p>
 <li>Finish - distribution subdirectory and announcement email templates.</li>
 </ol>
 <p>You can review these in the ATR website and then export a yaml fragment to save it in your project repository's <code>.asf.yaml</code> file.</p>
-<h3>Release Managers</h3>
+<h3>Release Managers {#release-managers}</h3>
 <p>Each Release Manager should manage their access tokens and keys. At a minimum new Release Managers will need to save their GPG public key.
 Depending on the method chosen to upload your release candidate artifacts PATs, JWTs, or SSH keys may be required.</p>
-<h2>Release Candidate Phases</h2>
+<h2>Release Candidate Phases {#phases}</h2>
 <p>ATR has three phases for a Release Candidate. The Release Manager will guide the Release Candidate through these phases in order
 to make a Release of a new Version of a Project.</p>
 <p>A Release Candidate can be started in several ways.</p>
@@ -228,7 +228,7 @@ to make a Release of a new Version of a Project.</p>
 <li>The ATR Maven Plugin will start a new version when you run the target. You must configure Maven with a PAT created in the UX.</li>
 <li>If you have permission to build releases in CI then you can use a GitHub Action.</li>
 </ol>
-<h3>1. Compose</h3>
+<h3>1. Compose {#compose}</h3>
 <p>This phase starts when a new release version is created. Every uploaded artifact is checked in several ways. New revisions may be made.
 If you cancel a Vote you can return to the Compose phase and replace your artifacts with new revisions. There are several ways to upload.</p>
 <ol>
@@ -251,11 +251,11 @@ downstream users and ones we cannot allow on the ATR server.</li>
 artifact. We validate and evaluate any SBOM artifact provided. Because our excludes checks are imperfect, we expect Release Managers
 to exercise judgment about license exceptions.</li>
 </ol>
-<h3>2. Vote</h3>
+<h3>2. Vote {#vote}</h3>
 <p>This phase provides a supervised voting period and a public view of the candidate artifacts and check results.</p>
-<h3>3. Finish</h3>
+<h3>3. Finish {#finish}</h3>
 <p>This phase allows for the distribution of the release and ends with the announcement.</p>
-<h2>Release Catalog</h2>
+<h2>Release Catalog {#catalog}</h2>
 <ul>
 <li>Incorporate all PMC Releases.
 <ul>
