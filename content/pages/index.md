@@ -43,7 +43,8 @@ Here are the source code repositories. Please view the README.md files for instr
 1. Website: https://github.com/apache/tooling-trusted-releases
 2. Python Client: https://github.com/apache/tooling-releases-client
 3. GitHub Actions: https://github.com/apache/tooling-actions
-4. Example Workflows: https://github.com/apache/tooling-asf-example/
+4. Maven plugin: https://github.com/apache/tooling-atr-maven-plugin
+5. Example Workflows: https://github.com/apache/tooling-asf-example
 
 ### Security Issues
 
