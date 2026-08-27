@@ -14,7 +14,7 @@ The main project for the Tooling Initiative is the Apache Trusted Releases (ATR)
    - https://github.com/apache/tooling-releases-client - a Python client for Release Managers.
    - https://github.com/apache/tooling-actions - Github Actions for Trusted Publishing.
 
-## Beta platform features
+## Beta platform features {#features}
 
    - Minimize human interaction
    - Easily follow release policy
@@ -28,13 +28,13 @@ The main project for the Tooling Initiative is the Apache Trusted Releases (ATR)
    - Expedited security releases are completely private
    - Templated vote and announcement emails
 
-## Configuration
+## Configuration {#configuration}
 
 The Apache Trusted Releases (ATR) platform makes a distinction between the two parts of a Project Management Committee.
 First the PMC is a management committee with associated committers. Second, the PMC manages one or more projects.
 To start to use ATR for your releases there is PMC configuration to review and adjust.
 
-### Committee
+### Committee {#committee}
 
 For the Committee ATR tracks Projects, Release Managers, and Signing Keys.
 The committee consists of the PMC Members and includes project committers by reference.
@@ -47,7 +47,7 @@ Committees that are approved for CI Release builds require special setup. Permis
 Look into [Tooling actions](https://github.com/apache/tooling-actions) for Github Actions to use for 
 [Trusted Publishing](https://releases.apache.org/docs/trusted-publishing).
 
-### Projects
+### Projects {#projects}
 
 Most PMCs have only their namesake project. There are many projects that have 2-8 subprojects and there are a few
 that have dozens of subprojects. We've determined subprojects via two methods. First via an existing DOAP file
@@ -69,12 +69,12 @@ There are many different project settings. These are categorized according to th
 
 You can review these in the ATR website and then export a yaml fragment to save it in your project repository's `.asf.yaml` file.
 
-### Release Managers
+### Release Managers {#release-managers}
 
 Each Release Manager should manage their access tokens and keys. At a minimum new Release Managers will need to save their GPG public key.
 Depending on the method chosen to upload your release candidate artifacts PATs, JWTs, or SSH keys may be required.
 
-## Release Candidate Phases
+## Release Candidate Phases {#phases}
 
 ATR has three phases for a Release Candidate. The Release Manager will guide the Release Candidate through these phases in order
 to make a Release of a new Version of a Project.
@@ -86,7 +86,7 @@ A Release Candidate can be started in several ways.
 3. The ATR Maven Plugin will start a new version when you run the target. You must configure Maven with a PAT created in the UX.
 4. If you have permission to build releases in CI then you can use a GitHub Action.
 
-### 1. Compose
+### 1. Compose {#compose}
 
 This phase starts when a new release version is created. Every uploaded artifact is checked in several ways. New revisions may be made.
 If you cancel a Vote you can return to the Compose phase and replace your artifacts with new revisions. There are several ways to upload.
@@ -107,15 +107,15 @@ After artifacts are uploaded they go through two steps.
    artifact. We validate and evaluate any SBOM artifact provided. Because our excludes checks are imperfect, we expect Release Managers
    to exercise judgment about license exceptions.
 
-### 2. Vote
+### 2. Vote {#vote}
 
 This phase provides a supervised voting period and a public view of the candidate artifacts and check results.
 
-### 3. Finish
+### 3. Finish {#finish}
 
 This phase allows for the distribution of the release and ends with the announcement.
 
-## Release Catalog
+## Release Catalog {#catalog}
 
    - Incorporate all PMC Releases.
      - Download page.
