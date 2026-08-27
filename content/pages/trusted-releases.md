@@ -44,7 +44,7 @@ The committee also has an associated set of GPG signing keys found in `svn:dist:
 ATR can be configured to maintain the KEYS file for you.
 
 Committees that are approved for CI Release builds require special setup. Permissions are shown on the committee page.
-Look into [Tooling actions](https://github.com/apache/tooling-actions) for Github Actions to use for 
+Look into [Tooling actions](https://github.com/apache/tooling-actions) for Github Actions to use for
 [Trusted Publishing](https://releases.apache.org/docs/trusted-publishing).
 
 ### Projects {#projects}
@@ -116,27 +116,3 @@ This phase provides a supervised voting period and a public view of the candidat
 This phase allows for the distribution of the release and ends with the announcement.
 
 ## Release Catalog {#catalog}
-
-   - Incorporate all PMC Releases.
-     - Download page.
-     - Release Candidate page.
-     - Archived download page.
-   - Every PMC has a management interface.
-     - Current manual release practice is viewable.
-     - Automated release status.
-     - **KEYS** file management including revoking keys.
-     - Trigger release phases.
-     - Tracking performance.
-   - Platform includes a RESTful API.
-   - Serve release artifacts efficiently.
-   - Make switching from current manual release process to a minimal ATR process very simple.
-   - System Admins (Infra) have a management interface.
-   - Provide operational status to help Infra monitor ATR operations through the Infra Reporting Dashboard (IRD).
-   - Develop the platform with consideration about reusability outside of the ASF ecosystem, where feasible with regards to development costs.
-
-   See [Platform Services](platform.html) for detailed requirements for the **ATR**.
-
-## 5. Release Lifecycle Phases
-
-   Here is a flow chart showing the [Release Lifecycle Phases](https://github.com/apache/tooling-docs/blob/main/apache-trusted-releases/lifecycle.md).
-   
