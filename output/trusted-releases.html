@@ -170,7 +170,7 @@
 <li>Minimize human interaction</li>
 <li>Easily follow release policy</li>
 <li>Require MFA for access</li>
-<li>Designate Release Managers and maintain their GPG public signing keys</li>
+<li>Designate Release Managers and maintain their OpenPGP public signing keys</li>
 <li>Confirm the derived release catalog and properly configure sub-projects</li>
 <li>Securely compose Release Candidates</li>
 <li>Enforce vote standards while continuing to include community</li>
@@ -187,7 +187,7 @@ To start to use ATR for your releases there is PMC configuration to review and a
 <p>For the Committee ATR tracks Projects, Release Managers, and Signing Keys.
 The committee consists of the PMC Members and includes project committers by reference.
 All PMC Members are enabled to be Release Managers. A PMC Member can designate any committer as a Release Manager.</p>
-<p>The committee also has an associated set of GPG signing keys found in <code>svn:dist:release</code> by convention.
+<p>The committee also has an associated set of OpenPGP signing keys found in <code>svn:dist:release</code> by convention.
 ATR can be configured to maintain the KEYS file for you.</p>
 <p>Committees that are approved for CI Release builds require special setup. Permissions are shown on the committee page.
 Look into <a href="https://github.com/apache/tooling-actions">Tooling actions</a> for Github Actions to use for
@@ -212,7 +212,7 @@ to make corrections.</p>
 </ol>
 <p>You can review these in the ATR website and then export a yaml fragment to save it in your project repository's <code>.asf.yaml</code> file.</p>
 <h3 id="release manager">Release Manager</h3>
-<p>Each Release Manager should manage their access tokens and keys. At a minimum new Release Managers will need to save their GPG public key.
+<p>Each Release Manager should manage their access tokens and keys. At a minimum new Release Managers will need to save their OpenPGP public key.
 Depending on the method chosen to upload your release candidate artifacts PATs, JWTs, or SSH keys may be required.</p>
 <h2 id="release candidate phases_1">Release Candidate Phases</h2>
 <p>ATR has three phases for a Release Candidate. The Release Manager will guide the Release Candidate through these phases in order
