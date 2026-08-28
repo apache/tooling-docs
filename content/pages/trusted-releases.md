@@ -19,7 +19,7 @@ The main project for the Tooling Initiative is the Apache Trusted Releases (ATR)
 
 Read an [introduction to ATR](https://releases.apache.org/docs/introduction-to-atr) through the platform online documentation.
 
-What follows is a discussion of the features of ATR that PMCs will need to know when they begin to use ATR for managing their project releases. 
+What follows is a discussion of the features of ATR that PMCs will need to know when they begin to use ATR for managing their project releases.
 
 ## Beta platform features
 
