@@ -4,7 +4,7 @@ license: https://www.apache.org/licenses/LICENSE-2.0
 Releases that flow through ATR with proper settings mitigate the following Supply Chain attack scenarios:
 
 1. MFA signin prevents password theft attacks
-2. Trusted Voting prevents unauthorised publication of a release 
+2. Trusted Voting prevents unauthorised publication of a release
 3. Prevent tampered artifacts (we ensure there's a signature for every artifact and we provide it alongside the artifact in the catalog. automated
    verification as a possible future enhancement), release not matching what was voted on (since the whole release flows through ATR,
    you have that guarantee)
