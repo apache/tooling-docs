@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>README placeholder - ASF Tooling Website</title>
+    <title>Apache Trusted Releases design - ASF Tooling Website</title>
 <link rel="shortcut icon" href="https://apache.org/favicons/favicon.ico">
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 <link href="/css/fontawesome.all.min.css" rel="stylesheet">
@@ -36,7 +36,7 @@
 <!-- pagefind search box styling -->
 <style>
   body {
-      padding-top: 44px;
+      padding-top: 68px;
   }
   .search-form {
       right: 0;
@@ -84,16 +84,19 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Tools</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="https://release-test.apache.org/">Trusted Releases Alpha</a></li>
+            <li><a class="dropdown-item" href="https://releases.apache.org/">Trusted Releases Beta</a></li>
+            <li><a class="dropdown-item" href="https://release-catalog.apache.org/">Release Catalog</a></li>
             <li><a class="dropdown-item" href="https://agenda.apache.org">Board Agenda Tool</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Docs</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="https://release-test.apache.org/docs/">Trusted Releases</a></li>
-            <li><a class="dropdown-item" href="https://release-test.apache.org/api/docs">ATR Open API</a></li>
-            <li><a class="dropdown-item" href="/atr/maven/">ATR Maven Plugin</a></li>
+            <li><a class="dropdown-item" href="https://releases.apache.org/docs/">Trusted Releases</a></li>
+            <li><a class="dropdown-item" href="https://releases.apache.org/api/docs">ATR Open API</a></li>
+            <li><a class="dropdown-item" href="https://apache.github.io/tooling-atr-maven-plugin/">ATR Maven Plugin</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/atr-design-doc.html">Trusted Releases Design Doc</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -146,9 +149,112 @@
     <div class="bg-white p-5 rounded">
         <div class="col-sm-12 mx-auto">
           <h1>
-            README placeholder
+            Apache Trusted Releases design
           </h1>
-          <p>Add maven plugin documentation here where Pelican will provide the skin.</p>
+          <p>The main project is the Apache Trusted Releases platform. This is the initial design document.</p>
+<p>Repositories:</p>
+<ul>
+<li><a href="https://github.com/apache/tooling-trusted-releases">https://github.com/apache/tooling-trusted-releases</a></li>
+<li><a href="https://github.com/apache/tooling-releases-client">https://github.com/apache/tooling-releases-client</a></li>
+</ul>
+<h2 id="1-automate-the-release-process">1. Automate the Release Process<a class="headerlink" href="#1-automate-the-release-process" title="Permalink">&para;</a></h2>
+<ul>
+<li>Minimize human interaction.</li>
+<li>Community participation on <strong>Release Votes</strong> remains via email.</li>
+<li>Record all of the key events and metrics for tracking operations and performance.</li>
+<li>PMCs can quickly benefit.</li>
+<li>Infra costs and management complexity are decreased.</li>
+</ul>
+<h2 id="2-community">2. Community<a class="headerlink" href="#2-community" title="Permalink">&para;</a></h2>
+<ul>
+<li>Work with a selection of <strong>Apache</strong> PMCs, <strong>Incubator PPMCs(podlings)</strong>, and <strong>Infra</strong> for <strong>User Acceptance Testing (UAT)</strong>.</li>
+<li>Co-ordinate with <strong>Infra</strong> on migration and operation.</li>
+<li>Contribute to Infra's <strong>asfquart</strong> and <strong>asfpy</strong> frameworks.</li>
+<li>Provide openings for volunteers to help so long as the contributions are adequate and timely.</li>
+<li>Assure that the <strong>ATR platform</strong> follows industry best practices especially regarding <strong>SBOMs</strong>,
+<strong>Certificate Management</strong>, and <strong>Digital Signatures</strong>.</li>
+<li>Help lead the industry to better practices.</li>
+<li>Work within the <strong>ASF</strong> on <strong>Release Policy</strong> improvements.</li>
+</ul>
+<h2 id="3-apache-trusted-release-platform-atr">3. Apache Trusted Release Platform (ATR)<a class="headerlink" href="#3-apache-trusted-release-platform-atr" title="Permalink">&para;</a></h2>
+<ul>
+<li>Incorporate all PMC Releases.
+<ul>
+<li>Download page.</li>
+<li>Release Candidate page.</li>
+<li>Archived download page.</li>
+</ul>
+</li>
+<li>Every PMC has a management interface.
+<ul>
+<li>Current manual release practice is viewable.</li>
+<li>Automated release status.</li>
+<li><strong>KEYS</strong> file management including revoking keys.</li>
+<li>Trigger release phases.</li>
+<li>Tracking performance.</li>
+</ul>
+</li>
+<li>Platform includes a RESTful API.</li>
+<li>Serve release artifacts efficiently.</li>
+<li>Make switching from current manual release process to a minimal ATR process very simple.</li>
+<li>System Admins (Infra) have a management interface.</li>
+<li>Provide operational status to help Infra monitor ATR operations through the Infra Reporting Dashboard (IRD).</li>
+<li>Develop the platform with consideration about reusability outside of the ASF ecosystem, where feasible with regards to development costs.</li>
+</ul>
+<p>See <a href="platform.html">Platform Services</a> for detailed requirements for the <strong>ATR</strong>.</p>
+<h2 id="4-automate-release-process-around-compliance">4. Automate Release Process around Compliance<a class="headerlink" href="#4-automate-release-process-around-compliance" title="Permalink">&para;</a></h2>
+<ul>
+<li>Meet Release Policy
+<ul>
+<li>Legal Policy</li>
+<li>Infra Policy</li>
+<li>Security Policy</li>
+</ul>
+</li>
+<li>SBOMs and Attestations
+<ul>
+<li>Include dependency and license compliance.</li>
+<li>Provide clear attribution and information about Release Votes.</li>
+</ul>
+</li>
+<li>Certificate and Credential Management
+<ul>
+<li>Manage the signing keys needed for automation.</li>
+</ul>
+</li>
+<li>Download Page including available SBOM and verification instructions.</li>
+<li>Announcement Email.</li>
+</ul>
+<h2 id="5-release-lifecycle-phases">5. Release Lifecycle Phases<a class="headerlink" href="#5-release-lifecycle-phases" title="Permalink">&para;</a></h2>
+<p>Here is a flow chart showing the <a href="https://github.com/apache/tooling-docs/blob/main/apache-trusted-releases/lifecycle.md">Release Lifecycle Phases</a>.</p>
+<h2 id="6-infrastructure-requirements">6. Infrastructure Requirements<a class="headerlink" href="#6-infrastructure-requirements" title="Permalink">&para;</a></h2>
+<ul>
+<li>Run book for releases.apache.org</li>
+<li>Progress on the retirement path for <code>svn:dist</code>. See <a href="svn-dist.html">Legacy Releases from SVN Dist</a>
+for possible transitional states. For the beta test <em>transition 1B</em> is preferred.</li>
+<li>Legacy urls for dist.apache.org, downloads.apache.org, dlcdn.apache.org, and archive.apache.org remain supported.</li>
+<li>Path schemes for downloads.apache.org, dlcdn.apache.org, and archive.apache.org remain.</li>
+</ul>
+<h2 id="7-future-requirements">7. Future Requirements<a class="headerlink" href="#7-future-requirements" title="Permalink">&para;</a></h2>
+<ul>
+<li>
+<p>Integrate with the <a href="https://github.com/apache/tooling-docs/blob/main/apache-trusted-releases/advisory-process.md">Security Advisory Process</a> to make it easy to track applicable advisories on download pages.</p>
+</li>
+<li>
+<p>Expand support for <a href="https://github.com/apache/tooling-docs/blob/main/apache-trusted-releases/evaluate.md">Evaluating Build Claims</a> to additional build tools.</p>
+</li>
+<li>
+<p>Expand automated support for additional <a href="https://github.com/apache/tooling-docs/blob/main/apache-trusted-releases/distributions.md">Distribution Channels</a>.</p>
+</li>
+<li>
+<p>Include a <a href="https://github.com/apache/tooling-docs/blob/main/apache-trusted-releases/digital-signatures.md">Signing Candidates</a> phase during ATR processing.</p>
+<blockquote>
+<p>There are policy implications to the automation of digital signatures.
+For now, creating digital signatures on certain artifact types must be done prior to GPG signing and
+prior to submission of the release candidate.</p>
+</blockquote>
+</li>
+</ul>
 
         </div>
     </div>

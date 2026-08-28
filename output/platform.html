@@ -36,7 +36,7 @@
 <!-- pagefind search box styling -->
 <style>
   body {
-      padding-top: 44px;
+      padding-top: 68px;
   }
   .search-form {
       right: 0;
@@ -84,16 +84,19 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Tools</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="https://release-test.apache.org/">Trusted Releases Alpha</a></li>
+            <li><a class="dropdown-item" href="https://releases.apache.org/">Trusted Releases Beta</a></li>
+            <li><a class="dropdown-item" href="https://release-catalog.apache.org/">Release Catalog</a></li>
             <li><a class="dropdown-item" href="https://agenda.apache.org">Board Agenda Tool</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Docs</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="https://release-test.apache.org/docs/">Trusted Releases</a></li>
-            <li><a class="dropdown-item" href="https://release-test.apache.org/api/docs">ATR Open API</a></li>
-            <li><a class="dropdown-item" href="/atr/maven/">ATR Maven Plugin</a></li>
+            <li><a class="dropdown-item" href="https://releases.apache.org/docs/">Trusted Releases</a></li>
+            <li><a class="dropdown-item" href="https://releases.apache.org/api/docs">ATR Open API</a></li>
+            <li><a class="dropdown-item" href="https://apache.github.io/tooling-atr-maven-plugin/">ATR Maven Plugin</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/atr-design-doc.html">Trusted Releases Design Doc</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -150,7 +153,7 @@
           </h1>
           <p><em>This is a discussion and the actual implementation will diverge.</em></p>
 <p><a href="https://releases.apache.org">https://releases.apache.org</a></p>
-<h2>Datastore</h2>
+<h2 id="datastore">Datastore<a class="headerlink" href="#datastore" title="Permalink">&para;</a></h2>
 <blockquote>
 <p>We will iterate on these during implementation.</p>
 </blockquote>
@@ -159,7 +162,7 @@
 <li>Metadata Database. A database on the server with the metadata schema.</li>
 </ol>
 <p>See <a href="data-model.html">Data Model</a> for a discussion of the objects managed by the ATR.</p>
-<h2>Web Service</h2>
+<h2 id="web-service">Web Service<a class="headerlink" href="#web-service" title="Permalink">&para;</a></h2>
 <ol>
 <li><code>asfquart</code> based asynchronous python web service.</li>
 <li>Fronted by <code>httpd</code>.</li>
@@ -167,7 +170,7 @@
 <li>Monolithic.</li>
 <li>Fronted by a CDN. The caching policies need to be properly defined.</li>
 </ol>
-<h2>Legacy</h2>
+<h2 id="legacy">Legacy<a class="headerlink" href="#legacy" title="Permalink">&para;</a></h2>
 <ol>
 <li>These domains continue to work in the same way:
 <ul>
@@ -178,7 +181,7 @@
 </li>
 <li>See <a href="https://github.com/apache/tooling-docs/blob/main/apache-trusted-release/svn-dist.md">Legacy Releases from SVN Dist</a>. In this development phase we prefer to be at <em>transition 2</em>.</li>
 </ol>
-<h3>Release Stages</h3>
+<h3 id="release-stages">Release Stages<a class="headerlink" href="#release-stages" title="Permalink">&para;</a></h3>
 <ol>
 <li>Build Releases</li>
 <li>Candidate Releases</li>
@@ -188,9 +191,9 @@
 <blockquote>
 <p>&ldquo;Nightlies&rdquo; a particular build type is for a later phase.</p>
 </blockquote>
-<h3>Release Phases</h3>
+<h3 id="release-phases">Release Phases<a class="headerlink" href="#release-phases" title="Permalink">&para;</a></h3>
 <p>See <a href="https://github.com/apache/tooling-docs/blob/main/apache-trusted-release/lifecycle.md">Release Lifecycle</a> for how phases are chained together to perform a Release.</p>
-<h3>Release co-ordinates</h3>
+<h3 id="release-co-ordinates">Release co-ordinates<a class="headerlink" href="#release-co-ordinates" title="Permalink">&para;</a></h3>
 <p>The co-ordinates make up the external path to objects. The metadata database provides the map to the local path.</p>
 <ol>
 <li>Stage (Candidate, Current, Archived, &hellip;)</li>
@@ -208,7 +211,7 @@
 <li>Latest product release: <code>/&lt;stage&gt;/&lt;pmc&gt;/&lt;product&gt;/latest/&lt;file&gt;</code></li>
 <li>Product release by version: <code>/&lt;stage&gt;/&lt;pmc&gt;/&lt;product&gt;/&lt;version&gt;/&lt;file&gt;</code></li>
 </ul>
-<h3>Restful API</h3>
+<h3 id="restful-api">Restful API<a class="headerlink" href="#restful-api" title="Permalink">&para;</a></h3>
 <ol>
 <li>
 <p>GET</p>
@@ -248,7 +251,7 @@
 </ul>
 </li>
 </ol>
-<h3>Web UI</h3>
+<h3 id="web-ui">Web UI<a class="headerlink" href="#web-ui" title="Permalink">&para;</a></h3>
 <p>Note: this section is a flexible outline of what we intend for the UI, and may change during implementation.</p>
 <ol>
 <li>

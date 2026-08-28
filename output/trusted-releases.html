@@ -36,7 +36,7 @@
 <!-- pagefind search box styling -->
 <style>
   body {
-      padding-top: 44px;
+      padding-top: 68px;
   }
   .search-form {
       right: 0;
@@ -84,16 +84,19 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Tools</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="https://release-test.apache.org/">Trusted Releases Alpha</a></li>
+            <li><a class="dropdown-item" href="https://releases.apache.org/">Trusted Releases Beta</a></li>
+            <li><a class="dropdown-item" href="https://release-catalog.apache.org/">Release Catalog</a></li>
             <li><a class="dropdown-item" href="https://agenda.apache.org">Board Agenda Tool</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Docs</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="https://release-test.apache.org/docs/">Trusted Releases</a></li>
-            <li><a class="dropdown-item" href="https://release-test.apache.org/api/docs">ATR Open API</a></li>
-            <li><a class="dropdown-item" href="/atr/maven/">ATR Maven Plugin</a></li>
+            <li><a class="dropdown-item" href="https://releases.apache.org/docs/">Trusted Releases</a></li>
+            <li><a class="dropdown-item" href="https://releases.apache.org/api/docs">ATR Open API</a></li>
+            <li><a class="dropdown-item" href="https://apache.github.io/tooling-atr-maven-plugin/">ATR Maven Plugin</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/atr-design-doc.html">Trusted Releases Design Doc</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -148,110 +151,124 @@
           <h1>
             Apache Trusted Releases platform
           </h1>
-          <p>The main project is the Apache Trusted Releases platform.</p>
-<p>Repositories:</p>
+          <p>The main project for the Tooling Initiative is the Apache Trusted Releases (ATR) platform.</p>
+<h2 id="websites">Websites<a class="headerlink" href="#websites" title="Permalink">&para;</a></h2>
 <ul>
-<li><a href="https://github.com/apache/tooling-trusted-releases">https://github.com/apache/tooling-trusted-releases</a></li>
-<li><a href="https://github.com/apache/tooling-releases-client">https://github.com/apache/tooling-releases-client</a></li>
+<li><a href="https://releases.apache.org">https://releases.apache.org</a> - this is the ATR UX which is dynamic requiring ASF login credentials.</li>
+<li><a href="https://release-catalog.apache.org">https://release-catalog.apache.org</a> - this is the full ASF release catalog in a static website hosted by httpd.</li>
 </ul>
-<h2>1. Automate the Release Process</h2>
+<h2 id="repositories">Repositories<a class="headerlink" href="#repositories" title="Permalink">&para;</a></h2>
 <ul>
-<li>Minimize human interaction.</li>
-<li>Community participation on <strong>Release Votes</strong> remains via email.</li>
-<li>Record all of the key events and metrics for tracking operations and performance.</li>
-<li>PMCs can quickly benefit.</li>
-<li>Infra costs and management complexity are decreased.</li>
+<li><a href="https://github.com/apache/tooling-trusted-releases">https://github.com/apache/tooling-trusted-releases</a> - the ATR UX and API.</li>
+<li><a href="https://github.com/apache/tooling-releases-client">https://github.com/apache/tooling-releases-client</a> - a Python client for Release Managers to interact with the ATR API.</li>
+<li><a href="https://github.com/apache/tooling-actions">https://github.com/apache/tooling-actions</a> - Github Actions for Trusted Publishing.</li>
+<li><a href="https://github.com/apache/tooling-atr-maven-plugin">https://github.com/apache/tooling-atr-maven-plugin</a> - Maven plugin for uploading release candidates to ATR.</li>
 </ul>
-<h2>2. Community</h2>
+<div id="toc" style="border-radius: 3px; border: 1px solid #999; background-color: #EEE; padding: 4px;"><h4 id="table-of-contents">Table of Contents:<a class="headerlink" href="#table-of-contents" title="Permalink">&para;</a></h4><ul><ul><li><a class="toc-href" href="#beta platform features" title="Beta platform features">Beta platform features</a></li><li><a class="toc-href" href="#configuration" title="Configuration">Configuration</a><ul><li><a class="toc-href" href="#committee" title="Committee">Committee</a></li><li><a class="toc-href" href="#projects" title="Projects">Projects</a></li><li><a class="toc-href" href="#release manager" title="Release Manager">Release Manager</a></li></ul></li><li><a class="toc-href" href="#release candidate phases_1" title="Release Candidate Phases">Release Candidate Phases</a><ul><li><a class="toc-href" href="#1. compose" title="1. Compose">1. Compose</a></li><li><a class="toc-href" href="#2. vote" title="2. Vote">2. Vote</a></li><li><a class="toc-href" href="#3. finish" title="3. Finish">3. Finish</a></li></ul></li><li><a class="toc-href" href="#release catalog_1" title="Release Catalog">Release Catalog</a></li></ul></ul></div>
+<p>Read an <a href="https://releases.apache.org/docs/introduction-to-atr">introduction to ATR</a> through the platform online documentation.</p>
+<p>What follows is a discussion of the features of ATR that PMCs will need to know when they begin to use ATR for managing their project releases.</p>
+<h2 id="beta platform features">Beta platform features</h2>
 <ul>
-<li>Work with a selection of <strong>Apache</strong> PMCs, <strong>Incubator PPMCs(podlings)</strong>, and <strong>Infra</strong> for <strong>User Acceptance Testing (UAT)</strong>.</li>
-<li>Co-ordinate with <strong>Infra</strong> on migration and operation.</li>
-<li>Contribute to Infra's <strong>asfquart</strong> and <strong>asfpy</strong> frameworks.</li>
-<li>Provide openings for volunteers to help so long as the contributions are adequate and timely.</li>
-<li>Assure that the <strong>ATR platform</strong> follows industry best practices especially regarding <strong>SBOMs</strong>,
-<strong>Certificate Management</strong>, and <strong>Digital Signatures</strong>.</li>
-<li>Help lead the industry to better practices.</li>
-<li>Work within the <strong>ASF</strong> on <strong>Release Policy</strong> improvements.</li>
+<li>Minimize human interaction</li>
+<li>Easily follow release policy</li>
+<li>Require MFA for access</li>
+<li>Designate Release Managers and maintain their OpenPGP public signing keys</li>
+<li>Confirm the derived release catalog and properly configure sub-projects</li>
+<li>Securely compose Release Candidates</li>
+<li>Enforce vote standards while continuing to include community</li>
+<li>Releases are still delivered to <code>svn:dist:release</code></li>
+<li>Legacy release awareness in building a full release catalog</li>
+<li>Expedited security releases are completely private</li>
+<li>Templated vote and announcement emails</li>
 </ul>
-<h2>3. Apache Trusted Release Platform (ATR)</h2>
+<h2 id="configuration">Configuration</h2>
+<p>The Apache Trusted Releases (ATR) platform makes a distinction between the two parts of a Project Management Committee.
+First, the PMC is a management committee with associated committers. Second, the PMC manages one or more projects.
+To start to use ATR for your releases there is PMC configuration to review and adjust.</p>
+<h3 id="committee">Committee</h3>
+<p>For the Committee ATR tracks Projects, Release Managers, and Signing Keys.
+The committee consists of the PMC Members and includes project committers by reference.
+All PMC Members are enabled to be Release Managers. A PMC Member can designate any committer as a Release Manager.</p>
+<p>The committee also has an associated set of OpenPGP signing keys found in <code>svn:dist:release</code> by convention.
+ATR can be configured to maintain the KEYS file for you.</p>
+<p>Committees that are approved for CI Release builds require special setup. Permissions are shown on the committee page.
+Look into <a href="https://github.com/apache/tooling-actions">Tooling actions</a> for Github Actions to use for
+<a href="https://releases.apache.org/docs/trusted-publishing">Trusted Publishing</a>.</p>
+<h3 id="projects">Projects</h3>
+<p>Most PMCs have only their namesake project. There are many projects that have 2-8 subprojects and there are a few
+that have dozens of subprojects. We've determined subprojects via two methods. First via an existing DOAP file
+known to <a href="https://projects.apache.org">https://projects.apache.org</a>, and second by analyzing all existing and archived releases.
+This process was imperfect and we require PMCs with multiple projects to correct and confirm these. The best place to verify projects is
+by reviewing the PMC's catalog page at <a href="https://release-catalog.apache.org/">https://release-catalog.apache.org/</a>. Engage with the Tooling team
+to make corrections.</p>
+<p>There are many different project settings. These are categorized according to their aspect.</p>
+<ol>
+<li>Releases - start a new release version and view the project's current releases.</li>
+<li>Metadata - the project name, description, and other urls. Some of these are required.</li>
+<li>Security - security emails and threat model urls.</li>
+<li>Lifecycle - how the project handles versioning. <code>semver</code>, <code>calver</code>, or <code>simple</code>.</li>
+<li>Trusted Publishing - what GitHub repositories, branch, and workflows to trust.</li>
+<li>Compose - license checking and other composition settings.</li>
+<li>Vote - voting options and email templates.</li>
+<li>Finish - distribution subdirectory and announcement email templates.</li>
+</ol>
+<p>You can review these in the ATR website and then export a yaml fragment to save it in your project repository's <code>.asf.yaml</code> file.</p>
+<h3 id="release manager">Release Manager</h3>
+<p>Each Release Manager should manage their access tokens and keys. At a minimum new Release Managers will need to save their OpenPGP public key.
+Depending on the method chosen to upload your release candidate artifacts PATs, JWTs, or SSH keys may be required.</p>
+<h2 id="release candidate phases_1">Release Candidate Phases</h2>
+<p>ATR has three phases for a Release Candidate. The Release Manager will guide the Release Candidate through these phases in order
+to make a Release of a new Version of a Project.</p>
+<p>A Release Candidate can be started in several ways.</p>
+<ol>
+<li>The ATR UX provides a few places to start a release. If you are making a secret Expedited Release then the UX is the only place.</li>
+<li>The Python client provides a command. You must provide a PAT created in the UX.</li>
+<li>The ATR Maven Plugin will start a new version when you run the target. You must configure Maven with a PAT created in the UX.</li>
+<li>If you have permission to build releases in CI then you can use a GitHub Action.</li>
+</ol>
+<h3 id="1. compose">1. Compose</h3>
+<p>This phase starts when a new release version is created. Every uploaded artifact is checked in several ways. New revisions may be made.
+If you cancel a Vote you can return to the Compose phase and replace your artifacts with new revisions. There are several ways to upload.</p>
+<ol>
+<li>The ATR UX provides a few methods
 <ul>
-<li>Incorporate all PMC Releases.
-<ul>
-<li>Download page.</li>
-<li>Release Candidate page.</li>
-<li>Archived download page.</li>
+<li>Browser upload. This is best for small source only releases.</li>
+<li>SVN Dev directory. If you are still creating your release and checking in your artifacts in SVN then ATR can upload from there.</li>
+<li>Rsync. This is best when you have many convenience binary artifacts. You will need to provide your SSH public key to ATR.</li>
 </ul>
 </li>
-<li>Every PMC has a management interface.
-<ul>
-<li>Current manual release practice is viewable.</li>
-<li>Automated release status.</li>
-<li><strong>KEYS</strong> file management including revoking keys.</li>
-<li>Trigger release phases.</li>
-<li>Tracking performance.</li>
-</ul>
-</li>
-<li>Platform includes a RESTful API.</li>
-<li>Serve release artifacts efficiently.</li>
-<li>Make switching from current manual release process to a minimal ATR process very simple.</li>
-<li>System Admins (Infra) have a management interface.</li>
-<li>Provide operational status to help Infra monitor ATR operations through the Infra Reporting Dashboard (IRD).</li>
-<li>Develop the platform with consideration about reusability outside of the ASF ecosystem, where feasible with regards to development costs.</li>
-</ul>
-<p>See <a href="platform.html">Platform Services</a> for detailed requirements for the <strong>ATR</strong>.</p>
-<h2>4. Automate Release Process around Compliance</h2>
-<ul>
-<li>Meet Release Policy
-<ul>
-<li>Legal Policy</li>
-<li>Infra Policy</li>
-<li>Security Policy</li>
-</ul>
-</li>
-<li>SBOMs and Attestations
-<ul>
-<li>Include dependency and license compliance.</li>
-<li>Provide clear attribution and information about Release Votes.</li>
-</ul>
-</li>
-<li>Certificate and Credential Management
-<ul>
-<li>Manage the signing keys needed for automation.</li>
-</ul>
-</li>
-<li>Download Page including available SBOM and verification instructions.</li>
-<li>Announcement Email.</li>
-</ul>
-<h2>5. Release Lifecycle Phases</h2>
-<p>Here is a flow chart showing the <a href="https://github.com/apache/tooling-docs/blob/main/apache-trusted-releases/lifecycle.md">Release Lifecycle Phases</a>.</p>
-<h2>6. Infrastructure Requirements</h2>
-<ul>
-<li>Run book for releases.apache.org</li>
-<li>Progress on the retirement path for <code>svn:dist</code>. See <a href="svn-dist.html">Legacy Releases from SVN Dist</a>
-for possible transitional states. For the beta test <em>transition 1B</em> is preferred.</li>
-<li>Legacy urls for dist.apache.org, downloads.apache.org, dlcdn.apache.org, and archive.apache.org remain supported.</li>
-<li>Path schemes for downloads.apache.org, dlcdn.apache.org, and archive.apache.org remain.</li>
-</ul>
-<h2>7. Future Requirements</h2>
-<ul>
-<li>
-<p>Integrate with the <a href="https://github.com/apache/tooling-docs/blob/main/apache-trusted-releases/advisory-process.md">Security Advisory Process</a> to make it easy to track applicable advisories on download pages.</p>
-</li>
-<li>
-<p>Expand support for <a href="https://github.com/apache/tooling-docs/blob/main/apache-trusted-releases/evaluate.md">Evaluating Build Claims</a> to additional build tools.</p>
-</li>
-<li>
-<p>Expand automated support for additional <a href="https://github.com/apache/tooling-docs/blob/main/apache-trusted-releases/distributions.md">Distribution Channels</a>.</p>
-</li>
-<li>
-<p>Include a <a href="https://github.com/apache/tooling-docs/blob/main/apache-trusted-releases/digital-signatures.md">Signing Candidates</a> phase during ATR processing.</p>
-<blockquote>
-<p>There are policy implications to the automation of digital signatures.
-For now, creating digital signatures on certain artifact types must be done prior to GPG signing and
-prior to submission of the release candidate.</p>
-</blockquote>
-</li>
-</ul>
+<li>The Python client provides a command. You must provide a PAT created in the UX.</li>
+<li>The ATR Maven Plugin will start a new version when you run the target. You must configure Maven with a PAT created in the UX.</li>
+<li>If you have permission to build releases in CI then you can use a GitHub Action. The UX provides instructions.</li>
+</ol>
+<p>After artifacts are uploaded they go through two steps.</p>
+<ol>
+<li>Quarantine. Here each artifact is checked for defects like zip bombs and path traversal issues. Problems you would not to give your
+downstream users and ones we cannot allow on the ATR server.</li>
+<li>Checks. Here we perform license, signature, and checksum checks. We make sure that you have included at least one source release
+artifact. We validate and evaluate any SBOM artifact provided. Because our excludes checks are imperfect, we expect Release Managers
+to exercise judgment about license exceptions.</li>
+</ol>
+<h3 id="2. vote">2. Vote</h3>
+<p>This phase provides a supervised voting period. Voters are provided with a public view of the candidate artifacts and check results.
+(Expedited vote pages are only available to PMC Members.)</p>
+<p>Votes are tabulated and reflected in a vote thread in one of three ways</p>
+<ol>
+<li>Trusted. ATR announces the vote, but votes are cast on the ATR vote page and recorded as ballots, with receipts sent to the thread.
+The vote can be resolved automatically. For an Expedited release this is the only way to vote and that is limited to the private@ mailing list.</li>
+<li>Email. ATR announces the vote, and votes are cast by replying to the thread. ATR tabulates the replies when the vote is resolved.</li>
+<li>Manual. The vote is held entirely outside ATR. You provide the vote thread URL and record the result manually.</li>
+</ol>
+<p>ATR assures that VOTEs are open for a PMC chosen minimum of from 72 hours to 168 hours. Expedited releases will automatically be completed when
+enough +1 (binding) votes have occurred.</p>
+<h3 id="3. finish">3. Finish</h3>
+<p>This phase allows for the distribution of the release and ends with the announcement. In this phase the release artifacts are pushed to
+<code>svn:dist:release</code>, you wait for them to propagate to downloads.apache.org, do any distributions like to Maven Central, and then you announce
+the release!</p>
+<h2 id="release catalog_1">Release Catalog</h2>
+<p>ATR maintains a Release Catalog in its database. It watches <code>svn:dist:release</code> with <code>pubsub</code> and catalogs legacy releases along with ATR releases.
+A record of each release is sent to the <code>releases@tooling.apache.org</code> mailbox. With each release and archival of a release a static
+<a href="https://release-catalog.apache.org">Release Catalog</a> is updated.</p>
 
         </div>
     </div>
