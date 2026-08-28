@@ -22,7 +22,7 @@ The main project for the Tooling Initiative is the Apache Trusted Releases (ATR)
    - Minimize human interaction
    - Easily follow release policy
    - Require MFA for access
-   - Designate Release Managers and maintain their GPG public signing keys
+   - Designate Release Managers and maintain their OpenPGP public signing keys
    - Confirm the derived release catalog and properly configure sub-projects
    - Securely compose Release Candidates
    - Enforce vote standards while continuing to include community
@@ -43,7 +43,7 @@ For the Committee ATR tracks Projects, Release Managers, and Signing Keys.
 The committee consists of the PMC Members and includes project committers by reference.
 All PMC Members are enabled to be Release Managers. A PMC Member can designate any committer as a Release Manager.
 
-The committee also has an associated set of GPG signing keys found in `svn:dist:release` by convention.
+The committee also has an associated set of OpenPGP signing keys found in `svn:dist:release` by convention.
 ATR can be configured to maintain the KEYS file for you.
 
 Committees that are approved for CI Release builds require special setup. Permissions are shown on the committee page.
@@ -74,7 +74,7 @@ You can review these in the ATR website and then export a yaml fragment to save 
 
 ### Release Manager
 
-Each Release Manager should manage their access tokens and keys. At a minimum new Release Managers will need to save their GPG public key.
+Each Release Manager should manage their access tokens and keys. At a minimum new Release Managers will need to save their OpenPGP public key.
 Depending on the method chosen to upload your release candidate artifacts PATs, JWTs, or SSH keys may be required.
 
 ## Release Candidate Phases
