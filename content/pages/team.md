@@ -1,9 +1,9 @@
 Title: About the Apache Tooling Team
 license: https://www.apache.org/licenses/LICENSE-2.0
 
-# ASF Tooling
+# ASF Tooling Initiative
 
-The ASF Tooling team, known as **Tooling**, provides tooling development for select ASF Initiatives.
+The ASF Tooling Initiative, known as **Tooling**, provides tooling development for select ASF Initiatives. We consist of both paid staff and volunteers.
 
 ## About us
 

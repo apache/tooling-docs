@@ -57,10 +57,10 @@ READERS = {
 # Configure the asfgenid plugin
 ASF_GENID = {
     "unsafe_tags": True,
-    "metadata": False,
-    "elements": False,
-    "permalinks": False,
-    "tables": False,
+    "metadata": True,
+    "elements": True,
+    "permalinks": True,
+    "tables": True,
     "headings": False,
     "toc": False,
     "debug": False,
