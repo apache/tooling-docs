@@ -3,7 +3,7 @@ license: https://www.apache.org/licenses/LICENSE-2.0
 
 # ASF Tooling Initiative
 
-The ASF Tooling Initiative, known as **Tooling**, provides tooling development for select ASF Initiatives. We consist of both paid staff and volunteers.
+The ASF Tooling Initiative, known as **Tooling**, provides tooling development for select ASF Initiatives. We include both paid staff and volunteers.
 
 ## About us
 
