@@ -48,7 +48,7 @@ Here are the source code repositories. Please view the README.md files for instr
 
 ### Security Issues
 
-To report a new vulnerability you have discovered please follow the [ASF vulnerability reporting process](https://apache.org/security/#reporting-a-vulnerability).
+To report a vulnerability you have discovered please follow the [ASF vulnerability reporting process](https://apache.org/security/#reporting-a-vulnerability).
 
 ### Contribute to the Discussion
 
