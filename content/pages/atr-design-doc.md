@@ -1,7 +1,7 @@
 Title: Apache Trusted Releases design
 license: https://www.apache.org/licenses/LICENSE-2.0
 
-The main project is the Apache Trusted Releases platform. This is the initial design document.
+The main project is the Apache Trusted Releases platform. This is its initial design document.
 
 Repositories:
 
@@ -19,13 +19,13 @@ Repositories:
 ## 2. Community
 
    - Work with a selection of **Apache** PMCs, **Incubator PPMCs(podlings)**, and **Infra** for **User Acceptance Testing (UAT)**.
-   - Co-ordinate with **Infra** on migration and operation.
+   - Co-ordinate with Infra on migration and operation.
    - Contribute to Infra's **asfquart** and **asfpy** frameworks.
    - Provide openings for volunteers to help so long as the contributions are adequate and timely.
    - Assure that the **ATR platform** follows industry best practices especially regarding **SBOMs**,
      **Certificate Management**, and **Digital Signatures**.
    - Help lead the industry to better practices.
-   - Work within the **ASF** on **Release Policy** improvements.
+   - Work within the ASF on **Release Policy** improvements.
 
 ## 3. Apache Trusted Release Platform (ATR)
 
@@ -36,9 +36,9 @@ Repositories:
    - Every PMC has a management interface.
      - Current manual release practice is viewable.
      - Automated release status.
-     - **KEYS** file management including revoking keys.
+     - **KEYS** file management, including revoking keys.
      - Trigger release phases.
-     - Tracking performance.
+     - Track performance.
    - Platform includes a RESTful API.
    - Serve release artifacts efficiently.
    - Make switching from current manual release process to a minimal ATR process very simple.
@@ -68,7 +68,7 @@ Repositories:
 
 ## 6. Infrastructure Requirements
 
-   - Run book for releases.apache.org
+   - Runbook for releases.apache.org
    - Progress on the retirement path for `svn:dist`. See [Legacy Releases from SVN Dist](svn-dist.html)
      for possible transitional states. For the beta test _transition 1B_ is preferred.
    - Legacy urls for dist.apache.org, downloads.apache.org, dlcdn.apache.org, and archive.apache.org remain supported.
