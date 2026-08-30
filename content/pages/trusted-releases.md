@@ -5,7 +5,7 @@ The main project for the Tooling Initiative is the Apache Trusted Releases (ATR)
 
 ## Websites
 
-   - https://releases.apache.org - this is the ATR UX which is dynamic requiring ASF login credentials.
+   - https://releases.apache.org - this is the ATR UX which is dynamic, requiring ASF login credentials.
    - https://release-catalog.apache.org - this is the full ASF release catalog in a static website hosted by httpd.
 
 ## Repositories
@@ -69,7 +69,7 @@ There are many different project settings. These are categorized according to th
 2. Metadata - the project name, description, and other urls. Some of these are required.
 3. Security - security emails and threat model urls.
 4. Lifecycle - how the project handles versioning. `semver`, `calver`, or `simple`.
-5. Trusted Publishing - what GitHub repositories, branch, and workflows to trust.
+5. Trusted Publishing - what GitHub repositories, branches, and workflows to trust.
 6. Compose - license checking and other composition settings.
 7. Vote - voting options and email templates.
 8. Finish - distribution subdirectory and announcement email templates.
@@ -79,7 +79,7 @@ You can review these in the ATR website and then export a yaml fragment to save 
 ### Release Manager
 
 Each Release Manager should manage their access tokens and keys. At a minimum new Release Managers will need to save their OpenPGP public key.
-Depending on the method chosen to upload your release candidate artifacts PATs, JWTs, or SSH keys may be required.
+Depending on the method chosen to upload your release candidate artifacts, PATs, JWTs, or SSH keys may be required.
 
 ## Release Candidate Phases
 
