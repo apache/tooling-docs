@@ -163,9 +163,9 @@
 <p>Archived Releases in <a href="https://archive.apache.org/dist/">Archive Distribution Directory</a> which are migrated from the archive if not present in the Current Releases.</p>
 </li>
 </ol>
-<h2 id="atr-web-ux">ATR Web UX<a class="headerlink" href="#atr-web-ux" title="Permalink">&para;</a></h2>
+<h2>ATR Web UX</h2>
 <p>We will need pages to perform tasks related to the use of our legacy <a href="https://dist.apache.org/repos/dist/">SVN dist</a> setup.</p>
-<h3 id="pmc-management-page">PMC Management Page<a class="headerlink" href="#pmc-management-page" title="Permalink">&para;</a></h3>
+<h3>PMC Management Page</h3>
 <ol>
 <li>
 <p><strong>Create Release Candidate</strong> - upload the packages to ATR from a release candidate from <a href="https://dist.apache.org/repos/dist/dev/"><code>svn:dist/dev</code></a>. This upload page can also handle direct uploads, without the <code>svn:dist/dev</code> step.</p>
@@ -174,7 +174,7 @@
 <p><strong>Previous Release</strong> - upload an approved release from <code>svn:dist/release</code>.</p>
 </li>
 </ol>
-<h3 id="system-admin-page">System Admin Page<a class="headerlink" href="#system-admin-page" title="Permalink">&para;</a></h3>
+<h3>System Admin Page</h3>
 <ol>
 <li>
 <p><strong>Synchronise Current Releases</strong> - scan <a href="https://dist.apache.org/repos/dist/release/"><code>svn:dist/release</code></a> and migrate any not in the ATR.</p>
@@ -183,14 +183,14 @@
 <p><strong>Synchronize Release Archive Distribution Directory</strong> - scan <a href="https://archive.apache.org/dist/"><code>archive</code></a> repository and migrate any archived not in the ATR as a Current or Archived Release.</p>
 </li>
 </ol>
-<h2 id="backends-hosting-release-distribution">Backends Hosting Release Distribution<a class="headerlink" href="#backends-hosting-release-distribution" title="Permalink">&para;</a></h2>
+<h2>Backends Hosting Release Distribution</h2>
 <p>The legacy domains are currently connected to <code>svn:dist/release</code> as follows:</p>
 <ol>
 <li>rsync.apache.org has a directory that updates a checkout of <a href="https://dist.apache.org/repos/dist/release/"><code>svn:dist/release</code></a></li>
 <li><a href="https://downloads.apache.org/">downloads.apache.org</a> periodically rsyncs with rsync.apache.org</li>
 <li><a href="https://archive.apache.org/dist/">archive.apache.org</a> periodically rsyncs with rsync.apache.org without removing artifacts from the destination.</li>
 </ol>
-<h3 id="transitional-steps">Transitional Steps<a class="headerlink" href="#transitional-steps" title="Permalink">&para;</a></h3>
+<h3>Transitional Steps</h3>
 <pre><code class="language-mermaid">flowchart
   subgraph Legacy
     A[svn:dist/release]
