@@ -152,19 +152,19 @@
             Apache Trusted Releases platform
           </h1>
           <p>The main project for the Tooling Initiative is the Apache Trusted Releases (ATR) platform.</p>
-<h2>Websites</h2>
+<h2 id="websites">Websites<a class="headerlink" href="#websites" title="Permalink">&para;</a></h2>
 <ul>
-<li><a href="https://releases.apache.org">https://releases.apache.org</a> - this is the ATR UX which is dynamic requiring ASF login credentials.</li>
+<li><a href="https://releases.apache.org">https://releases.apache.org</a> - this is the ATR UX which is dynamic, requiring ASF login credentials.</li>
 <li><a href="https://release-catalog.apache.org">https://release-catalog.apache.org</a> - this is the full ASF release catalog in a static website hosted by httpd.</li>
 </ul>
-<h2>Repositories</h2>
+<h2 id="repositories">Repositories<a class="headerlink" href="#repositories" title="Permalink">&para;</a></h2>
 <ul>
 <li><a href="https://github.com/apache/tooling-trusted-releases">https://github.com/apache/tooling-trusted-releases</a> - the ATR UX and API.</li>
 <li><a href="https://github.com/apache/tooling-releases-client">https://github.com/apache/tooling-releases-client</a> - a Python client for Release Managers to interact with the ATR API.</li>
 <li><a href="https://github.com/apache/tooling-actions">https://github.com/apache/tooling-actions</a> - Github Actions for Trusted Publishing.</li>
 <li><a href="https://github.com/apache/tooling-atr-maven-plugin">https://github.com/apache/tooling-atr-maven-plugin</a> - Maven plugin for uploading release candidates to ATR.</li>
 </ul>
-<div id="toc" style="border-radius: 3px; border: 1px solid #999; background-color: #EEE; padding: 4px;"><h4>Table of Contents:</h4><ul><ul><li><a class="toc-href" href="#beta platform features" title="Beta platform features">Beta platform features</a></li><li><a class="toc-href" href="#configuration" title="Configuration">Configuration</a><ul><li><a class="toc-href" href="#committee" title="Committee">Committee</a></li><li><a class="toc-href" href="#projects" title="Projects">Projects</a></li><li><a class="toc-href" href="#release manager" title="Release Manager">Release Manager</a></li></ul></li><li><a class="toc-href" href="#release candidate phases_1" title="Release Candidate Phases">Release Candidate Phases</a><ul><li><a class="toc-href" href="#1. compose" title="1. Compose">1. Compose</a></li><li><a class="toc-href" href="#2. vote" title="2. Vote">2. Vote</a></li><li><a class="toc-href" href="#3. finish" title="3. Finish">3. Finish</a></li></ul></li><li><a class="toc-href" href="#release catalog_1" title="Release Catalog">Release Catalog</a></li></ul></ul></div>
+<div id="toc" style="border-radius: 3px; border: 1px solid #999; background-color: #EEE; padding: 4px;"><h4 id="table-of-contents">Table of Contents:<a class="headerlink" href="#table-of-contents" title="Permalink">&para;</a></h4><ul><ul><li><a class="toc-href" href="#beta platform features" title="Beta platform features">Beta platform features</a></li><li><a class="toc-href" href="#configuration" title="Configuration">Configuration</a><ul><li><a class="toc-href" href="#committee" title="Committee">Committee</a></li><li><a class="toc-href" href="#projects" title="Projects">Projects</a></li><li><a class="toc-href" href="#release manager" title="Release Manager">Release Manager</a></li></ul></li><li><a class="toc-href" href="#release candidate phases_1" title="Release Candidate Phases">Release Candidate Phases</a><ul><li><a class="toc-href" href="#1. compose" title="1. Compose">1. Compose</a></li><li><a class="toc-href" href="#2. vote" title="2. Vote">2. Vote</a></li><li><a class="toc-href" href="#3. finish" title="3. Finish">3. Finish</a></li></ul></li><li><a class="toc-href" href="#release catalog_1" title="Release Catalog">Release Catalog</a></li></ul></ul></div>
 <p>Read an <a href="https://releases.apache.org/docs/introduction-to-atr">introduction to ATR</a> through the platform online documentation.</p>
 <p>What follows is a discussion of the features of ATR that PMCs will need to know when they begin to use ATR for managing their project releases.</p>
 <h2 id="beta platform features">Beta platform features</h2>
@@ -207,7 +207,7 @@ to make corrections.</p>
 <li>Metadata - the project name, description, and other urls. Some of these are required.</li>
 <li>Security - security emails and threat model urls.</li>
 <li>Lifecycle - how the project handles versioning. <code>semver</code>, <code>calver</code>, or <code>simple</code>.</li>
-<li>Trusted Publishing - what GitHub repositories, branch, and workflows to trust.</li>
+<li>Trusted Publishing - what GitHub repositories, branches, and workflows to trust.</li>
 <li>Compose - license checking and other composition settings.</li>
 <li>Vote - voting options and email templates.</li>
 <li>Finish - distribution subdirectory and announcement email templates.</li>
@@ -215,7 +215,7 @@ to make corrections.</p>
 <p>You can review these in the ATR website and then export a yaml fragment to save it in your project repository's <code>.asf.yaml</code> file.</p>
 <h3 id="release manager">Release Manager</h3>
 <p>Each Release Manager should manage their access tokens and keys. At a minimum new Release Managers will need to save their OpenPGP public key.
-Depending on the method chosen to upload your release candidate artifacts PATs, JWTs, or SSH keys may be required.</p>
+Depending on the method chosen to upload your release candidate artifacts, PATs, JWTs, or SSH keys may be required.</p>
 <h2 id="release candidate phases_1">Release Candidate Phases</h2>
 <p>ATR has three phases for a Release Candidate. The Release Manager will guide the Release Candidate through these phases in order
 to make a Release of a new Version of a Project.</p>
