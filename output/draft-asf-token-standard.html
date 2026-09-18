@@ -153,13 +153,13 @@
           </h1>
           <p>[DRAFT STANDARD]</p>
 <p><strong>NOTE: This is an ASF Tooling proposal only. This is not ASF policy.</strong></p>
-<h2>Scope and definitions</h2>
+<h2 id="scope-and-definitions">Scope and definitions<a class="headerlink" href="#scope-and-definitions" title="Permalink">&para;</a></h2>
 <p>This standard defines a common syntax for secret tokens used within applications developed by the ASF for the ASF. In other words, it is relevant for applications developed by teams including but not limited to Marketing and Publicity, Infrastructure, Security, and Tooling. It does not apply to top level projects (TLPs). This token syntax is mandatory for all new tokens in applications covered by this scope after the date of publication, [DATE OF PUBLICATION].</p>
 <p>The regular expression syntax used throughout this standard is POSIX Extended Regular Expressions as defined in IEEE Std 1003.1-2017 Section 9.4. EREs are case sensitive. The base62 alphabet used throughout this standard contains, in order, the 62 characters <code>0-9</code>, <code>A-Z</code>, and <code>a-z</code>.</p>
-<h2>Purpose</h2>
+<h2 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permalink">&para;</a></h2>
 <p>Secret tokens are used by bearers to prove their right to access resources or services. They are akin to passwords, but must be transmitted over the network, and therefore run the risk of being leaked e.g. by inclusion in configuration files or application logs.</p>
 <p>In addition to standard procedures to mitigate leaks, one defence in depth approach is to structure secret tokens in a standardised way which is amenable to automated scanning. Several tools exist for the purpose of such scanning and are widely used. This document standardises one universal format for use at the ASF within the scope defined in the previous section.</p>
-<h2>Requirements</h2>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permalink">&para;</a></h2>
 <p>There is no existing universally accepted standard for the syntax of secret tokens, but existing secret scanning tools make recommendations with documented rationales. These rationales are often relevant to the ASF, and can therefore be treated as requirements. There are also some extra ASF specific requirements.</p>
 <p>Scannable secret tokens at the ASF must:</p>
 <ul>
@@ -170,7 +170,7 @@
 <li>Include enough secure entropy, measured in bits from a secure random or pseudorandom source, to avoid collisions or guessing of issued values.</li>
 <li>Not exceed common application length bounds, e.g. on the length of header field values or storage columns in databases.</li>
 </ul>
-<h2>Syntax</h2>
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permalink">&para;</a></h2>
 <p>ASF scannable secret tokens must match the following regular expression:</p>
 <pre><code>^asf_([a-z]{3,6})_([0-9A-Za-z]{27})([0-4][0-9A-Za-z]{5})$
 </code></pre>
@@ -183,7 +183,7 @@
 <p>One consequence of these constraints is that the first and second match groups allow every possible value permitted by their regular expressions, but the third match group does not.</p>
 <p>The IEEE 802.3 CRC-32 algorithm uses the reflected polynomial <code>0xEDB88320</code>, initial value <code>0xFFFFFFFF</code>, and final XOR with <code>0xFFFFFFFF</code>.</p>
 <p>The complete token length can vary between 41 and 44 characters depending on the chosen component length.</p>
-<h2>Rationale</h2>
+<h2 id="rationale">Rationale<a class="headerlink" href="#rationale" title="Permalink">&para;</a></h2>
 <p>We use 27 characters from the base62 alphabet because that is the minimum equivalent to at least 160 bits, and because this follows a convention set by GitHub.</p>
 <pre><code>&gt;&gt;&gt; import math
 &gt;&gt;&gt; math.log2(62 ** 27)
@@ -198,7 +198,7 @@
 True
 </code></pre>
 <p>Because the maximum value of a CRC-32, <code>0xFFFFFFFF</code>, is encoded by this specification as <code>4gfFC3</code>, no base62 encoded checksums beyond that value can be generated. One consequence is that the leading base62 digit must be in the range <code>0-4</code>, and this is reflected in the regular expression. Further constraints to the regular expression would be possible, but the chosen constraint level balances accuracy with concision.</p>
-<h2>Sample generator code</h2>
+<h2 id="sample-generator-code">Sample generator code<a class="headerlink" href="#sample-generator-code" title="Permalink">&para;</a></h2>
 <pre><code>def asf_secret_token(component: str) -&gt; str:
     import secrets
     import zlib
@@ -216,13 +216,13 @@ True
         checksum = alphabet[rem] + checksum
     return f"asf_{component}_{entropy}{checksum}"
 </code></pre>
-<h2>Sample generated tokens</h2>
+<h2 id="sample-generated-tokens">Sample generated tokens<a class="headerlink" href="#sample-generated-tokens" title="Permalink">&para;</a></h2>
 <p>These values must not be used in any application. The <code>sample</code> component will be registered by Security as the first known component, and can be used for documentation examples where an arbitrary component is suitable.</p>
 <pre><code>asf_sample_mXBgIOwUcV44oJElFX4LCMhWkEs2gaLe2
 asf_sample_63Uo76APFVkmVyTpHpi3W7zlmxJ1dGuWP
 asf_sample_PfCdJHSP5C8vM4hkQRMImIzAFm90LW1gM
 </code></pre>
-<h2>Test vectors</h2>
+<h2 id="test-vectors">Test vectors<a class="headerlink" href="#test-vectors" title="Permalink">&para;</a></h2>
 <pre><code>Entropy:  000000000000000000000000000
 CRC-32:   0x816710BC
 Checksum: 2MvMGi
@@ -233,7 +233,7 @@ CRC-32:   0x39DF34DC
 Checksum: 13hv5A
 Token:    asf_sample_zzzzzzzzzzzzzzzzzzzzzzzzzzz13hv5A
 </code></pre>
-<h2>Detection guidance</h2>
+<h2 id="detection-guidance">Detection guidance<a class="headerlink" href="#detection-guidance" title="Permalink">&para;</a></h2>
 <p>To detect tokens, the regular expression presented in the Syntax section above can be used alone, without anchoring, as a heuristic with a high probability of matches. For better prevention of false positives in detection, the suffix matching the CRC-32 can be validated. Components can also be validated against the list maintained by Security.</p>
 
         </div>
