@@ -15,7 +15,7 @@ repos:
         name: run check-hooks-apply
         description: check hooks apply to the repository
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v6.0.0
+    rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c  # frozen: v6.0.0
     hooks:
       # - id: check-added-large-files
       - id: check-ast
@@ -35,7 +35,7 @@ repos:
         args: [--markdown-linebreak-ext=md]
         exclude: (\.svg$)
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.46.0
+    rev: 5b5dddc4fb0f83c3ea1fc5616fa63e115dce83e0  # frozen: v0.49.1
     hooks:
       - id: markdownlint
         name: run markdownlint
@@ -44,13 +44,13 @@ repos:
         types: [markdown]
         files: \.md$
   - repo: https://github.com/shellcheck-py/shellcheck-py
-    rev: v0.11.0.1
+    rev: a6564f5d57444e123433a5c9af733e3975c77229  # frozen: v0.11.0.1-1
     hooks:
       - id: shellcheck
         name: run shellcheck
         description: finds bugs in your shell scripts
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.37.1
+    rev: cba56bcde1fdd01c1deb3f945e69764c291a6530  # frozen: v1.38.0
     hooks:
       - id: yamllint
         name: run yamllint
@@ -59,7 +59,7 @@ repos:
         types: [yaml]
         files: \.ya?ml$
   - repo: https://github.com/crate-ci/typos
-    rev: v1.39.2
+    rev: 7f9d0819ca1c008ade73f4b41fa9d258d48f605b  # frozen: v1.51.1
     hooks:
       - id: typos
         name: run typos
@@ -67,19 +67,19 @@ repos:
         files: \.(html|md|py|sh|ya?ml)$
         args: [--config=.github/linters/.typos.toml]
   - repo: https://github.com/rhysd/actionlint
-    rev: v1.7.9
+    rev: 914e7df21a07ef503a81201c76d2b11c789d3fca  # frozen: v1.7.12
     hooks:
       - id: actionlint
         name: run actionlint
         description: static checker for GitHub Actions workflow files
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.35.0
+    rev: 0494aa7fa1314e98913a41227d8f0a515b2c1049  # frozen: 0.38.2
     hooks:
       - id: check-github-workflows
         name: run check-github-workflows
         description: pre-commit hooks for jsonschema validation with support for GitHub Workflows
   - repo: https://github.com/zizmorcore/zizmor-pre-commit
-    rev: v1.17.0
+    rev: fa412071e4f5d44d44f9e365f4676f9df92456a2  # frozen: v1.30.1
     hooks:
       - id: zizmor
         name: run zizmor
