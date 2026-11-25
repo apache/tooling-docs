@@ -1,8 +1,8 @@
 import datetime
 
 # Basic information about the site.
-SITENAME = "ASF Tooling Website"
-SITEDESC = "The official website of the ASF Tooling Team"
+SITENAME = "ASF Tooling Initiative"
+SITEDESC = "The official website of the ASF Tooling Initiative"
 SITEDOMAIN = "tooling.apache.org"
 SITEURL = "https://tooling.apache.org"
 SITELOGO = "https://tooling.apache.org//extras/favicon.ico"
