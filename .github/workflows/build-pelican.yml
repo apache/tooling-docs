@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
 jobs:
   build-pelican:
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-24.04
     permissions:
       contents: write   # because we push to asf-site
     steps:
